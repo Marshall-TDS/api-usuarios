@@ -3,11 +3,13 @@ import type { CreateUserDTO } from '../../dto/CreateUserDTO'
 import { User } from '../../entities/User'
 import type { IUserRepository } from '../../repositories/IUserRepository'
 import type { IUserGroupRepository } from '../../../userGroups/repositories/IUserGroupRepository'
+import { PasswordSetupService } from '../../services/PasswordSetupService'
 
 export class CreateUserUseCase {
   constructor(
     private readonly usersRepository: IUserRepository,
     private readonly userGroupsRepository: IUserGroupRepository,
+    private readonly passwordSetup: PasswordSetupService,
   ) {}
 
   async execute(payload: CreateUserDTO) {
@@ -37,7 +39,9 @@ export class CreateUserUseCase {
       updatedBy: payload.createdBy,
     })
 
-    return this.usersRepository.create(user)
+    const createdUser = await this.usersRepository.create(user)
+    await this.passwordSetup.send(createdUser)
+    return createdUser
   }
 }
 

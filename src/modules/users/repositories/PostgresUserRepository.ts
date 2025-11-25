@@ -100,8 +100,9 @@ export class PostgresUserRepository implements IUserRepository {
             created_by,
             updated_by,
             created_at,
-            updated_at
-          ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
+            updated_at,
+            password
+          ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)
         `,
         [
           data.id,
@@ -114,6 +115,7 @@ export class PostgresUserRepository implements IUserRepository {
           data.updatedBy,
           data.createdAt,
           data.updatedAt,
+          null,
         ],
       )
 
@@ -214,6 +216,18 @@ export class PostgresUserRepository implements IUserRepository {
         VALUES ${values.join(', ')}
       `,
       params,
+    )
+  }
+
+  async updatePassword(id: string, password: string | null): Promise<void> {
+    await pool.query(
+      `
+        UPDATE users
+        SET password = $2,
+            updated_at = NOW()
+        WHERE id = $1
+      `,
+      [id, password],
     )
   }
 }

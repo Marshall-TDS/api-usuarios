@@ -160,6 +160,15 @@ const swaggerDefinition = {
           updatedBy: userGroupProperties.updatedBy,
         },
       },
+      SetPasswordInput: {
+        type: 'object',
+        required: ['token', 'password', 'confirmPassword'],
+        properties: {
+          token: { type: 'string', example: 'jwt.token.aqui' },
+          password: { type: 'string', minLength: 8, example: 'NovaSenhaSegura@123' },
+          confirmPassword: { type: 'string', minLength: 8, example: 'NovaSenhaSegura@123' },
+        },
+      },
       Feature: {
         type: 'object',
         properties: {
@@ -500,6 +509,31 @@ const swaggerDefinition = {
           204: { description: 'Grupo removido' },
           404: {
             description: 'Grupo não encontrado',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+        },
+      },
+    },
+    '/users/password/reset': {
+      post: {
+        tags: ['Users'],
+        summary: 'Define ou redefine a senha de um usuário a partir do token enviado por e-mail',
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: { $ref: '#/components/schemas/SetPasswordInput' },
+            },
+          },
+        },
+        responses: {
+          204: { description: 'Senha atualizada' },
+          401: {
+            description: 'Token inválido ou expirado',
             content: {
               'application/json': {
                 schema: { $ref: '#/components/schemas/ErrorResponse' },

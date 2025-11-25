@@ -90,5 +90,9 @@ export class InMemoryUserRepository implements IUserRepository {
   async delete(id: string): Promise<void> {
     this.users.delete(id)
   }
+
+  async updatePassword(_id: string, _password: string | null): Promise<void> {
+    // in-memory repository não persiste senha
+  }
 }
 

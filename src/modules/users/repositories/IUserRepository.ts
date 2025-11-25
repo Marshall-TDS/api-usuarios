@@ -8,5 +8,6 @@ export interface IUserRepository {
   create(user: User): Promise<UserProps>
   update(user: User): Promise<UserProps>
   delete(id: string): Promise<void>
+  updatePassword(id: string, password: string | null): Promise<void>
 }
 

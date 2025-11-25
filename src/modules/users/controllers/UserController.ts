@@ -8,6 +8,7 @@ import { GetUserUseCase } from '../useCases/getUser/GetUserUseCase'
 import { ListUsersUseCase } from '../useCases/listUsers/ListUsersUseCase'
 import { UpdateUserUseCase } from '../useCases/updateUser/UpdateUserUseCase'
 import { createUserSchema, updateUserSchema } from '../validators/user.schema'
+import { PasswordSetupService } from '../services/PasswordSetupService'
 
 export class UserController {
   constructor(
@@ -106,7 +107,7 @@ export class UserController {
 export const userController = new UserController(
   new ListUsersUseCase(userRepository),
   new GetUserUseCase(userRepository),
-  new CreateUserUseCase(userRepository, userGroupRepository),
+  new CreateUserUseCase(userRepository, userGroupRepository, new PasswordSetupService()),
   new UpdateUserUseCase(userRepository, userGroupRepository),
   new DeleteUserUseCase(userRepository),
 )

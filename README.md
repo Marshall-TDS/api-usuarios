@@ -8,6 +8,14 @@ API REST construída com Express + TypeScript aplicada ao domínio de usuários 
 - Express 5
 - Zod para validações
 - Helmet + CORS para hardening básico
+- Nodemailer + SMTP para disparo de e-mails transacionais
+
+- `JWT_SECRET` — segredo usado para assinar os tokens de definição de senha (default `default-jwt-secret`)
+- `JWT_EXPIRES_IN` — duração dos tokens (default `2h`)
+- `CRYPTO_SECRET` — segredo usado para criptografar/decriptar senhas antes de salvar no banco
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_SECURE`, `MAIL_FROM` — credenciais SMTP utilizadas pelo Nodemailer
+- `APP_WEB_URL` — URL pública do app web (utilizada no link do e-mail)
+- `PASSWORD_RESET_PATH` — path do front que recebe o token e permite definir a senha (`/account/set-password`)
 
 ### Scripts
 - `npm run dev` — executa a API com reload automático
@@ -86,6 +94,7 @@ src
 - Grupos de usuários e usuários são persistidos diretamente no PostgreSQL (tabelas `user_groups`, `user_group_memberships`, `users`) através dos repositórios `PostgresUserGroupRepository` e `PostgresUserRepository`.
 - Antes de usar a API, execute as migrations via serviço `db-migrations` para garantir que todas as tabelas existam.
 - Configure o `.env` (vide seção anterior) com as credenciais do mesmo banco utilizadas pelo serviço de migrations.
+- Ao criar um usuário, a API dispara um e-mail com link (token JWT expira em 2h) para definição da senha. O campo `password` inicia como `NULL` e passa a armazenar a versão criptografada (AES-256/CTR) após o fluxo de redefinição.
 
 ### Rotas Disponíveis (`/api`)
 | Método | Rota            | Descrição |

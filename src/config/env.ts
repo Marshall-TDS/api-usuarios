@@ -6,6 +6,8 @@ export const env = {
   nodeEnv: process.env.NODE_ENV ?? 'development',
   app: {
     port: Number(process.env.PORT ?? 3333),
+    webUrl: process.env.APP_WEB_URL ?? 'http://localhost:5173',
+    passwordResetPath: process.env.PASSWORD_RESET_PATH ?? '/account/set-password',
   },
   database: {
     host: process.env.DB_HOST ?? 'localhost',
@@ -13,6 +15,19 @@ export const env = {
     name: process.env.DB_NAME ?? 'marshall',
     user: process.env.DB_USER ?? 'developer',
     password: process.env.DB_PASS ?? '',
+  },
+  security: {
+    jwtSecret: process.env.JWT_SECRET ?? 'default-jwt-secret',
+    jwtExpiresIn: process.env.JWT_EXPIRES_IN ?? '2h',
+    cryptoSecret: process.env.CRYPTO_SECRET ?? 'default-crypto-secret',
+  },
+  mail: {
+    host: process.env.SMTP_HOST ?? 'localhost',
+    port: Number(process.env.SMTP_PORT ?? 1025),
+    user: process.env.SMTP_USER ?? '',
+    password: process.env.SMTP_PASS ?? '',
+    secure: process.env.SMTP_SECURE === 'true',
+    from: process.env.MAIL_FROM ?? 'Marshall ERP <no-reply@marshall.com>',
   },
 }
 
