@@ -1,5 +1,5 @@
-import { InMemoryUserGroupRepository } from './InMemoryUserGroupRepository'
+import { PostgresUserGroupRepository } from './PostgresUserGroupRepository'
 
-export const userGroupRepository = new InMemoryUserGroupRepository()
+export const userGroupRepository = new PostgresUserGroupRepository()
 
 

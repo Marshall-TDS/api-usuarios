@@ -82,6 +82,11 @@ src
 - Os schemas Zod convertem entradas para o formato correto e validam contra este catálogo.
 - Endpoint público `GET /api/features` devolve o JSON para que o front-end possa montar selects.
 
+### Persistência
+- Grupos de usuários são persistidos diretamente na tabela `user_groups` (PostgreSQL) através do repositório `PostgresUserGroupRepository`.
+- Antes de usar a API de usuários, execute as migrations via serviço `db-migrations` para garantir que as tabelas (`user_groups`, `user_group_memberships`, `users`) existam.
+- Configure o `.env` (vide seção anterior) com as credenciais do mesmo banco utilizadas pelo serviço de migrations.
+
 ### Rotas Disponíveis (`/api`)
 | Método | Rota            | Descrição |
 |--------|-----------------|-----------|
