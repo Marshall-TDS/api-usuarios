@@ -1,15 +1,13 @@
 import type { NextFunction, Request, Response } from 'express'
 import { AppError } from '../../../core/errors/AppError'
 import { userGroupRepository } from '../../userGroups/repositories'
-import { InMemoryUserRepository } from '../repositories/InMemoryUserRepository'
+import { userRepository } from '../repositories'
 import { CreateUserUseCase } from '../useCases/createUser/CreateUserUseCase'
 import { DeleteUserUseCase } from '../useCases/deleteUser/DeleteUserUseCase'
 import { GetUserUseCase } from '../useCases/getUser/GetUserUseCase'
 import { ListUsersUseCase } from '../useCases/listUsers/ListUsersUseCase'
 import { UpdateUserUseCase } from '../useCases/updateUser/UpdateUserUseCase'
 import { createUserSchema, updateUserSchema } from '../validators/user.schema'
-
-const repository = new InMemoryUserRepository()
 
 export class UserController {
   constructor(
@@ -106,10 +104,10 @@ export class UserController {
 }
 
 export const userController = new UserController(
-  new ListUsersUseCase(repository),
-  new GetUserUseCase(repository),
-  new CreateUserUseCase(repository, userGroupRepository),
-  new UpdateUserUseCase(repository, userGroupRepository),
-  new DeleteUserUseCase(repository),
+  new ListUsersUseCase(userRepository),
+  new GetUserUseCase(userRepository),
+  new CreateUserUseCase(userRepository, userGroupRepository),
+  new UpdateUserUseCase(userRepository, userGroupRepository),
+  new DeleteUserUseCase(userRepository),
 )
 

@@ -83,8 +83,8 @@ src
 - Endpoint público `GET /api/features` devolve o JSON para que o front-end possa montar selects.
 
 ### Persistência
-- Grupos de usuários são persistidos diretamente na tabela `user_groups` (PostgreSQL) através do repositório `PostgresUserGroupRepository`.
-- Antes de usar a API de usuários, execute as migrations via serviço `db-migrations` para garantir que as tabelas (`user_groups`, `user_group_memberships`, `users`) existam.
+- Grupos de usuários e usuários são persistidos diretamente no PostgreSQL (tabelas `user_groups`, `user_group_memberships`, `users`) através dos repositórios `PostgresUserGroupRepository` e `PostgresUserRepository`.
+- Antes de usar a API, execute as migrations via serviço `db-migrations` para garantir que todas as tabelas existam.
 - Configure o `.env` (vide seção anterior) com as credenciais do mesmo banco utilizadas pelo serviço de migrations.
 
 ### Rotas Disponíveis (`/api`)
