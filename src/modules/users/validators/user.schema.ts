@@ -25,7 +25,7 @@ export const createUserSchema = z.object({
   groupIds: z.array(z.string().uuid()).nonempty(),
   allowFeatures: featureSchema,
   deniedFeatures: featureSchema,
-  createdBy: z.string().email(),
+  createdBy: z.string().min(3),
 })
 
 export const updateUserSchema = z
@@ -36,7 +36,7 @@ export const updateUserSchema = z
     groupIds: z.array(z.string().uuid()).nonempty().optional(),
     allowFeatures: featureSchema,
     deniedFeatures: featureSchema,
-    updatedBy: z.string().email(),
+    updatedBy: z.string().min(3),
   })
   .refine((data) => Object.keys(data).some((key) => key !== 'updatedBy'), {
     message: 'Informe ao menos um campo para atualizar',

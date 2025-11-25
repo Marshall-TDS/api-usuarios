@@ -60,8 +60,8 @@ src
 | `features`       | string[]    | Funcionalidades extras específicas do usuário |
 | `allowFeatures`  | string[]    | Funcionalidades permitidas explicitamente (chaves do catálogo) |
 | `deniedFeatures`  | string[]    | Funcionalidades negadas explicitamente (chaves do catálogo) |
-| `createdBy`      | string      | E-mail de quem criou |
-| `updatedBy`      | string      | E-mail de quem fez a última alteração |
+| `createdBy`      | string      | Login de quem criou |
+| `updatedBy`      | string      | Login de quem fez a última alteração |
 | `createdAt`      | ISO string  | Gerado automaticamente |
 | `updatedAt`      | ISO string  | Gerado automaticamente |
 

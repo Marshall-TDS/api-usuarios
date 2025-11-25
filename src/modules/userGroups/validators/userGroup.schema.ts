@@ -32,7 +32,7 @@ export const createUserGroupSchema = z.object({
   name: z.string().min(3).max(120),
   code: codeSchema,
   features: featuresSchema,
-  createdBy: z.string().email(),
+  createdBy: z.string().min(3),
 })
 
 export const updateUserGroupSchema = z
@@ -40,7 +40,7 @@ export const updateUserGroupSchema = z
     name: z.string().min(3).max(120).optional(),
     code: codeSchema.optional(),
     features: featuresSchema,
-    updatedBy: z.string().email(),
+    updatedBy: z.string().min(3),
   })
   .refine((data) => Object.keys(data).some((key) => key !== 'updatedBy'), {
     message: 'Informe ao menos um campo para atualizar',

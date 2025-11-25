@@ -39,13 +39,11 @@ const userProperties = {
   },
   createdBy: {
     type: 'string',
-    format: 'email',
-    example: 'admin@marshall.com',
+    example: 'admin',
   },
   updatedBy: {
     type: 'string',
-    format: 'email',
-    example: 'admin@marshall.com',
+    example: 'admin',
   },
   createdAt: {
     type: 'string',
