@@ -100,11 +100,20 @@ const swaggerDefinition = {
   ],
   tags: [
     { name: 'Health', description: 'Status do serviço' },
+    { name: 'Auth', description: 'Autenticação e autorização' },
     { name: 'Users', description: 'Gestão de usuários corporativos' },
     { name: 'UserGroups', description: 'Catálogo de grupos e funcionalidades' },
     { name: 'Features', description: 'Lista estática de funcionalidades suportadas' },
   ],
   components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        description: 'Token JWT obtido no endpoint /auth/login',
+      },
+    },
     schemas: {
       User: {
         type: 'object',
@@ -190,9 +199,135 @@ const swaggerDefinition = {
           details: { type: 'object', nullable: true },
         },
       },
+      LoginInput: {
+        type: 'object',
+        required: ['loginOrEmail', 'password'],
+        properties: {
+          loginOrEmail: {
+            type: 'string',
+            description: 'Login ou e-mail do usuário',
+            example: 'mlopes',
+          },
+          password: {
+            type: 'string',
+            format: 'password',
+            description: 'Senha do usuário',
+            example: 'SenhaSegura@123',
+          },
+        },
+      },
+      LoginResponse: {
+        type: 'object',
+        properties: {
+          accessToken: {
+            type: 'string',
+            description: 'JWT access token (expira em 15 minutos). Inclui permissões do usuário.',
+            example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+          },
+          refreshToken: {
+            type: 'string',
+            description: 'JWT refresh token (expira em 7 dias)',
+            example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+          },
+          user: {
+            type: 'object',
+            properties: {
+              id: { type: 'string', format: 'uuid' },
+              fullName: { type: 'string' },
+              login: { type: 'string' },
+              email: { type: 'string' },
+            },
+          },
+        },
+      },
+      LogoutInput: {
+        type: 'object',
+        required: ['refreshToken'],
+        properties: {
+          refreshToken: {
+            type: 'string',
+            description: 'Refresh token a ser invalidado',
+            example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+          },
+        },
+      },
     },
   },
   paths: {
+    '/auth/login': {
+      post: {
+        tags: ['Auth'],
+        summary: 'Autentica um usuário e retorna tokens JWT',
+        description:
+          'Valida as credenciais do usuário e retorna um access token (15min) e refresh token (7 dias). ' +
+          'O access token contém as permissões do usuário calculadas a partir dos grupos e funcionalidades permitidas/negadas.',
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: { $ref: '#/components/schemas/LoginInput' },
+            },
+          },
+        },
+        responses: {
+          200: {
+            description: 'Autenticação bem-sucedida',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/LoginResponse' },
+              },
+            },
+          },
+          401: {
+            description: 'Credenciais inválidas ou senha não definida',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+        },
+      },
+    },
+    '/auth/logout': {
+      post: {
+        tags: ['Auth'],
+        summary: 'Realiza logout invalidando o refresh token',
+        description: 'Invalida o refresh token fornecido. O access token continuará válido até expirar.',
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: { $ref: '#/components/schemas/LogoutInput' },
+            },
+          },
+        },
+        responses: {
+          200: {
+            description: 'Logout realizado com sucesso',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    status: { type: 'string', example: 'success' },
+                    message: { type: 'string', example: 'Logout realizado com sucesso' },
+                  },
+                },
+              },
+            },
+          },
+          401: {
+            description: 'Token inválido',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+        },
+      },
+    },
     '/health': {
       get: {
         tags: ['Health'],

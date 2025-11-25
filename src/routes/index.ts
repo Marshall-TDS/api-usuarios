@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { authRoutes } from '../modules/auth/routes/auth.routes'
 import { featureRoutes } from '../modules/features/routes/feature.routes'
 import { userGroupRoutes } from '../modules/userGroups/routes/userGroup.routes'
 import { userRoutes } from '../modules/users/routes/user.routes'
@@ -9,6 +10,7 @@ routes.get('/health', (_req, res) => {
   res.json({ status: 'ok' })
 })
 
+routes.use('/auth', authRoutes)
 routes.use('/users', userRoutes)
 routes.use('/groups', userGroupRoutes)
 routes.use('/features', featureRoutes)

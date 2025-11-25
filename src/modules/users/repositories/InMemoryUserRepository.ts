@@ -75,6 +75,16 @@ export class InMemoryUserRepository implements IUserRepository {
     return user ?? null
   }
 
+  async findByLoginOrEmailWithPassword(loginOrEmail: string): Promise<(UserProps & { passwordHash: string | null }) | null> {
+    const user = Array.from(this.users.values()).find(
+      (item) =>
+        item.login.toLowerCase() === loginOrEmail.toLowerCase() ||
+        item.email.toLowerCase() === loginOrEmail.toLowerCase(),
+    )
+    if (!user) return null
+    return { ...user, passwordHash: null } // In-memory não tem senha
+  }
+
   async create(user: User): Promise<UserProps> {
     const data = user.toJSON()
     this.users.set(data.id, data)

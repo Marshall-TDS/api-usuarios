@@ -9,6 +9,7 @@ type UserRow = {
   full_name: string
   login: string
   email: string
+  password: string | null
   allow_features: string[] | null
   denied_features: string[] | null
   created_by: string
@@ -32,12 +33,13 @@ const mapRowToProps = (row: UserRow): UserProps => ({
   updatedAt: row.updated_at,
 })
 
-const buildSelectQuery = (extraCondition = '') => `
+const buildSelectQuery = (extraCondition = '', includePassword = false) => `
   SELECT
     u.id,
     u.full_name,
     u.login,
     u.email,
+    ${includePassword ? 'u.password,' : ''}
     u.allow_features,
     u.denied_features,
     u.created_by,
@@ -51,7 +53,7 @@ const buildSelectQuery = (extraCondition = '') => `
   FROM users u
   LEFT JOIN user_group_memberships m ON m.user_id = u.id
   ${extraCondition}
-  GROUP BY u.id, u.full_name, u.login, u.email, u.allow_features, u.denied_features, u.created_by, u.updated_by, u.created_at, u.updated_at
+  GROUP BY u.id, u.full_name, u.login, u.email${includePassword ? ', u.password' : ''}, u.allow_features, u.denied_features, u.created_by, u.updated_by, u.created_at, u.updated_at
 `
 
 export class PostgresUserRepository implements IUserRepository {
@@ -80,6 +82,19 @@ export class PostgresUserRepository implements IUserRepository {
     ])
     const row = result.rows[0]
     return row ? mapRowToProps(row) : null
+  }
+
+  async findByLoginOrEmailWithPassword(loginOrEmail: string): Promise<(UserProps & { passwordHash: string | null }) | null> {
+    const result = await pool.query<UserRow>(
+      buildSelectQuery('WHERE LOWER(u.login) = LOWER($1) OR LOWER(u.email) = LOWER($1)', true),
+      [loginOrEmail],
+    )
+    const row = result.rows[0]
+    if (!row) return null
+    return {
+      ...mapRowToProps(row),
+      passwordHash: row.password,
+    }
   }
 
   async create(user: User): Promise<UserProps> {

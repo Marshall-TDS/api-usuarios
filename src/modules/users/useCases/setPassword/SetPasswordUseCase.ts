@@ -1,5 +1,5 @@
 import { AppError } from '../../../../core/errors/AppError'
-import { encryptPassword } from '../../../../core/utils/passwordCipher'
+import { hashPassword } from '../../../../core/utils/passwordCipher'
 import { verifyPasswordToken } from '../../../../core/utils/jwt'
 import type { IUserRepository } from '../../repositories/IUserRepository'
 
@@ -19,8 +19,8 @@ export class SetPasswordUseCase {
       throw new AppError('Usuário não encontrado', 404)
     }
 
-    const encrypted = encryptPassword(password)
-    await this.usersRepository.updatePassword(user.id, encrypted)
+    const hashed = await hashPassword(password)
+    await this.usersRepository.updatePassword(user.id, hashed)
 
     return {
       id: user.id,
