@@ -1,4 +1,5 @@
 import swaggerJsdoc from 'swagger-jsdoc'
+import { FEATURE_CATALOG, FEATURE_KEYS } from '../modules/features/catalog'
 
 const userProperties = {
   id: {
@@ -19,15 +20,22 @@ const userProperties = {
     format: 'email',
     example: 'mariana.lopes@example.com',
   },
-  userGroup: {
+  groupIds: {
     type: 'array',
-    items: { type: 'string' },
-    example: ['Administradores'],
+    items: { type: 'string', format: 'uuid' },
+    example: ['0d9a5a3b-1d2f-4cb6-9f92-4f19298d9640'],
   },
-  features: {
+  allowFeatures: {
     type: 'array',
-    items: { type: 'string' },
-    example: ['dashboard', 'financeiro'],
+    description: 'Lista de funcionalidades permitidas explicitamente (chaves do catálogo)',
+    items: { type: 'string', enum: FEATURE_KEYS },
+    example: [],
+  },
+  deniedFeatures: {
+    type: 'array',
+    description: 'Lista de funcionalidades negadas explicitamente (chaves do catálogo)',
+    items: { type: 'string', enum: FEATURE_KEYS },
+    example: [],
   },
   createdBy: {
     type: 'string',
@@ -51,6 +59,32 @@ const userProperties = {
   },
 }
 
+const userGroupProperties = {
+  id: {
+    type: 'string',
+    format: 'uuid',
+    example: '0d9a5a3b-1d2f-4cb6-9f92-4f19298d9640',
+  },
+  name: {
+    type: 'string',
+    example: 'Administradores',
+  },
+  code: {
+    type: 'string',
+    example: 'ADM-GLOBAL',
+  },
+  features: {
+    type: 'array',
+    description: 'Funcionalidades padrão entregues por este grupo',
+    items: { type: 'string', enum: FEATURE_KEYS },
+    example: ['GESTAO-USUARIOS', 'FINANCEIRO'],
+  },
+  createdBy: userProperties.createdBy,
+  updatedBy: userProperties.updatedBy,
+  createdAt: userProperties.createdAt,
+  updatedAt: userProperties.updatedAt,
+}
+
 const swaggerDefinition = {
   openapi: '3.0.3',
   info: {
@@ -69,6 +103,8 @@ const swaggerDefinition = {
   tags: [
     { name: 'Health', description: 'Status do serviço' },
     { name: 'Users', description: 'Gestão de usuários corporativos' },
+    { name: 'UserGroups', description: 'Catálogo de grupos e funcionalidades' },
+    { name: 'Features', description: 'Lista estática de funcionalidades suportadas' },
   ],
   components: {
     schemas: {
@@ -78,13 +114,14 @@ const swaggerDefinition = {
       },
       CreateUserInput: {
         type: 'object',
-        required: ['fullName', 'login', 'email', 'userGroup', 'createdBy'],
+        required: ['fullName', 'login', 'email', 'groupIds', 'createdBy'],
         properties: {
           fullName: userProperties.fullName,
           login: userProperties.login,
           email: userProperties.email,
-          userGroup: userProperties.userGroup,
-          features: userProperties.features,
+          groupIds: userProperties.groupIds,
+          allowFeatures: userProperties.allowFeatures,
+          deniedFeatures: userProperties.deniedFeatures,
           createdBy: userProperties.createdBy,
         },
       },
@@ -95,9 +132,47 @@ const swaggerDefinition = {
           fullName: { ...userProperties.fullName, nullable: true },
           login: { ...userProperties.login, nullable: true },
           email: { ...userProperties.email, nullable: true },
-          userGroup: { ...userProperties.userGroup, nullable: true },
-          features: { ...userProperties.features, nullable: true },
+          groupIds: { ...userProperties.groupIds, nullable: true },
+          allowFeatures: { ...userProperties.allowFeatures, nullable: true },
+          deniedFeatures: { ...userProperties.deniedFeatures, nullable: true },
           updatedBy: userProperties.updatedBy,
+        },
+      },
+      UserGroup: {
+        type: 'object',
+        properties: userGroupProperties,
+      },
+      CreateUserGroupInput: {
+        type: 'object',
+        required: ['name', 'code', 'createdBy'],
+        properties: {
+          name: userGroupProperties.name,
+          code: userGroupProperties.code,
+          features: userGroupProperties.features,
+          createdBy: userGroupProperties.createdBy,
+        },
+      },
+      UpdateUserGroupInput: {
+        type: 'object',
+        required: ['updatedBy'],
+        properties: {
+          name: { ...userGroupProperties.name, nullable: true },
+          code: { ...userGroupProperties.code, nullable: true },
+          features: { ...userGroupProperties.features, nullable: true },
+          updatedBy: userGroupProperties.updatedBy,
+        },
+      },
+      Feature: {
+        type: 'object',
+        properties: {
+          key: { type: 'string', enum: FEATURE_KEYS, example: FEATURE_KEYS[0] },
+          name: { type: 'string', example: FEATURE_CATALOG[0]?.name ?? 'Dashboard Executivo' },
+          description: {
+            type: 'string',
+            example:
+              FEATURE_CATALOG[0]?.description ??
+              'Visualização consolidada de KPIs e status em tempo real.',
+          },
         },
       },
       ErrorResponse: {
@@ -132,6 +207,25 @@ const swaggerDefinition = {
         },
       },
     },
+    '/features': {
+      get: {
+        tags: ['Features'],
+        summary: 'Lista o catálogo estático de funcionalidades suportadas',
+        responses: {
+          200: {
+            description: 'Catálogo disponível para vinculação em usuários e grupos',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'array',
+                  items: { $ref: '#/components/schemas/Feature' },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
     '/users': {
       get: {
         tags: ['Users'],
@@ -145,8 +239,9 @@ const swaggerDefinition = {
           },
           {
             in: 'query',
-            name: 'userGroup',
-            schema: { type: 'string' },
+            name: 'groupId',
+            schema: { type: 'string', format: 'uuid' },
+            description: 'Filtra usuários vinculados a um grupo específico (UUID)',
           },
           {
             in: 'query',
@@ -267,6 +362,146 @@ const swaggerDefinition = {
           204: { description: 'Usuário removido' },
           404: {
             description: 'Usuário não encontrado',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+        },
+      },
+    },
+    '/groups': {
+      get: {
+        tags: ['UserGroups'],
+        summary: 'Lista grupos de usuários',
+        parameters: [
+          {
+            in: 'query',
+            name: 'search',
+            schema: { type: 'string' },
+            description: 'Busca por nome ou código',
+          },
+          {
+            in: 'query',
+            name: 'feature',
+            schema: { type: 'string' },
+            description: 'Filtra grupos que contem a funcionalidade informada',
+          },
+        ],
+        responses: {
+          200: {
+            description: 'Lista de grupos',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'array',
+                  items: { $ref: '#/components/schemas/UserGroup' },
+                },
+              },
+            },
+          },
+        },
+      },
+      post: {
+        tags: ['UserGroups'],
+        summary: 'Cria um novo grupo de usuários',
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: { $ref: '#/components/schemas/CreateUserGroupInput' },
+            },
+          },
+        },
+        responses: {
+          201: {
+            description: 'Grupo criado',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/UserGroup' },
+              },
+            },
+          },
+          409: {
+            description: 'Código duplicado',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+        },
+      },
+    },
+    '/groups/{id}': {
+      parameters: [
+        {
+          in: 'path',
+          name: 'id',
+          required: true,
+          schema: { type: 'string', format: 'uuid' },
+        },
+      ],
+      get: {
+        tags: ['UserGroups'],
+        summary: 'Busca detalhes de um grupo',
+        responses: {
+          200: {
+            description: 'Grupo encontrado',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/UserGroup' },
+              },
+            },
+          },
+          404: {
+            description: 'Grupo não encontrado',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+        },
+      },
+      put: {
+        tags: ['UserGroups'],
+        summary: 'Atualiza um grupo existente',
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: { $ref: '#/components/schemas/UpdateUserGroupInput' },
+            },
+          },
+        },
+        responses: {
+          200: {
+            description: 'Grupo atualizado',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/UserGroup' },
+              },
+            },
+          },
+          404: {
+            description: 'Grupo não encontrado',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+        },
+      },
+      delete: {
+        tags: ['UserGroups'],
+        summary: 'Remove um grupo',
+        responses: {
+          204: { description: 'Grupo removido' },
+          404: {
+            description: 'Grupo não encontrado',
             content: {
               'application/json': {
                 schema: { $ref: '#/components/schemas/ErrorResponse' },

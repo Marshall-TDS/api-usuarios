@@ -1,11 +1,12 @@
 import { z } from 'zod'
+import { formatGroupCode } from '../../../core/utils/formatGroupCode'
 import {
   FEATURE_KEYS,
   formatFeatureKey,
   isValidFeatureKey,
 } from '../../features/catalog'
 
-const featureSchema = z
+const featuresSchema = z
   .array(
     z
       .string()
@@ -18,28 +19,32 @@ const featureSchema = z
   .max(50)
   .optional()
 
-export const createUserSchema = z.object({
-  fullName: z.string().min(3),
-  login: z.string().min(3),
-  email: z.string().email(),
-  groupIds: z.array(z.string().uuid()).nonempty(),
-  allowFeatures: featureSchema,
-  deniedFeatures: featureSchema,
+const codeSchema = z
+  .string()
+  .min(3)
+  .max(100)
+  .transform((value) => formatGroupCode(value))
+  .refine((value) => /^[A-Z0-9-]+$/.test(value), {
+    message: 'Código deve conter apenas letras, números e hífens',
+  })
+
+export const createUserGroupSchema = z.object({
+  name: z.string().min(3).max(120),
+  code: codeSchema,
+  features: featuresSchema,
   createdBy: z.string().email(),
 })
 
-export const updateUserSchema = z
+export const updateUserGroupSchema = z
   .object({
-    fullName: z.string().min(3).optional(),
-    login: z.string().min(3).optional(),
-    email: z.string().email().optional(),
-    groupIds: z.array(z.string().uuid()).nonempty().optional(),
-    allowFeatures: featureSchema,
-    deniedFeatures: featureSchema,
+    name: z.string().min(3).max(120).optional(),
+    code: codeSchema.optional(),
+    features: featuresSchema,
     updatedBy: z.string().email(),
   })
   .refine((data) => Object.keys(data).some((key) => key !== 'updatedBy'), {
     message: 'Informe ao menos um campo para atualizar',
     path: ['body'],
   })
+
 

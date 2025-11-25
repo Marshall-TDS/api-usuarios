@@ -2,8 +2,9 @@ export interface UpdateUserDTO {
   fullName?: string | undefined
   login?: string | undefined
   email?: string | undefined
-  userGroup?: string[] | undefined
-  features?: string[] | undefined
+  groupIds?: string[] | undefined
+  allowFeatures?: string[] | undefined
+  deniedFeatures?: string[] | undefined
   updatedBy: string
 }
 

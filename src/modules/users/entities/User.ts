@@ -5,8 +5,9 @@ export interface UserProps {
   fullName: string
   login: string
   email: string
-  userGroup: string[]
-  features: string[]
+  groupIds: string[]
+  allowFeatures: string[]
+  deniedFeatures: string[]
   createdAt: Date
   createdBy: string
   updatedAt: Date
@@ -19,8 +20,9 @@ export type UpdateUserProps = {
   fullName?: string | undefined
   login?: string | undefined
   email?: string | undefined
-  userGroup?: string[] | undefined
-  features?: string[] | undefined
+  groupIds?: string[] | undefined
+  allowFeatures?: string[] | undefined
+  deniedFeatures?: string[] | undefined
   updatedBy: string
 }
 
@@ -31,6 +33,8 @@ export class User {
     const timestamp = new Date()
     return new User({
       ...data,
+      allowFeatures: data.allowFeatures ?? [],
+      deniedFeatures: data.deniedFeatures ?? [],
       id: randomUUID(),
       createdAt: timestamp,
       updatedAt: timestamp,
@@ -53,11 +57,14 @@ export class User {
     if (typeof data.email !== 'undefined') {
       nextProps.email = data.email
     }
-    if (typeof data.userGroup !== 'undefined') {
-      nextProps.userGroup = data.userGroup
+    if (typeof data.groupIds !== 'undefined') {
+      nextProps.groupIds = data.groupIds
     }
-    if (typeof data.features !== 'undefined') {
-      nextProps.features = data.features
+    if (typeof data.allowFeatures !== 'undefined') {
+      nextProps.allowFeatures = data.allowFeatures
+    }
+    if (typeof data.deniedFeatures !== 'undefined') {
+      nextProps.deniedFeatures = data.deniedFeatures
     }
 
     nextProps.updatedBy = data.updatedBy

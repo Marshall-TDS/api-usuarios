@@ -1,0 +1,14 @@
+[
+  {
+    "key": "PODE-ACESSAR-MENU-USUARIOS",
+    "name": "Menu de usuários",
+    "description": "Permissão para acessar menu de usuários."
+  },
+  {
+    "key": "PODE-ACESSAR-MENU-GRUPOS-USUARIOS",
+    "name": "Menu Grupos de Usuários",
+    "description": "Permissão para acessar menu de grupos usuários."
+  }
+]
+
+

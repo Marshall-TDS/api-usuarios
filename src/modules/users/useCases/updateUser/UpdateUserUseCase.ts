@@ -2,9 +2,13 @@ import { AppError } from '../../../../core/errors/AppError'
 import type { UpdateUserDTO } from '../../dto/UpdateUserDTO'
 import { User } from '../../entities/User'
 import type { IUserRepository } from '../../repositories/IUserRepository'
+import type { IUserGroupRepository } from '../../../userGroups/repositories/IUserGroupRepository'
 
 export class UpdateUserUseCase {
-  constructor(private readonly usersRepository: IUserRepository) {}
+  constructor(
+    private readonly usersRepository: IUserRepository,
+    private readonly userGroupsRepository: IUserGroupRepository,
+  ) {}
 
   async execute(id: string, payload: UpdateUserDTO) {
     const existing = await this.usersRepository.findById(id)
@@ -24,6 +28,13 @@ export class UpdateUserUseCase {
       const emailTaken = await this.usersRepository.findByEmail(payload.email)
       if (emailTaken) {
         throw new AppError('E-mail já está em uso', 409)
+      }
+    }
+
+    if (payload.groupIds) {
+      const groups = await this.userGroupsRepository.findManyByIds(payload.groupIds)
+      if (groups.length !== new Set(payload.groupIds).size) {
+        throw new AppError('Um ou mais grupos não foram encontrados', 404)
       }
     }
 

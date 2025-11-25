@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from 'express'
 import { AppError } from '../../../core/errors/AppError'
+import { userGroupRepository } from '../../userGroups/repositories'
 import { InMemoryUserRepository } from '../repositories/InMemoryUserRepository'
 import { CreateUserUseCase } from '../useCases/createUser/CreateUserUseCase'
 import { DeleteUserUseCase } from '../useCases/deleteUser/DeleteUserUseCase'
@@ -21,10 +22,16 @@ export class UserController {
 
   index = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { search, userGroup, feature } = req.query
+      const { search, groupId, userGroup, feature } = req.query
+      const selectedGroup =
+        typeof groupId === 'string'
+          ? groupId
+          : typeof userGroup === 'string'
+            ? userGroup
+            : undefined
       const users = await this.listUsers.execute({
         search: typeof search === 'string' ? search : undefined,
-        userGroup: typeof userGroup === 'string' ? userGroup : undefined,
+        groupId: selectedGroup,
         feature: typeof feature === 'string' ? feature : undefined,
       })
       return res.json(users)
@@ -101,8 +108,8 @@ export class UserController {
 export const userController = new UserController(
   new ListUsersUseCase(repository),
   new GetUserUseCase(repository),
-  new CreateUserUseCase(repository),
-  new UpdateUserUseCase(repository),
+  new CreateUserUseCase(repository, userGroupRepository),
+  new UpdateUserUseCase(repository, userGroupRepository),
   new DeleteUserUseCase(repository),
 )
 

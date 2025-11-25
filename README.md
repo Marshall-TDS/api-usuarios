@@ -1,6 +1,6 @@
 ## API de Usuários
 
-API REST construída com Express + TypeScript aplicada ao domínio de usuários do `app-erp`. O projeto aplica princípios SOLID, padrão MVC e separação clara de camadas (Config → Core → Módulos → Infra).
+API REST construída com Express + TypeScript aplicada ao domínio de usuários e grupos do `app-erp`. O projeto aplica princípios SOLID, padrão MVC e separação clara de camadas (Config → Core → Módulos → Infra).
 
 ### Stack Principal
 - Node.js 20+
@@ -24,6 +24,8 @@ src
 ├── config/env.ts          # Carrega variáveis de ambiente
 ├── core                   # Cross-cutting (erros, middlewares)
 ├── modules
+│   ├── features           # Catálogo estático de funcionalidades + rota pública
+│   ├── userGroups         # CRUD de grupos + catálogo de features
 │   └── users              # Módulo de domínio dos usuários
 │       ├── dto            # Contratos de entrada (DTOs)
 │       ├── entities       # Entidade rica + regras de negócio
@@ -49,27 +51,52 @@ src
    `requestLogger` registra o ciclo, `notFound` trata rotas inexistentes e `errorHandler` transforma exceções (incluindo `AppError`) em respostas JSON consistentes.
 
 ### Campos do CRUD de Usuários
+| Campo            | Tipo        | Descrição |
+|------------------|-------------|-----------|
+| `fullName`       | string      | Nome completo |
+| `login`          | string      | Login único |
+| `email`          | string      | E-mail corporativo |
+| `groupIds`       | string[]    | Lista de UUIDs de grupos vinculados |
+| `features`       | string[]    | Funcionalidades extras específicas do usuário |
+| `allowFeatures`  | string[]    | Funcionalidades permitidas explicitamente (chaves do catálogo) |
+| `deniedFeatures`  | string[]    | Funcionalidades negadas explicitamente (chaves do catálogo) |
+| `createdBy`      | string      | E-mail de quem criou |
+| `updatedBy`      | string      | E-mail de quem fez a última alteração |
+| `createdAt`      | ISO string  | Gerado automaticamente |
+| `updatedAt`      | ISO string  | Gerado automaticamente |
+
+### Campos do CRUD de Grupos de Usuários
 | Campo        | Tipo        | Descrição |
 |--------------|-------------|-----------|
-| `fullName`   | string      | Nome completo |
-| `login`      | string      | Login único |
-| `email`      | string      | E-mail corporativo |
-| `userGroup`  | string[]    | Grupos (Administradores, Operações, etc.) |
-| `features`   | string[]    | Funcionalidades extras (`dashboard`, `credito`, `compras`, `estoque`, `financeiro`) |
-| `createdBy`  | string      | E-mail de quem criou |
-| `updatedBy`  | string      | E-mail de quem fez a última alteração |
+| `name`       | string      | Nome exibido do grupo |
+| `code`       | string      | Código único (sempre MAIÚSCULO com hífens) |
+| `features`   | string[]    | Funcionalidades padrão entregues pelo grupo |
+| `createdBy`  | string      | Quem criou |
+| `updatedBy`  | string      | Quem atualizou por último |
 | `createdAt`  | ISO string  | Gerado automaticamente |
 | `updatedAt`  | ISO string  | Gerado automaticamente |
 
+### Catálogo de Funcionalidades
+- Fonte única: `src/modules/features/features.json`.
+- Cada item possui `key` (sempre MAIÚSCULA com hífens), `name` e `description`.
+- Os schemas Zod convertem entradas para o formato correto e validam contra este catálogo.
+- Endpoint público `GET /api/features` devolve o JSON para que o front-end possa montar selects.
+
 ### Rotas Disponíveis (`/api`)
-| Método | Rota          | Descrição |
-|--------|---------------|-----------|
-| GET    | `/health`     | Status da API |
-| GET    | `/users`      | Lista usuários (filtros `search`, `userGroup`, `feature`) |
-| GET    | `/users/:id`  | Detalha um usuário |
-| POST   | `/users`      | Cria usuário |
-| PUT    | `/users/:id`  | Atualiza usuário |
-| DELETE | `/users/:id`  | Remove usuário |
+| Método | Rota            | Descrição |
+|--------|-----------------|-----------|
+| GET    | `/health`       | Status da API |
+| GET    | `/users`        | Lista usuários (filtros `search`, `groupId`, `feature`) |
+| GET    | `/users/:id`    | Detalha um usuário |
+| POST   | `/users`        | Cria usuário |
+| PUT    | `/users/:id`    | Atualiza usuário |
+| DELETE | `/users/:id`    | Remove usuário |
+| GET    | `/groups`       | Lista grupos com filtros `search` e `feature` |
+| GET    | `/groups/:id`   | Detalha um grupo |
+| POST   | `/groups`       | Cria grupo (gera UUID + valida código) |
+| PUT    | `/groups/:id`   | Atualiza grupo |
+| DELETE | `/groups/:id`   | Remove grupo |
+| GET    | `/features`     | Lista o catálogo estático de funcionalidades |
 
 ### Como Executar
 ```bash
@@ -83,4 +110,4 @@ API disponível em `http://localhost:3333/api`.
 ### Documentação Swagger
 - Acesse `http://localhost:3333/docs` após subir o servidor (`npm run dev`).
 - Endpoint base configurado como `http://localhost:3333/api`.
-- Inclui operações de health e CRUD completo de usuários, com exemplos de payloads de criação e atualização.
+- Inclui operações de health, CRUD completo de usuários, CRUD de grupos e catálogo de funcionalidades, com exemplos de payloads para cada recurso.
