@@ -1,12 +1,102 @@
 [
   {
-    "key": "PODE-ACESSAR-MENU-USUARIOS",
-    "name": "Menu de usuários",
-    "description": "Permissão para acessar menu de usuários."
+    "key": "erp:grupos-usuarios:menu",
+    "name": "Menu de Grupos de Usuário",
+    "description": "Permite visualizar o menu de grupos de usuários."
   },
   {
-    "key": "PODE-ACESSAR-MENU-GRUPOS-USUARIOS",
-    "name": "Menu Grupos de Usuários",
-    "description": "Permissão para acessar menu de grupos usuários."
+    "key": "erp:grupos-usuarios:listar",
+    "name": "Listar Grupos de Usuário",
+    "description": "Permite visualizar a listagem de grupos de usuários."
+  },
+  {
+    "key": "erp:grupos-usuarios:visualizar",
+    "name": "Visualizar Detalhes do Grupos de Usuário",
+    "description": "Permite visualizar os detalhes completos de um grupo de usuário."
+  },
+  {
+    "key": "erp:grupos-usuarios:criar",
+    "name": "Criar Grupo de Usuário",
+    "description": "Permite cadastrar novos grupos de usuários."
+  },
+  {
+    "key": "erp:grupos-usuarios:editar",
+    "name": "Editar Grupo de Usuário",
+    "description": "Permite alterar informações de grupos existentes."
+  },
+  {
+    "key": "erp:grupos-usuarios:excluir",
+    "name": "Excluir Grupo de Usuário",
+    "description": "Permite remover grupos de usuário do sistema."
+  },
+  {
+    "key": "erp:usuarios:menu",
+    "name": "Menu de Usuário",
+    "description": "Permite visualizar o menu de usuários."
+  },
+  {
+    "key": "erp:usuarios:listar",
+    "name": "Listar Usuários",
+    "description": "Permite visualizar a listagem de usuários cadastrados."
+  },
+  {
+    "key": "erp:usuarios:visualizar",
+    "name": "Visualizar detalhes do Usuário",
+    "description": "Permite visualizar os detalhes completos de um usuário."
+  },
+  {
+    "key": "erp:usuarios:criar",
+    "name": "Criar Usuário",
+    "description": "Permite cadastrar novos usuários no sistema."
+  },
+  {
+    "key": "erp:usuarios:editar",
+    "name": "Editar Usuário",
+    "description": "Permite alterar dados cadastrais de usuários."
+  },
+  {
+    "key": "erp:usuarios:excluir",
+    "name": "Excluir Usuário",
+    "description": "Permite remover usuários do sistema."
+  },
+  {
+    "key": "erp:usuarios:atribuir-grupos",
+    "name": "Gerenciar Grupos do Usuário",
+    "description": "Permite atribuir ou remover grupos de acesso de um usuário."
+  },
+  {
+    "key": "erp:usuarios:atribuir-permissoes-particulares",
+    "name": "Gerenciar Permissões Particulares",
+    "description": "Permite conceder ou negar funcionalidades específicas diretamente ao usuário (exceções)."
+  },
+  {
+    "key": "erp:usuarios:resetar-senha",
+    "name": "Enviar Alteração de Senha",
+    "description": "Permite enviar e-mail de redefinição de senha para o usuário."
+  },
+  {
+    "key": "cadastros:clientes:menu",
+    "name": "Menu de Clientes",
+    "description": "Permite visualizar o menu de clientes."
+  },
+  {
+    "key": "cadastros:clientes:listar",
+    "name": "Listar Clientes",
+    "description": "Permite visualizar a listagem de clientes."
+  },
+  {
+    "key": "cadastros:clientes:criar",
+    "name": "Criar Cliente",
+    "description": "Permite cadastrar novos clientes."
+  },
+  {
+    "key": "cadastros:clientes:editar",
+    "name": "Editar Cliente",
+    "description": "Permite alterar dados de clientes existentes."
+  },
+  {
+    "key": "cadastros:clientes:excluir",
+    "name": "Excluir Cliente",
+    "description": "Permite remover clientes do sistema."
   }
 ]

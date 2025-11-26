@@ -1,0 +1,23 @@
+[
+    {
+        "key": "erp:grupos-usuarios:menu",
+        "category": "Acesso",
+        "name": "Grupos de Usuário",
+        "description": "Administração de grupos de usuários",
+        "url": "access/user-groups"
+    },
+    {
+        "key": "erp:usuarios:menu",
+        "category": "Acesso",
+        "name": "Usuários",
+        "description": "Administração de usuários e acessos",
+        "url": "/users"
+    },
+    {
+        "key": "cadastros:clientes:menu",
+        "category": "Cadastros",
+        "name": "Clientes",
+        "description": "Administração de clientes",
+        "url": "/customers"
+    }
+]
