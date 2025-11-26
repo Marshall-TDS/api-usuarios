@@ -1,24 +1,24 @@
 import type { NextFunction, Request, Response } from 'express'
 import { AppError } from '../../../core/errors/AppError'
-import { userGroupRepository } from '../repositories'
-import { CreateUserGroupUseCase } from '../useCases/createUserGroup/CreateUserGroupUseCase'
-import { DeleteUserGroupUseCase } from '../useCases/deleteUserGroup/DeleteUserGroupUseCase'
-import { GetUserGroupUseCase } from '../useCases/getUserGroup/GetUserGroupUseCase'
-import { ListUserGroupsUseCase } from '../useCases/listUserGroups/ListUserGroupsUseCase'
-import { UpdateUserGroupUseCase } from '../useCases/updateUserGroup/UpdateUserGroupUseCase'
+import { accessGroupRepository } from '../repositories'
+import { CreateAccessGroupUseCase } from '../useCases/createAccessGroup/CreateAccessGroupUseCase'
+import { DeleteAccessGroupUseCase } from '../useCases/deleteAccessGroup/DeleteAccessGroupUseCase'
+import { GetAccessGroupUseCase } from '../useCases/getAccessGroup/GetAccessGroupUseCase'
+import { ListAccessGroupsUseCase } from '../useCases/listAccessGroups/ListAccessGroupsUseCase'
+import { UpdateAccessGroupUseCase } from '../useCases/updateAccessGroup/UpdateAccessGroupUseCase'
 import {
-  createUserGroupSchema,
-  updateUserGroupSchema,
-} from '../validators/userGroup.schema'
+  createAccessGroupSchema,
+  updateAccessGroupSchema,
+} from '../validators/accessGroup.schema'
 
-export class UserGroupController {
+export class AccessGroupController {
   constructor(
-    private readonly listGroups: ListUserGroupsUseCase,
-    private readonly getGroup: GetUserGroupUseCase,
-    private readonly createGroup: CreateUserGroupUseCase,
-    private readonly updateGroup: UpdateUserGroupUseCase,
-    private readonly deleteGroup: DeleteUserGroupUseCase,
-  ) {}
+    private readonly listGroups: ListAccessGroupsUseCase,
+    private readonly getGroup: GetAccessGroupUseCase,
+    private readonly createGroup: CreateAccessGroupUseCase,
+    private readonly updateGroup: UpdateAccessGroupUseCase,
+    private readonly deleteGroup: DeleteAccessGroupUseCase,
+  ) { }
 
   index = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -50,7 +50,7 @@ export class UserGroupController {
 
   store = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const parseResult = createUserGroupSchema.safeParse(req.body)
+      const parseResult = createAccessGroupSchema.safeParse(req.body)
       if (!parseResult.success) {
         throw new AppError('Falha de validação', 422, parseResult.error.flatten())
       }
@@ -69,7 +69,7 @@ export class UserGroupController {
         throw new AppError('Parâmetro id é obrigatório', 400)
       }
 
-      const parseResult = updateUserGroupSchema.safeParse(req.body)
+      const parseResult = updateAccessGroupSchema.safeParse(req.body)
       if (!parseResult.success) {
         throw new AppError('Falha de validação', 422, parseResult.error.flatten())
       }
@@ -96,12 +96,12 @@ export class UserGroupController {
   }
 }
 
-export const userGroupController = new UserGroupController(
-  new ListUserGroupsUseCase(userGroupRepository),
-  new GetUserGroupUseCase(userGroupRepository),
-  new CreateUserGroupUseCase(userGroupRepository),
-  new UpdateUserGroupUseCase(userGroupRepository),
-  new DeleteUserGroupUseCase(userGroupRepository),
+export const accessGroupController = new AccessGroupController(
+  new ListAccessGroupsUseCase(accessGroupRepository),
+  new GetAccessGroupUseCase(accessGroupRepository),
+  new CreateAccessGroupUseCase(accessGroupRepository),
+  new UpdateAccessGroupUseCase(accessGroupRepository),
+  new DeleteAccessGroupUseCase(accessGroupRepository),
 )
 
 

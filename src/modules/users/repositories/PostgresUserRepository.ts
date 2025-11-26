@@ -51,7 +51,7 @@ const buildSelectQuery = (extraCondition = '', includePassword = false) => `
       '{}'
     ) AS group_ids
   FROM users u
-  LEFT JOIN user_group_memberships m ON m.user_id = u.id
+  LEFT JOIN access_group_memberships m ON m.user_id = u.id
   ${extraCondition}
   GROUP BY u.id, u.full_name, u.login, u.email${includePassword ? ', u.password' : ''}, u.allow_features, u.denied_features, u.created_by, u.updated_by, u.created_at, u.updated_at
 `
@@ -201,7 +201,7 @@ export class PostgresUserRepository implements IUserRepository {
     const client = await pool.connect()
     try {
       await client.query('BEGIN')
-      await client.query('DELETE FROM user_group_memberships WHERE user_id = $1', [id])
+      await client.query('DELETE FROM access_group_memberships WHERE user_id = $1', [id])
       await client.query('DELETE FROM users WHERE id = $1', [id])
       await client.query('COMMIT')
     } catch (error) {
@@ -213,7 +213,7 @@ export class PostgresUserRepository implements IUserRepository {
   }
 
   private async syncMemberships(client: PoolClient, userId: string, groupIds: string[]) {
-    await client.query('DELETE FROM user_group_memberships WHERE user_id = $1', [userId])
+    await client.query('DELETE FROM access_group_memberships WHERE user_id = $1', [userId])
     if (groupIds.length === 0) {
       return
     }
@@ -227,7 +227,7 @@ export class PostgresUserRepository implements IUserRepository {
 
     await client.query(
       `
-        INSERT INTO user_group_memberships (user_id, group_id)
+        INSERT INTO access_group_memberships (user_id, group_id)
         VALUES ${values.join(', ')}
       `,
       params,

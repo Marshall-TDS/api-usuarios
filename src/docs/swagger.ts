@@ -57,7 +57,7 @@ const userProperties = {
   },
 }
 
-const userGroupProperties = {
+const accessGroupProperties = {
   id: {
     type: 'string',
     format: 'uuid',
@@ -102,7 +102,7 @@ const swaggerDefinition = {
     { name: 'Health', description: 'Status do serviço' },
     { name: 'Auth', description: 'Autenticação e autorização' },
     { name: 'Users', description: 'Gestão de usuários corporativos' },
-    { name: 'UserGroups', description: 'Catálogo de grupos e funcionalidades' },
+    { name: 'AccessGroups', description: 'Catálogo de grupos e funcionalidades' },
     { name: 'Features', description: 'Lista estática de funcionalidades suportadas' },
   ],
   components: {
@@ -145,28 +145,28 @@ const swaggerDefinition = {
           updatedBy: userProperties.updatedBy,
         },
       },
-      UserGroup: {
+      AccessGroup: {
         type: 'object',
-        properties: userGroupProperties,
+        properties: accessGroupProperties,
       },
-      CreateUserGroupInput: {
+      CreateAccessGroupInput: {
         type: 'object',
         required: ['name', 'code', 'createdBy'],
         properties: {
-          name: userGroupProperties.name,
-          code: userGroupProperties.code,
-          features: userGroupProperties.features,
-          createdBy: userGroupProperties.createdBy,
+          name: accessGroupProperties.name,
+          code: accessGroupProperties.code,
+          features: accessGroupProperties.features,
+          createdBy: accessGroupProperties.createdBy,
         },
       },
-      UpdateUserGroupInput: {
+      UpdateAccessGroupInput: {
         type: 'object',
         required: ['updatedBy'],
         properties: {
-          name: { ...userGroupProperties.name, nullable: true },
-          code: { ...userGroupProperties.code, nullable: true },
-          features: { ...userGroupProperties.features, nullable: true },
-          updatedBy: userGroupProperties.updatedBy,
+          name: { ...accessGroupProperties.name, nullable: true },
+          code: { ...accessGroupProperties.code, nullable: true },
+          features: { ...accessGroupProperties.features, nullable: true },
+          updatedBy: accessGroupProperties.updatedBy,
         },
       },
       SetPasswordInput: {
@@ -515,8 +515,8 @@ const swaggerDefinition = {
     },
     '/groups': {
       get: {
-        tags: ['UserGroups'],
-        summary: 'Lista grupos de usuários',
+        tags: ['AccessGroups'],
+        summary: 'Lista grupos de acesso',
         parameters: [
           {
             in: 'query',
@@ -538,7 +538,7 @@ const swaggerDefinition = {
               'application/json': {
                 schema: {
                   type: 'array',
-                  items: { $ref: '#/components/schemas/UserGroup' },
+                  items: { $ref: '#/components/schemas/AccessGroup' },
                 },
               },
             },
@@ -546,13 +546,13 @@ const swaggerDefinition = {
         },
       },
       post: {
-        tags: ['UserGroups'],
-        summary: 'Cria um novo grupo de usuários',
+        tags: ['AccessGroups'],
+        summary: 'Cria um novo grupo de acesso',
         requestBody: {
           required: true,
           content: {
             'application/json': {
-              schema: { $ref: '#/components/schemas/CreateUserGroupInput' },
+              schema: { $ref: '#/components/schemas/CreateAccessGroupInput' },
             },
           },
         },
@@ -561,7 +561,7 @@ const swaggerDefinition = {
             description: 'Grupo criado',
             content: {
               'application/json': {
-                schema: { $ref: '#/components/schemas/UserGroup' },
+                schema: { $ref: '#/components/schemas/AccessGroup' },
               },
             },
           },
@@ -586,14 +586,14 @@ const swaggerDefinition = {
         },
       ],
       get: {
-        tags: ['UserGroups'],
+        tags: ['AccessGroups'],
         summary: 'Busca detalhes de um grupo',
         responses: {
           200: {
             description: 'Grupo encontrado',
             content: {
               'application/json': {
-                schema: { $ref: '#/components/schemas/UserGroup' },
+                schema: { $ref: '#/components/schemas/AccessGroup' },
               },
             },
           },
@@ -608,13 +608,13 @@ const swaggerDefinition = {
         },
       },
       put: {
-        tags: ['UserGroups'],
+        tags: ['AccessGroups'],
         summary: 'Atualiza um grupo existente',
         requestBody: {
           required: true,
           content: {
             'application/json': {
-              schema: { $ref: '#/components/schemas/UpdateUserGroupInput' },
+              schema: { $ref: '#/components/schemas/UpdateAccessGroupInput' },
             },
           },
         },
@@ -623,7 +623,7 @@ const swaggerDefinition = {
             description: 'Grupo atualizado',
             content: {
               'application/json': {
-                schema: { $ref: '#/components/schemas/UserGroup' },
+                schema: { $ref: '#/components/schemas/AccessGroup' },
               },
             },
           },
@@ -638,7 +638,7 @@ const swaggerDefinition = {
         },
       },
       delete: {
-        tags: ['UserGroups'],
+        tags: ['AccessGroups'],
         summary: 'Remove um grupo',
         responses: {
           204: { description: 'Grupo removido' },

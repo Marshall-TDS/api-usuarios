@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto'
 
-export interface UserGroupProps {
+export interface AccessGroupProps {
   id: string
   name: string
   code: string
@@ -11,21 +11,21 @@ export interface UserGroupProps {
   updatedBy: string
 }
 
-export type CreateUserGroupProps = Omit<UserGroupProps, 'id' | 'createdAt' | 'updatedAt'>
+export type CreateAccessGroupProps = Omit<AccessGroupProps, 'id' | 'createdAt' | 'updatedAt'>
 
-export type UpdateUserGroupProps = {
+export type UpdateAccessGroupProps = {
   name?: string | undefined
   code?: string | undefined
   features?: string[] | undefined
   updatedBy: string
 }
 
-export class UserGroup {
-  private constructor(private props: UserGroupProps) {}
+export class AccessGroup {
+  private constructor(private props: AccessGroupProps) { }
 
-  static create(data: CreateUserGroupProps) {
+  static create(data: CreateAccessGroupProps) {
     const timestamp = new Date()
-    return new UserGroup({
+    return new AccessGroup({
       ...data,
       id: randomUUID(),
       createdAt: timestamp,
@@ -33,12 +33,12 @@ export class UserGroup {
     })
   }
 
-  static restore(props: UserGroupProps) {
-    return new UserGroup(props)
+  static restore(props: AccessGroupProps) {
+    return new AccessGroup(props)
   }
 
-  update(data: UpdateUserGroupProps) {
-    const nextProps: UserGroupProps = { ...this.props }
+  update(data: UpdateAccessGroupProps) {
+    const nextProps: AccessGroupProps = { ...this.props }
 
     if (typeof data.name !== 'undefined') {
       nextProps.name = data.name
@@ -58,7 +58,7 @@ export class UserGroup {
     this.props = nextProps
   }
 
-  toJSON(): UserGroupProps {
+  toJSON(): AccessGroupProps {
     return { ...this.props }
   }
 }

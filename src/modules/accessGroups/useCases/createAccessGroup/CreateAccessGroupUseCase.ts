@@ -1,13 +1,13 @@
 import { AppError } from '../../../../core/errors/AppError'
 import { formatGroupCode } from '../../../../core/utils/formatGroupCode'
-import type { CreateUserGroupDTO } from '../../dto/CreateUserGroupDTO'
-import { UserGroup } from '../../entities/UserGroup'
-import type { IUserGroupRepository } from '../../repositories/IUserGroupRepository'
+import type { CreateAccessGroupDTO } from '../../dto/CreateAccessGroupDTO'
+import { AccessGroup } from '../../entities/AccessGroup'
+import type { IAccessGroupRepository } from '../../repositories/IAccessGroupRepository'
 
-export class CreateUserGroupUseCase {
-  constructor(private readonly repository: IUserGroupRepository) {}
+export class CreateAccessGroupUseCase {
+  constructor(private readonly repository: IAccessGroupRepository) { }
 
-  async execute(payload: CreateUserGroupDTO) {
+  async execute(payload: CreateAccessGroupDTO) {
     const normalizedCode = formatGroupCode(payload.code)
     const codeTaken = await this.repository.findByCode(normalizedCode)
 
@@ -15,7 +15,7 @@ export class CreateUserGroupUseCase {
       throw new AppError('Código do grupo já está em uso', 409)
     }
 
-    const group = UserGroup.create({
+    const group = AccessGroup.create({
       ...payload,
       code: normalizedCode,
       features: payload.features ?? [],

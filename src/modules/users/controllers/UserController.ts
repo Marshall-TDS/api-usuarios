@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from 'express'
 import { AppError } from '../../../core/errors/AppError'
-import { userGroupRepository } from '../../userGroups/repositories'
+import { accessGroupRepository } from '../../accessGroups/repositories'
 import { userRepository } from '../repositories'
 import { CreateUserUseCase } from '../useCases/createUser/CreateUserUseCase'
 import { DeleteUserUseCase } from '../useCases/deleteUser/DeleteUserUseCase'
@@ -17,16 +17,16 @@ export class UserController {
     private readonly createUser: CreateUserUseCase,
     private readonly updateUser: UpdateUserUseCase,
     private readonly deleteUser: DeleteUserUseCase,
-  ) {}
+  ) { }
 
   index = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { search, groupId, userGroup, feature } = req.query
+      const { search, groupId, accessGroup, feature } = req.query
       const selectedGroup =
         typeof groupId === 'string'
           ? groupId
-          : typeof userGroup === 'string'
-            ? userGroup
+          : typeof accessGroup === 'string'
+            ? accessGroup
             : undefined
       const users = await this.listUsers.execute({
         search: typeof search === 'string' ? search : undefined,
@@ -107,8 +107,8 @@ export class UserController {
 export const userController = new UserController(
   new ListUsersUseCase(userRepository),
   new GetUserUseCase(userRepository),
-  new CreateUserUseCase(userRepository, userGroupRepository, new PasswordSetupService()),
-  new UpdateUserUseCase(userRepository, userGroupRepository),
+  new CreateUserUseCase(userRepository, accessGroupRepository, new PasswordSetupService()),
+  new UpdateUserUseCase(userRepository, accessGroupRepository),
   new DeleteUserUseCase(userRepository),
 )
 

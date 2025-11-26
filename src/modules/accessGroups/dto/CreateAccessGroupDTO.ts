@@ -1,4 +1,4 @@
-export interface CreateUserGroupDTO {
+export interface CreateAccessGroupDTO {
   name: string
   code: string
   features?: string[] | undefined

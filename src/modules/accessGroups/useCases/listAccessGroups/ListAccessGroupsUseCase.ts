@@ -1,15 +1,15 @@
 import { formatFeatureKey } from '../../../features/catalog'
-import type { IUserGroupRepository } from '../../repositories/IUserGroupRepository'
+import type { IAccessGroupRepository } from '../../repositories/IAccessGroupRepository'
 
-export interface ListUserGroupsFilters {
+export interface ListAccessGroupsFilters {
   search?: string | undefined
   feature?: string | undefined
 }
 
-export class ListUserGroupsUseCase {
-  constructor(private readonly repository: IUserGroupRepository) {}
+export class ListAccessGroupsUseCase {
+  constructor(private readonly repository: IAccessGroupRepository) { }
 
-  async execute(filters: ListUserGroupsFilters = {}) {
+  async execute(filters: ListAccessGroupsFilters = {}) {
     const groups = await this.repository.findAll()
     const { search, feature } = filters
     const normalizedSearch = search?.toLowerCase()

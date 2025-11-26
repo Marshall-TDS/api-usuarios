@@ -1,10 +1,10 @@
 import type { QueryResult } from 'pg'
 import { pool } from '../../../infra/database/pool'
-import type { UserGroup, UserGroupProps } from '../entities/UserGroup'
-import { UserGroup as UserGroupEntity } from '../entities/UserGroup'
-import type { IUserGroupRepository } from './IUserGroupRepository'
+import type { AccessGroup, AccessGroupProps } from '../entities/AccessGroup'
+import { AccessGroup as AccessGroupEntity } from '../entities/AccessGroup'
+import type { IAccessGroupRepository } from './IAccessGroupRepository'
 
-type UserGroupRow = {
+type AccessGroupRow = {
   id: string
   name: string
   code: string
@@ -15,7 +15,7 @@ type UserGroupRow = {
   updated_at: Date
 }
 
-const mapRowToEntity = (row: UserGroupRow): UserGroupProps => {
+const mapRowToEntity = (row: AccessGroupRow): AccessGroupProps => {
   return {
     id: row.id,
     name: row.name,
@@ -28,12 +28,12 @@ const mapRowToEntity = (row: UserGroupRow): UserGroupProps => {
   }
 }
 
-export class PostgresUserGroupRepository implements IUserGroupRepository {
-  async findAll(): Promise<UserGroupProps[]> {
-    const result = await pool.query<UserGroupRow>(
+export class PostgresAccessGroupRepository implements IAccessGroupRepository {
+  async findAll(): Promise<AccessGroupProps[]> {
+    const result = await pool.query<AccessGroupRow>(
       `
         SELECT id, name, code, features, created_by, updated_by, created_at, updated_at
-        FROM user_groups
+        FROM access_groups
         ORDER BY created_at ASC
       `,
     )
@@ -41,11 +41,11 @@ export class PostgresUserGroupRepository implements IUserGroupRepository {
     return result.rows.map((row) => mapRowToEntity(row))
   }
 
-  async findById(id: string): Promise<UserGroupProps | null> {
-    const result = await pool.query<UserGroupRow>(
+  async findById(id: string): Promise<AccessGroupProps | null> {
+    const result = await pool.query<AccessGroupRow>(
       `
         SELECT id, name, code, features, created_by, updated_by, created_at, updated_at
-        FROM user_groups
+        FROM access_groups
         WHERE id = $1
         LIMIT 1
       `,
@@ -56,11 +56,11 @@ export class PostgresUserGroupRepository implements IUserGroupRepository {
     return row ? mapRowToEntity(row) : null
   }
 
-  async findByCode(code: string): Promise<UserGroupProps | null> {
-    const result = await pool.query<UserGroupRow>(
+  async findByCode(code: string): Promise<AccessGroupProps | null> {
+    const result = await pool.query<AccessGroupRow>(
       `
         SELECT id, name, code, features, created_by, updated_by, created_at, updated_at
-        FROM user_groups
+        FROM access_groups
         WHERE code = $1
         LIMIT 1
       `,
@@ -71,15 +71,15 @@ export class PostgresUserGroupRepository implements IUserGroupRepository {
     return row ? mapRowToEntity(row) : null
   }
 
-  async findManyByIds(ids: string[]): Promise<UserGroupProps[]> {
+  async findManyByIds(ids: string[]): Promise<AccessGroupProps[]> {
     if (ids.length === 0) {
       return []
     }
 
-    const result = await pool.query<UserGroupRow>(
+    const result = await pool.query<AccessGroupRow>(
       `
         SELECT id, name, code, features, created_by, updated_by, created_at, updated_at
-        FROM user_groups
+        FROM access_groups
         WHERE id = ANY($1::uuid[])
       `,
       [ids],
@@ -88,12 +88,12 @@ export class PostgresUserGroupRepository implements IUserGroupRepository {
     return result.rows.map((row) => mapRowToEntity(row))
   }
 
-  async create(group: UserGroup): Promise<UserGroupProps> {
+  async create(group: AccessGroup): Promise<AccessGroupProps> {
     const data = group.toJSON()
 
-    const result = await pool.query<UserGroupRow>(
+    const result = await pool.query<AccessGroupRow>(
       `
-        INSERT INTO user_groups (id, name, code, features, created_by, updated_by, created_at, updated_at)
+        INSERT INTO access_groups (id, name, code, features, created_by, updated_by, created_at, updated_at)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
         RETURNING id, name, code, features, created_by, updated_by, created_at, updated_at
       `,
@@ -111,17 +111,17 @@ export class PostgresUserGroupRepository implements IUserGroupRepository {
 
     const row = result.rows[0]
     if (!row) {
-      throw new Error('Falha ao inserir grupo de usuários')
+      throw new Error('Falha ao inserir grupo de acesso')
     }
     return mapRowToEntity(row)
   }
 
-  async update(group: UserGroup): Promise<UserGroupProps> {
+  async update(group: AccessGroup): Promise<AccessGroupProps> {
     const data = group.toJSON()
 
-    const result = await pool.query<UserGroupRow>(
+    const result = await pool.query<AccessGroupRow>(
       `
-        UPDATE user_groups
+        UPDATE access_groups
         SET
           name = $2,
           code = $3,
@@ -136,13 +136,13 @@ export class PostgresUserGroupRepository implements IUserGroupRepository {
 
     const row = result.rows[0]
     if (!row) {
-      throw new Error('Falha ao atualizar grupo de usuários')
+      throw new Error('Falha ao atualizar grupo de acesso')
     }
     return mapRowToEntity(row)
   }
 
   async delete(id: string): Promise<void> {
-    await pool.query('DELETE FROM user_groups WHERE id = $1', [id])
+    await pool.query('DELETE FROM access_groups WHERE id = $1', [id])
   }
 }
 

@@ -2,21 +2,21 @@ import { AppError } from '../../../../core/errors/AppError'
 import type { CreateUserDTO } from '../../dto/CreateUserDTO'
 import { User } from '../../entities/User'
 import type { IUserRepository } from '../../repositories/IUserRepository'
-import type { IUserGroupRepository } from '../../../userGroups/repositories/IUserGroupRepository'
+import type { IAccessGroupRepository } from '../../../accessGroups/repositories/IAccessGroupRepository'
 import { PasswordSetupService } from '../../services/PasswordSetupService'
 
 export class CreateUserUseCase {
   constructor(
     private readonly usersRepository: IUserRepository,
-    private readonly userGroupsRepository: IUserGroupRepository,
+    private readonly accessGroupsRepository: IAccessGroupRepository,
     private readonly passwordSetup: PasswordSetupService,
-  ) {}
+  ) { }
 
   async execute(payload: CreateUserDTO) {
     const [loginExists, emailExists, validGroups] = await Promise.all([
       this.usersRepository.findByLogin(payload.login),
       this.usersRepository.findByEmail(payload.email),
-      this.userGroupsRepository.findManyByIds(payload.groupIds),
+      this.accessGroupsRepository.findManyByIds(payload.groupIds),
     ])
 
     if (loginExists) {

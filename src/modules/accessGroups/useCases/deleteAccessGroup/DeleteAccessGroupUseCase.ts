@@ -1,8 +1,8 @@
 import { AppError } from '../../../../core/errors/AppError'
-import type { IUserGroupRepository } from '../../repositories/IUserGroupRepository'
+import type { IAccessGroupRepository } from '../../repositories/IAccessGroupRepository'
 
-export class DeleteUserGroupUseCase {
-  constructor(private readonly repository: IUserGroupRepository) {}
+export class DeleteAccessGroupUseCase {
+  constructor(private readonly repository: IAccessGroupRepository) { }
 
   async execute(id: string) {
     const existing = await this.repository.findById(id)

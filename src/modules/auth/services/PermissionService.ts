@@ -1,9 +1,9 @@
 import type { UserProps } from '../../users/entities/User'
-import type { UserGroupProps } from '../../userGroups/entities/UserGroup'
-import type { IUserGroupRepository } from '../../userGroups/repositories/IUserGroupRepository'
+import type { AccessGroupProps } from '../../accessGroups/entities/AccessGroup'
+import type { IAccessGroupRepository } from '../../accessGroups/repositories/IAccessGroupRepository'
 
 export class PermissionService {
-  constructor(private readonly userGroupsRepository: IUserGroupRepository) {}
+  constructor(private readonly accessGroupsRepository: IAccessGroupRepository) { }
 
   /**
    * Calcula as permissões finais do usuário baseado em:
@@ -15,7 +15,7 @@ export class PermissionService {
     // 1. Coletar funcionalidades dos grupos
     const groupFeatures = new Set<string>()
     if (user.groupIds.length > 0) {
-      const groups = await this.userGroupsRepository.findManyByIds(user.groupIds)
+      const groups = await this.accessGroupsRepository.findManyByIds(user.groupIds)
       groups.forEach((group) => {
         group.features.forEach((feature) => groupFeatures.add(feature))
       })

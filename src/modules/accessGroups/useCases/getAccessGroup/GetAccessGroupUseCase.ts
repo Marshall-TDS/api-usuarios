@@ -1,8 +1,8 @@
 import { AppError } from '../../../../core/errors/AppError'
-import type { IUserGroupRepository } from '../../repositories/IUserGroupRepository'
+import type { IAccessGroupRepository } from '../../repositories/IAccessGroupRepository'
 
-export class GetUserGroupUseCase {
-  constructor(private readonly repository: IUserGroupRepository) {}
+export class GetAccessGroupUseCase {
+  constructor(private readonly repository: IAccessGroupRepository) { }
 
   async execute(id: string) {
     const group = await this.repository.findById(id)

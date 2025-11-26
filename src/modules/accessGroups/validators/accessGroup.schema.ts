@@ -28,14 +28,14 @@ const codeSchema = z
     message: 'Código deve conter apenas letras, números e hífens',
   })
 
-export const createUserGroupSchema = z.object({
+export const createAccessGroupSchema = z.object({
   name: z.string().min(3).max(120),
   code: codeSchema,
   features: featuresSchema,
   createdBy: z.string().min(3),
 })
 
-export const updateUserGroupSchema = z
+export const updateAccessGroupSchema = z
   .object({
     name: z.string().min(3).max(120).optional(),
     code: codeSchema.optional(),
