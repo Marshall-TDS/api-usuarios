@@ -1,33 +1,33 @@
 [
   {
-    "key": "erp:grupos-usuarios:menu",
-    "name": "Menu de Grupos de Usuário",
-    "description": "Permite visualizar o menu de grupos de usuários."
+    "key": "erp:grupos-acesso:menu",
+    "name": "Menu de Grupos de Acesso",
+    "description": "Permite visualizar o menu de grupos de acesso."
   },
   {
-    "key": "erp:grupos-usuarios:listar",
-    "name": "Listar Grupos de Usuário",
-    "description": "Permite visualizar a listagem de grupos de usuários."
+    "key": "erp:grupos-acesso:listar",
+    "name": "Listar Grupos de Acesso",
+    "description": "Permite visualizar a listagem de grupos de acesso."
   },
   {
-    "key": "erp:grupos-usuarios:visualizar",
-    "name": "Visualizar Detalhes do Grupos de Usuário",
-    "description": "Permite visualizar os detalhes completos de um grupo de usuário."
+    "key": "erp:grupos-acesso:visualizar",
+    "name": "Visualizar Detalhes do Grupo de Acesso",
+    "description": "Permite visualizar os detalhes completos de um grupo de acesso."
   },
   {
-    "key": "erp:grupos-usuarios:criar",
-    "name": "Criar Grupo de Usuário",
-    "description": "Permite cadastrar novos grupos de usuários."
+    "key": "erp:grupos-acesso:criar",
+    "name": "Criar Grupo de Acesso",
+    "description": "Permite cadastrar novos grupos de acesso."
   },
   {
-    "key": "erp:grupos-usuarios:editar",
-    "name": "Editar Grupo de Usuário",
-    "description": "Permite alterar informações de grupos existentes."
+    "key": "erp:grupos-acesso:editar",
+    "name": "Editar Grupo de Acesso",
+    "description": "Permite alterar informações de grupos de acesso existentes."
   },
   {
-    "key": "erp:grupos-usuarios:excluir",
-    "name": "Excluir Grupo de Usuário",
-    "description": "Permite remover grupos de usuário do sistema."
+    "key": "erp:grupos-acesso:excluir",
+    "name": "Excluir Grupo de Acesso",
+    "description": "Permite remover grupos de acesso do sistema."
   },
   {
     "key": "erp:usuarios:menu",

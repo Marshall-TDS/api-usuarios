@@ -8,11 +8,11 @@
         "icon": "People"
     },
     {
-        "key": "erp:grupos-usuarios:menu",
+        "key": "erp:grupos-acesso:menu",
         "category": "Acesso",
-        "name": "Grupos de Usuário",
-        "description": "Administração de grupos de usuários",
-        "url": "access/user-groups",
+        "name": "Grupos de Acesso",
+        "description": "Administração de grupos de acesso",
+        "url": "access/access-groups",
         "icon": "Groups"
     },
     {
