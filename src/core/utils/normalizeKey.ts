@@ -1,13 +1,5 @@
 export const normalizeKey = (value: string) => {
-  const sanitized = value
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-zA-Z0-9]+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '')
-    .trim()
-
-  return sanitized.toUpperCase()
+  return value.trim()
 }
 
 
