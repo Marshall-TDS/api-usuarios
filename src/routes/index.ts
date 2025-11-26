@@ -3,6 +3,7 @@ import { authRoutes } from '../modules/auth/routes/auth.routes'
 import { featureRoutes } from '../modules/features/routes/feature.routes'
 import { userGroupRoutes } from '../modules/userGroups/routes/userGroup.routes'
 import { userRoutes } from '../modules/users/routes/user.routes'
+import { menuRoutes } from '../modules/menus/routes/menu.routes'
 
 export const routes = Router()
 
@@ -14,4 +15,5 @@ routes.use('/auth', authRoutes)
 routes.use('/users', userRoutes)
 routes.use('/groups', userGroupRoutes)
 routes.use('/features', featureRoutes)
+routes.use('/menus', menuRoutes)
 

@@ -75,27 +75,27 @@
     "description": "Permite enviar e-mail de redefinição de senha para o usuário."
   },
   {
-    "key": "cadastros:clientes:menu",
+    "key": "comercial:clientes:menu",
     "name": "Menu de Clientes",
     "description": "Permite visualizar o menu de clientes."
   },
   {
-    "key": "cadastros:clientes:listar",
+    "key": "comercial:clientes:listar",
     "name": "Listar Clientes",
     "description": "Permite visualizar a listagem de clientes."
   },
   {
-    "key": "cadastros:clientes:criar",
+    "key": "comercial:clientes:criar",
     "name": "Criar Cliente",
     "description": "Permite cadastrar novos clientes."
   },
   {
-    "key": "cadastros:clientes:editar",
+    "key": "comercial:clientes:editar",
     "name": "Editar Cliente",
     "description": "Permite alterar dados de clientes existentes."
   },
   {
-    "key": "cadastros:clientes:excluir",
+    "key": "comercial:clientes:excluir",
     "name": "Excluir Cliente",
     "description": "Permite remover clientes do sistema."
   }

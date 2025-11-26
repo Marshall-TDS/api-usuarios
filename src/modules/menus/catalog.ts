@@ -7,6 +7,7 @@ export interface MenuDefinition {
     name: string
     description: string
     url: string
+    icon: string
 }
 
 const catalog = (rawCatalog as MenuDefinition[]).map((menu) => ({
