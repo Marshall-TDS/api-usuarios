@@ -2,101 +2,153 @@
   {
     "key": "erp:grupos-acesso:menu",
     "name": "Menu de Grupos de Acesso",
-    "description": "Permite visualizar o menu de grupos de acesso."
+    "description": "Permite visualizar o menu de grupos de acesso.",
+    "api-routes": []
   },
   {
     "key": "erp:grupos-acesso:listar",
     "name": "Listar Grupos de Acesso",
-    "description": "Permite visualizar a listagem de grupos de acesso."
+    "description": "Permite visualizar a listagem de grupos de acesso.",
+    "api-routes": [
+      "api-usuario:get:/groups/"
+    ]
   },
   {
     "key": "erp:grupos-acesso:visualizar",
     "name": "Visualizar Detalhes do Grupo de Acesso",
-    "description": "Permite visualizar os detalhes completos de um grupo de acesso."
+    "description": "Permite visualizar os detalhes completos de um grupo de acesso.",
+    "api-routes": [
+      "api-usuario:get:/groups/:id"
+    ]
   },
   {
     "key": "erp:grupos-acesso:criar",
     "name": "Criar Grupo de Acesso",
-    "description": "Permite cadastrar novos grupos de acesso."
+    "description": "Permite cadastrar novos grupos de acesso.",
+    "api-routes": [
+      "api-usuario:post:/groups/"
+    ]
   },
   {
     "key": "erp:grupos-acesso:editar",
     "name": "Editar Grupo de Acesso",
-    "description": "Permite alterar informações de grupos de acesso existentes."
+    "description": "Permite alterar informações de grupos de acesso existentes.",
+    "api-routes": [
+      "api-usuario:put:/groups/:id"
+    ]
   },
   {
     "key": "erp:grupos-acesso:excluir",
     "name": "Excluir Grupo de Acesso",
-    "description": "Permite remover grupos de acesso do sistema."
+    "description": "Permite remover grupos de acesso do sistema.",
+    "api-routes": [
+      "api-usuario:delete:/groups/:id"
+    ]
   },
   {
     "key": "erp:usuarios:menu",
     "name": "Menu de Usuário",
-    "description": "Permite visualizar o menu de usuários."
+    "description": "Permite visualizar o menu de usuários.",
+    "api-routes": []
   },
   {
     "key": "erp:usuarios:listar",
     "name": "Listar Usuários",
-    "description": "Permite visualizar a listagem de usuários cadastrados."
+    "description": "Permite visualizar a listagem de usuários cadastrados.",
+    "api-routes": [
+      "api-usuario:get:/users/"
+    ]
   },
   {
     "key": "erp:usuarios:visualizar",
     "name": "Visualizar detalhes do Usuário",
-    "description": "Permite visualizar os detalhes completos de um usuário."
+    "description": "Permite visualizar os detalhes completos de um usuário.",
+    "api-routes": [
+      "api-usuario:get:/users/:id"
+    ]
   },
   {
     "key": "erp:usuarios:criar",
     "name": "Criar Usuário",
-    "description": "Permite cadastrar novos usuários no sistema."
+    "description": "Permite cadastrar novos usuários no sistema.",
+    "api-routes": [
+      "api-usuario:post:/users/"
+    ]
   },
   {
     "key": "erp:usuarios:editar",
     "name": "Editar Usuário",
-    "description": "Permite alterar dados cadastrais de usuários."
+    "description": "Permite alterar dados cadastrais de usuários.",
+    "api-routes": [
+      "api-usuario:put:/users/:id"
+    ]
   },
   {
     "key": "erp:usuarios:excluir",
     "name": "Excluir Usuário",
-    "description": "Permite remover usuários do sistema."
+    "description": "Permite remover usuários do sistema.",
+    "api-routes": [
+      "api-usuario:delete:/users/:id"
+    ]
   },
   {
     "key": "erp:usuarios:atribuir-grupos",
     "name": "Gerenciar Grupos do Usuário",
-    "description": "Permite atribuir ou remover grupos de acesso de um usuário."
+    "description": "Permite atribuir ou remover grupos de acesso de um usuário.",
+    "api-routes": [
+      "api-usuario:put:/users/:id"
+    ]
   },
   {
     "key": "erp:usuarios:atribuir-permissoes-particulares",
     "name": "Gerenciar Permissões Particulares",
-    "description": "Permite conceder ou negar funcionalidades específicas diretamente ao usuário (exceções)."
+    "description": "Permite conceder ou negar funcionalidades específicas diretamente ao usuário (exceções).",
+    "api-routes": [
+      "api-usuario:put:/users/:id"
+    ]
   },
   {
     "key": "erp:usuarios:resetar-senha",
     "name": "Enviar Alteração de Senha",
-    "description": "Permite enviar e-mail de redefinição de senha para o usuário."
+    "description": "Permite enviar e-mail de redefinição de senha para o usuário.",
+    "api-routes": []
   },
   {
-    "key": "erp:clientes:menu",
+    "key": "comercial:clientes:menu",
     "name": "Menu de Clientes",
-    "description": "Permite visualizar o menu de clientes."
+    "description": "Permite visualizar o menu de clientes.",
+    "api-routes": []
   },
   {
-    "key": "erp:clientes:listar",
+    "key": "comercial:clientes:listar",
     "name": "Listar Clientes",
-    "description": "Permite visualizar a listagem de clientes."
+    "description": "Permite visualizar a listagem de clientes.",
+    "api-routes": [
+      "api-usuario:get:/customers/"
+    ]
   },
   {
-    "key": "erp:clientes:criar",
+    "key": "comercial:clientes:criar",
     "name": "Criar Cliente",
-    "description": "Permite cadastrar novos clientes."
+    "description": "Permite cadastrar novos clientes.",
+    "api-routes": [
+      "api-usuario:post:/customers/"
+    ]
   },
   {
-    "key": "erp:clientes:editar",
+    "key": "comercial:clientes:editar",
     "name": "Editar Cliente",
-    "description": "Permite alterar dados de clientes existentes."
+    "description": "Permite alterar dados de clientes existentes.",
+    "api-routes": [
+      "api-usuario:put:/customers/:id"
+    ]
   },
   {
-    "key": "erp:clientes:excluir",
+    "key": "comercial:clientes:excluir",
     "name": "Excluir Cliente",
-    "description": "Permite remover clientes do sistema."
+    "description": "Permite remover clientes do sistema.",
+    "api-routes": [
+      "api-usuario:delete:/customers/:id"
+    ]
   }
 ]
