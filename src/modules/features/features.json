@@ -80,7 +80,7 @@
     "name": "Editar Usuário",
     "description": "Permite alterar dados cadastrais de usuários.",
     "api-routes": [
-      "api-usuarios:put:/users/:id"
+      "api-usuarios:put:/users/:id/basic"
     ]
   },
   {
@@ -96,7 +96,7 @@
     "name": "Gerenciar Grupos do Usuário",
     "description": "Permite atribuir ou remover grupos de acesso de um usuário.",
     "api-routes": [
-      "api-usuarios:put:/users/:id"
+      "api-usuarios:put:/users/:id/groups"
     ]
   },
   {
@@ -104,7 +104,7 @@
     "name": "Gerenciar Permissões Particulares",
     "description": "Permite conceder ou negar funcionalidades específicas diretamente ao usuário (exceções).",
     "api-routes": [
-      "api-usuarios:put:/users/:id"
+      "api-usuarios:put:/users/:id/permissions"
     ]
   },
   {

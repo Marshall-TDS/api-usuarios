@@ -7,7 +7,16 @@ import { DeleteUserUseCase } from '../useCases/deleteUser/DeleteUserUseCase'
 import { GetUserUseCase } from '../useCases/getUser/GetUserUseCase'
 import { ListUsersUseCase } from '../useCases/listUsers/ListUsersUseCase'
 import { UpdateUserUseCase } from '../useCases/updateUser/UpdateUserUseCase'
-import { createUserSchema, updateUserSchema } from '../validators/user.schema'
+import { UpdateUserBasicUseCase } from '../useCases/updateUserBasic/UpdateUserBasicUseCase'
+import { UpdateUserGroupsUseCase } from '../useCases/updateUserGroups/UpdateUserGroupsUseCase'
+import { UpdateUserPermissionsUseCase } from '../useCases/updateUserPermissions/UpdateUserPermissionsUseCase'
+import {
+  createUserSchema,
+  updateUserSchema,
+  updateUserBasicSchema,
+  updateUserGroupsSchema,
+  updateUserPermissionsSchema,
+} from '../validators/user.schema'
 import { PasswordSetupService } from '../services/PasswordSetupService'
 
 export class UserController {
@@ -16,6 +25,9 @@ export class UserController {
     private readonly getUser: GetUserUseCase,
     private readonly createUser: CreateUserUseCase,
     private readonly updateUser: UpdateUserUseCase,
+    private readonly updateUserBasic: UpdateUserBasicUseCase,
+    private readonly updateUserGroups: UpdateUserGroupsUseCase,
+    private readonly updateUserPermissions: UpdateUserPermissionsUseCase,
     private readonly deleteUser: DeleteUserUseCase,
   ) { }
 
@@ -88,6 +100,66 @@ export class UserController {
     }
   }
 
+  updateBasic = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id } = req.params
+
+      if (!id) {
+        throw new AppError('Parâmetro id é obrigatório', 400)
+      }
+
+      const parseResult = updateUserBasicSchema.safeParse(req.body)
+      if (!parseResult.success) {
+        throw new AppError('Falha de validação', 422, parseResult.error.flatten())
+      }
+
+      const user = await this.updateUserBasic.execute(id, parseResult.data)
+      return res.json(user)
+    } catch (error) {
+      return next(error)
+    }
+  }
+
+  updateGroups = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id } = req.params
+
+      if (!id) {
+        throw new AppError('Parâmetro id é obrigatório', 400)
+      }
+
+      const parseResult = updateUserGroupsSchema.safeParse(req.body)
+      if (!parseResult.success) {
+        throw new AppError('Falha de validação', 422, parseResult.error.flatten())
+      }
+
+      const user = await this.updateUserGroups.execute(id, parseResult.data)
+      return res.json(user)
+    } catch (error) {
+      return next(error)
+    }
+  }
+
+  updatePermissions = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id } = req.params
+
+      if (!id) {
+        throw new AppError('Parâmetro id é obrigatório', 400)
+      }
+
+      const parseResult = updateUserPermissionsSchema.safeParse(req.body)
+      if (!parseResult.success) {
+        throw new AppError('Falha de validação', 422, parseResult.error.flatten())
+      }
+
+      const user = await this.updateUserPermissions.execute(id, parseResult.data)
+      return res.json(user)
+    } catch (error) {
+      return next(error)
+    }
+  }
+
   destroy = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params
@@ -109,6 +181,9 @@ export const userController = new UserController(
   new GetUserUseCase(userRepository),
   new CreateUserUseCase(userRepository, accessGroupRepository, new PasswordSetupService()),
   new UpdateUserUseCase(userRepository, accessGroupRepository),
+  new UpdateUserBasicUseCase(userRepository),
+  new UpdateUserGroupsUseCase(userRepository, accessGroupRepository),
+  new UpdateUserPermissionsUseCase(userRepository),
   new DeleteUserUseCase(userRepository),
 )
 

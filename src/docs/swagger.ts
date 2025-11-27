@@ -145,6 +145,33 @@ const swaggerDefinition = {
           updatedBy: userProperties.updatedBy,
         },
       },
+      UpdateUserBasicInput: {
+        type: 'object',
+        required: ['fullName', 'login', 'email', 'updatedBy'],
+        properties: {
+          fullName: userProperties.fullName,
+          login: userProperties.login,
+          email: userProperties.email,
+          updatedBy: userProperties.updatedBy,
+        },
+      },
+      UpdateUserGroupsInput: {
+        type: 'object',
+        required: ['groupIds', 'updatedBy'],
+        properties: {
+          groupIds: userProperties.groupIds,
+          updatedBy: userProperties.updatedBy,
+        },
+      },
+      UpdateUserPermissionsInput: {
+        type: 'object',
+        required: ['allowFeatures', 'deniedFeatures', 'updatedBy'],
+        properties: {
+          allowFeatures: userProperties.allowFeatures,
+          deniedFeatures: userProperties.deniedFeatures,
+          updatedBy: userProperties.updatedBy,
+        },
+      },
       AccessGroup: {
         type: 'object',
         properties: accessGroupProperties,
@@ -469,7 +496,8 @@ const swaggerDefinition = {
       },
       put: {
         tags: ['Users'],
-        summary: 'Atualiza um usuário existente',
+        summary: 'Atualiza um usuário existente (deprecated - use rotas específicas)',
+        description: 'Esta rota está deprecated. Use as rotas específicas: PUT /users/:id/basic, PUT /users/:id/groups, PUT /users/:id/permissions',
         requestBody: {
           required: true,
           content: {
@@ -502,6 +530,137 @@ const swaggerDefinition = {
         summary: 'Remove um usuário',
         responses: {
           204: { description: 'Usuário removido' },
+          404: {
+            description: 'Usuário não encontrado',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+        },
+      },
+    },
+    '/users/{id}/basic': {
+      parameters: [
+        {
+          in: 'path',
+          name: 'id',
+          required: true,
+          schema: { type: 'string', format: 'uuid' },
+        },
+      ],
+      put: {
+        tags: ['Users'],
+        summary: 'Atualiza dados básicos do usuário',
+        description: 'Atualiza apenas nome completo, login e e-mail do usuário',
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: { $ref: '#/components/schemas/UpdateUserBasicInput' },
+            },
+          },
+        },
+        responses: {
+          200: {
+            description: 'Usuário atualizado',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/User' },
+              },
+            },
+          },
+          404: {
+            description: 'Usuário não encontrado',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+          409: {
+            description: 'Login ou e-mail já está em uso',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+        },
+      },
+    },
+    '/users/{id}/groups': {
+      parameters: [
+        {
+          in: 'path',
+          name: 'id',
+          required: true,
+          schema: { type: 'string', format: 'uuid' },
+        },
+      ],
+      put: {
+        tags: ['Users'],
+        summary: 'Atualiza grupos de acesso do usuário',
+        description: 'Atualiza apenas os grupos de acesso vinculados ao usuário',
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: { $ref: '#/components/schemas/UpdateUserGroupsInput' },
+            },
+          },
+        },
+        responses: {
+          200: {
+            description: 'Grupos atualizados',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/User' },
+              },
+            },
+          },
+          404: {
+            description: 'Usuário ou grupo não encontrado',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+        },
+      },
+    },
+    '/users/{id}/permissions': {
+      parameters: [
+        {
+          in: 'path',
+          name: 'id',
+          required: true,
+          schema: { type: 'string', format: 'uuid' },
+        },
+      ],
+      put: {
+        tags: ['Users'],
+        summary: 'Atualiza permissões particulares do usuário',
+        description: 'Atualiza apenas as funcionalidades permitidas e negadas explicitamente ao usuário',
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: { $ref: '#/components/schemas/UpdateUserPermissionsInput' },
+            },
+          },
+        },
+        responses: {
+          200: {
+            description: 'Permissões atualizadas',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/User' },
+              },
+            },
+          },
           404: {
             description: 'Usuário não encontrado',
             content: {

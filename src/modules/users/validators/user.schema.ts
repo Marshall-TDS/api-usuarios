@@ -43,3 +43,41 @@ export const updateUserSchema = z
     path: ['body'],
   })
 
+export const updateUserBasicSchema = z.object({
+  fullName: z.string().min(3),
+  login: z.string().min(3),
+  email: z.string().email(),
+  updatedBy: z.string().min(3),
+})
+
+export const updateUserGroupsSchema = z.object({
+  groupIds: z.array(z.string().uuid()).nonempty(),
+  updatedBy: z.string().min(3),
+})
+
+export const updateUserPermissionsSchema = z.object({
+  allowFeatures: z
+    .array(
+      z
+        .string()
+        .min(3)
+        .transform((value) => formatFeatureKey(value))
+        .refine((value) => isValidFeatureKey(value), {
+          message: `Funcionalidade precisa existir no catálogo (${FEATURE_KEYS.join(', ')})`,
+        }),
+    )
+    .max(50),
+  deniedFeatures: z
+    .array(
+      z
+        .string()
+        .min(3)
+        .transform((value) => formatFeatureKey(value))
+        .refine((value) => isValidFeatureKey(value), {
+          message: `Funcionalidade precisa existir no catálogo (${FEATURE_KEYS.join(', ')})`,
+        }),
+    )
+    .max(50),
+  updatedBy: z.string().min(3),
+})
+
