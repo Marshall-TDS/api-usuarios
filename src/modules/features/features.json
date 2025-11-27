@@ -10,7 +10,7 @@
     "name": "Listar Grupos de Acesso",
     "description": "Permite visualizar a listagem de grupos de acesso.",
     "api-routes": [
-      "api-usuario:get:/groups/"
+      "api-usuarios:get:/groups/"
     ]
   },
   {
@@ -18,7 +18,7 @@
     "name": "Visualizar Detalhes do Grupo de Acesso",
     "description": "Permite visualizar os detalhes completos de um grupo de acesso.",
     "api-routes": [
-      "api-usuario:get:/groups/:id"
+      "api-usuarios:get:/groups/:id"
     ]
   },
   {
@@ -26,7 +26,7 @@
     "name": "Criar Grupo de Acesso",
     "description": "Permite cadastrar novos grupos de acesso.",
     "api-routes": [
-      "api-usuario:post:/groups/"
+      "api-usuarios:post:/groups/"
     ]
   },
   {
@@ -34,7 +34,7 @@
     "name": "Editar Grupo de Acesso",
     "description": "Permite alterar informações de grupos de acesso existentes.",
     "api-routes": [
-      "api-usuario:put:/groups/:id"
+      "api-usuarios:put:/groups/:id"
     ]
   },
   {
@@ -42,7 +42,7 @@
     "name": "Excluir Grupo de Acesso",
     "description": "Permite remover grupos de acesso do sistema.",
     "api-routes": [
-      "api-usuario:delete:/groups/:id"
+      "api-usuarios:delete:/groups/:id"
     ]
   },
   {
@@ -56,7 +56,7 @@
     "name": "Listar Usuários",
     "description": "Permite visualizar a listagem de usuários cadastrados.",
     "api-routes": [
-      "api-usuario:get:/users/"
+      "api-usuarios:get:/users/"
     ]
   },
   {
@@ -64,7 +64,7 @@
     "name": "Visualizar detalhes do Usuário",
     "description": "Permite visualizar os detalhes completos de um usuário.",
     "api-routes": [
-      "api-usuario:get:/users/:id"
+      "api-usuarios:get:/users/:id"
     ]
   },
   {
@@ -72,7 +72,7 @@
     "name": "Criar Usuário",
     "description": "Permite cadastrar novos usuários no sistema.",
     "api-routes": [
-      "api-usuario:post:/users/"
+      "api-usuarios:post:/users/"
     ]
   },
   {
@@ -80,7 +80,7 @@
     "name": "Editar Usuário",
     "description": "Permite alterar dados cadastrais de usuários.",
     "api-routes": [
-      "api-usuario:put:/users/:id"
+      "api-usuarios:put:/users/:id"
     ]
   },
   {
@@ -88,7 +88,7 @@
     "name": "Excluir Usuário",
     "description": "Permite remover usuários do sistema.",
     "api-routes": [
-      "api-usuario:delete:/users/:id"
+      "api-usuarios:delete:/users/:id"
     ]
   },
   {
@@ -96,7 +96,7 @@
     "name": "Gerenciar Grupos do Usuário",
     "description": "Permite atribuir ou remover grupos de acesso de um usuário.",
     "api-routes": [
-      "api-usuario:put:/users/:id"
+      "api-usuarios:put:/users/:id"
     ]
   },
   {
@@ -104,7 +104,7 @@
     "name": "Gerenciar Permissões Particulares",
     "description": "Permite conceder ou negar funcionalidades específicas diretamente ao usuário (exceções).",
     "api-routes": [
-      "api-usuario:put:/users/:id"
+      "api-usuarios:put:/users/:id"
     ]
   },
   {
@@ -124,7 +124,7 @@
     "name": "Listar Clientes",
     "description": "Permite visualizar a listagem de clientes.",
     "api-routes": [
-      "api-usuario:get:/customers/"
+      "api-usuarios:get:/customers/"
     ]
   },
   {
@@ -132,7 +132,7 @@
     "name": "Criar Cliente",
     "description": "Permite cadastrar novos clientes.",
     "api-routes": [
-      "api-usuario:post:/customers/"
+      "api-usuarios:post:/customers/"
     ]
   },
   {
@@ -140,7 +140,7 @@
     "name": "Editar Cliente",
     "description": "Permite alterar dados de clientes existentes.",
     "api-routes": [
-      "api-usuario:put:/customers/:id"
+      "api-usuarios:put:/customers/:id"
     ]
   },
   {
@@ -148,7 +148,7 @@
     "name": "Excluir Cliente",
     "description": "Permite remover clientes do sistema.",
     "api-routes": [
-      "api-usuario:delete:/customers/:id"
+      "api-usuarios:delete:/customers/:id"
     ]
   }
 ]

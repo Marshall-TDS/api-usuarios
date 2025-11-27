@@ -12,11 +12,39 @@ declare global {
 }
 
 /**
+ * Lista de rotas públicas que não precisam de autenticação
+ * As rotas podem vir com ou sem o prefixo /api
+ */
+const PUBLIC_ROUTES = [
+  '/health',
+  '/api/health',
+  '/auth/login',
+  '/api/auth/login',
+  '/auth/logout',
+  '/api/auth/logout',
+  '/docs',
+  '/api/docs',
+]
+
+/**
+ * Verifica se uma rota é pública
+ */
+const isPublicRoute = (path: string): boolean => {
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`
+  return PUBLIC_ROUTES.some((publicRoute) => normalizedPath.startsWith(publicRoute))
+}
+
+/**
  * Middleware de autenticação
  * Valida o access token e adiciona as informações do usuário ao request
  */
 export const authenticate = (req: Request, res: Response, next: NextFunction) => {
   try {
+    // Se for uma rota pública, permite o acesso sem autenticação
+    if (isPublicRoute(req.path)) {
+      return next()
+    }
+
     const authHeader = req.headers.authorization
 
     if (!authHeader) {
