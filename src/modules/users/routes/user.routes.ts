@@ -7,6 +7,7 @@ export const userRoutes = Router()
 
 userRoutes.get('/', userController.index)
 userRoutes.post('/', userController.store)
+userRoutes.post('/password/reset-request', userPasswordController.requestReset)
 userRoutes.post('/password/reset', userPasswordController.store)
 userRoutes.get('/:id', userController.show)
 userRoutes.get('/:id/permissions', userPermissionsController.show)

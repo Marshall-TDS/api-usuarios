@@ -29,5 +29,8 @@ export const env = {
     secure: process.env.SMTP_SECURE === 'true',
     from: process.env.MAIL_FROM ?? 'Marshall ERP <no-reply@marshall.com>',
   },
+  apiComunicacoes: {
+    url: process.env.API_COMUNICACOES_URL ?? 'http://localhost:3334/api',
+  },
 }
 
