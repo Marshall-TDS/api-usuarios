@@ -150,5 +150,97 @@
     "api-routes": [
       "api-usuarios:delete:/customers/:id"
     ]
+  },
+  {
+    "key": "comunicacoes:remetentes:menu",
+    "name": "Menu de Remetentes",
+    "description": "Permite visualizar o menu de remetentes.",
+    "api-routes": []
+  },
+  {
+    "key": "comunicacoes:remetentes:listar",
+    "name": "Listar Remetentes",
+    "description": "Permite visualizar a listagem de remetentes cadastrados.",
+    "api-routes": [
+      "api-comunicacoes:get:/remetentes/"
+    ]
+  },
+  {
+    "key": "comunicacoes:remetentes:visualizar",
+    "name": "Visualizar Detalhes do Remetente",
+    "description": "Permite visualizar os detalhes completos de um remetente.",
+    "api-routes": [
+      "api-comunicacoes:get:/remetentes/:id"
+    ]
+  },
+  {
+    "key": "comunicacoes:remetentes:criar",
+    "name": "Criar Remetente",
+    "description": "Permite cadastrar novos remetentes no sistema.",
+    "api-routes": [
+      "api-comunicacoes:post:/remetentes/"
+    ]
+  },
+  {
+    "key": "comunicacoes:remetentes:editar",
+    "name": "Editar Remetente",
+    "description": "Permite alterar dados de remetentes existentes.",
+    "api-routes": [
+      "api-comunicacoes:put:/remetentes/:id"
+    ]
+  },
+  {
+    "key": "comunicacoes:remetentes:excluir",
+    "name": "Excluir Remetente",
+    "description": "Permite remover remetentes do sistema.",
+    "api-routes": [
+      "api-comunicacoes:delete:/remetentes/:id"
+    ]
+  },
+  {
+    "key": "comunicacoes:comunicacoes:menu",
+    "name": "Menu de Comunicações",
+    "description": "Permite visualizar o menu de comunicações.",
+    "api-routes": []
+  },
+  {
+    "key": "comunicacoes:comunicacoes:listar",
+    "name": "Listar Comunicações",
+    "description": "Permite visualizar a listagem de comunicações cadastradas.",
+    "api-routes": [
+      "api-comunicacoes:get:/comunicacoes/"
+    ]
+  },
+  {
+    "key": "comunicacoes:comunicacoes:visualizar",
+    "name": "Visualizar Detalhes da Comunicação",
+    "description": "Permite visualizar os detalhes completos de uma comunicação.",
+    "api-routes": [
+      "api-comunicacoes:get:/comunicacoes/:id"
+    ]
+  },
+  {
+    "key": "comunicacoes:comunicacoes:criar",
+    "name": "Criar Comunicação",
+    "description": "Permite cadastrar novas comunicações no sistema.",
+    "api-routes": [
+      "api-comunicacoes:post:/comunicacoes/"
+    ]
+  },
+  {
+    "key": "comunicacoes:comunicacoes:editar",
+    "name": "Editar Comunicação",
+    "description": "Permite alterar dados de comunicações existentes.",
+    "api-routes": [
+      "api-comunicacoes:put:/comunicacoes/:id"
+    ]
+  },
+  {
+    "key": "comunicacoes:comunicacoes:excluir",
+    "name": "Excluir Comunicação",
+    "description": "Permite remover comunicações do sistema.",
+    "api-routes": [
+      "api-comunicacoes:delete:/comunicacoes/:id"
+    ]
   }
 ]

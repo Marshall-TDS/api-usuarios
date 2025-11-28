@@ -28,10 +28,10 @@ export class RouteAuthorizationService {
       return 'api-usuarios'
     }
 
-    // Aqui você pode adicionar mais mapeamentos conforme necessário
-    // Por exemplo, se tiver outras APIs:
-    // if (host?.includes('api-produtos')) return 'api-produtos'
-    // if (host?.includes('api-vendas')) return 'api-vendas'
+    // Se for localhost:3334, considera como api-comunicacoes
+    if (host?.includes('localhost:3334') || origin?.includes('localhost:3334')) {
+      return 'api-comunicacoes'
+    }
 
     // Por padrão, se não identificar, retorna api-usuarios
     return 'api-usuarios'

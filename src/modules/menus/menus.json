@@ -22,5 +22,21 @@
         "description": "Administração de usuários e acessos",
         "url": "/users",
         "icon": "AdminPanelSettings"
+    },
+    {
+        "key": "comunicacoes:remetentes:menu",
+        "category": "Comunicações",
+        "name": "Remetentes",
+        "description": "Administração de remetentes de e-mail",
+        "url": "/comunicacoes/remetentes",
+        "icon": "ContactMail"
+    },
+    {
+        "key": "comunicacoes:comunicacoes:menu",
+        "category": "Comunicações",
+        "name": "Comunicações",
+        "description": "Administração de comunicações",
+        "url": "/comunicacoes/comunicacoes",
+        "icon": "Send"
     }
 ]
