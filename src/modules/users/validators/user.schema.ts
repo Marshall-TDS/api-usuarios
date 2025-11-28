@@ -22,7 +22,7 @@ export const createUserSchema = z.object({
   fullName: z.string().min(3),
   login: z.string().min(3),
   email: z.string().email(),
-  groupIds: z.array(z.string().uuid()).nonempty(),
+  groupIds: z.array(z.string().uuid()),
   allowFeatures: featureSchema,
   deniedFeatures: featureSchema,
   createdBy: z.string().min(3),
@@ -33,7 +33,7 @@ export const updateUserSchema = z
     fullName: z.string().min(3).optional(),
     login: z.string().min(3).optional(),
     email: z.string().email().optional(),
-    groupIds: z.array(z.string().uuid()).nonempty().optional(),
+    groupIds: z.array(z.string().uuid()).optional(),
     allowFeatures: featureSchema,
     deniedFeatures: featureSchema,
     updatedBy: z.string().min(3),
@@ -51,7 +51,7 @@ export const updateUserBasicSchema = z.object({
 })
 
 export const updateUserGroupsSchema = z.object({
-  groupIds: z.array(z.string().uuid()).nonempty(),
+  groupIds: z.array(z.string().uuid()),
   updatedBy: z.string().min(3),
 })
 
