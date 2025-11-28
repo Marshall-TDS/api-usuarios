@@ -17,6 +17,8 @@ const PUBLIC_ROUTES = [
   '/api/auth/refresh-token',
   '/users/password/reset-request',
   '/api/users/password/reset-request',
+  '/users/password/reset',
+  '/api/users/password/reset',
   '/docs',
   '/api/docs',
 ]

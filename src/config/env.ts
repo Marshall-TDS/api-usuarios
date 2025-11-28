@@ -21,14 +21,6 @@ export const env = {
     jwtExpiresIn: process.env.JWT_EXPIRES_IN ?? '2h',
     cryptoSecret: process.env.CRYPTO_SECRET ?? 'default-crypto-secret',
   },
-  mail: {
-    host: process.env.SMTP_HOST ?? 'localhost',
-    port: Number(process.env.SMTP_PORT ?? 1025),
-    user: process.env.SMTP_USER ?? '',
-    password: process.env.SMTP_PASS ?? '',
-    secure: process.env.SMTP_SECURE === 'true',
-    from: process.env.MAIL_FROM ?? 'Marshall ERP <no-reply@marshall.com>',
-  },
   apiComunicacoes: {
     url: process.env.API_COMUNICACOES_URL ?? 'http://localhost:3334/api',
   },

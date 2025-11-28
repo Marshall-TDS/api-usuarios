@@ -4,7 +4,7 @@ import { env } from '../../../../config/env'
 import type { IUserRepository } from '../../repositories/IUserRepository'
 
 // Chave da comunicação de redefinição de senha
-const CHAVE_COMUNICACAO_RESET_PASSWORD = 'email-1764346311234-1bdde6d4'
+const CHAVE_COMUNICACAO_RESET_PASSWORD = 'EMAIL-REDEFINICAO-SENHA'
 
 export class RequestPasswordResetUseCase {
   constructor(private readonly userRepository: IUserRepository) {}
