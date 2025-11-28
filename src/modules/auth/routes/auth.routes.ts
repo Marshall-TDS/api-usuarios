@@ -8,14 +8,18 @@ import { accessGroupRepository } from '../../accessGroups/repositories'
 
 const authRoutes = Router()
 
+import { RefreshTokenUseCase } from '../useCases/refreshToken/RefreshTokenUseCase'
+
 // Instanciar dependências
 const permissionService = new PermissionService(accessGroupRepository)
 const loginUseCase = new LoginUseCase(userRepository, permissionService)
 const logoutUseCase = new LogoutUseCase()
-const authController = new AuthController(loginUseCase, logoutUseCase)
+const refreshTokenUseCase = new RefreshTokenUseCase(userRepository, permissionService)
+const authController = new AuthController(loginUseCase, logoutUseCase, refreshTokenUseCase)
 
 authRoutes.post('/login', authController.login)
 authRoutes.post('/logout', authController.logout)
+authRoutes.post('/refresh-token', authController.refreshToken)
 
 export { authRoutes }
 

@@ -13,6 +13,8 @@ const PUBLIC_ROUTES = [
   '/api/auth/login',
   '/auth/logout',
   '/api/auth/logout',
+  '/auth/refresh-token',
+  '/api/auth/refresh-token',
   '/docs',
   '/api/docs',
 ]
