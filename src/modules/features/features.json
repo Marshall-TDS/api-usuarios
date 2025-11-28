@@ -1,13 +1,13 @@
 [
   {
     "key": "erp:grupos-acesso:menu",
-    "name": "Menu de Grupos de Acesso",
+    "name": "Grupos de Acesso: Menu",
     "description": "Permite visualizar o menu de grupos de acesso.",
     "api-routes": []
   },
   {
     "key": "erp:grupos-acesso:listar",
-    "name": "Listar Grupos de Acesso",
+    "name": "Grupos de Acesso: Listar",
     "description": "Permite visualizar a listagem de grupos de acesso.",
     "api-routes": [
       "api-usuarios:get:/groups/"
@@ -15,7 +15,7 @@
   },
   {
     "key": "erp:grupos-acesso:visualizar",
-    "name": "Visualizar Detalhes do Grupo de Acesso",
+    "name": "Grupos de Acesso: Visualizar",
     "description": "Permite visualizar os detalhes completos de um grupo de acesso.",
     "api-routes": [
       "api-usuarios:get:/groups/:id"
@@ -23,7 +23,7 @@
   },
   {
     "key": "erp:grupos-acesso:criar",
-    "name": "Criar Grupo de Acesso",
+    "name": "Grupos de Acesso: Criar",
     "description": "Permite cadastrar novos grupos de acesso.",
     "api-routes": [
       "api-usuarios:post:/groups/"
@@ -31,7 +31,7 @@
   },
   {
     "key": "erp:grupos-acesso:editar",
-    "name": "Editar Grupo de Acesso",
+    "name": "Grupos de Acesso: Editar",
     "description": "Permite alterar informações de grupos de acesso existentes.",
     "api-routes": [
       "api-usuarios:put:/groups/:id"
@@ -39,7 +39,7 @@
   },
   {
     "key": "erp:grupos-acesso:excluir",
-    "name": "Excluir Grupo de Acesso",
+    "name": "Grupos de Acesso: Excluir",
     "description": "Permite remover grupos de acesso do sistema.",
     "api-routes": [
       "api-usuarios:delete:/groups/:id"
@@ -47,13 +47,13 @@
   },
   {
     "key": "erp:usuarios:menu",
-    "name": "Menu de Usuário",
+    "name": "Usuários: Menu",
     "description": "Permite visualizar o menu de usuários.",
     "api-routes": []
   },
   {
     "key": "erp:usuarios:listar",
-    "name": "Listar Usuários",
+    "name": "Usuários: Listar",
     "description": "Permite visualizar a listagem de usuários cadastrados.",
     "api-routes": [
       "api-usuarios:get:/users/"
@@ -61,7 +61,7 @@
   },
   {
     "key": "erp:usuarios:visualizar",
-    "name": "Visualizar detalhes do Usuário",
+    "name": "Usuários: Visualizar",
     "description": "Permite visualizar os detalhes completos de um usuário.",
     "api-routes": [
       "api-usuarios:get:/users/:id"
@@ -69,7 +69,7 @@
   },
   {
     "key": "erp:usuarios:criar",
-    "name": "Criar Usuário",
+    "name": "Usuários: Criar",
     "description": "Permite cadastrar novos usuários no sistema.",
     "api-routes": [
       "api-usuarios:post:/users/"
@@ -77,7 +77,7 @@
   },
   {
     "key": "erp:usuarios:editar",
-    "name": "Editar Usuário",
+    "name": "Usuários: Editar",
     "description": "Permite alterar dados cadastrais de usuários.",
     "api-routes": [
       "api-usuarios:put:/users/:id/basic"
@@ -85,7 +85,7 @@
   },
   {
     "key": "erp:usuarios:excluir",
-    "name": "Excluir Usuário",
+    "name": "Usuários: Excluir",
     "description": "Permite remover usuários do sistema.",
     "api-routes": [
       "api-usuarios:delete:/users/:id"
@@ -93,7 +93,7 @@
   },
   {
     "key": "erp:usuarios:atribuir-grupos",
-    "name": "Gerenciar Grupos do Usuário",
+    "name": "Usuários: Atribuir Grupos de Acesso",
     "description": "Permite atribuir ou remover grupos de acesso de um usuário.",
     "api-routes": [
       "api-usuarios:put:/users/:id/groups"
@@ -101,7 +101,7 @@
   },
   {
     "key": "erp:usuarios:atribuir-permissoes-particulares",
-    "name": "Gerenciar Permissões Particulares",
+    "name": "Usuários: Atribuir Permissões Particulares",
     "description": "Permite conceder ou negar funcionalidades específicas diretamente ao usuário (exceções).",
     "api-routes": [
       "api-usuarios:put:/users/:id/permissions"
@@ -109,19 +109,19 @@
   },
   {
     "key": "erp:usuarios:resetar-senha",
-    "name": "Enviar Alteração de Senha",
+    "name": "Usuários: Resetar Senha",
     "description": "Permite enviar e-mail de redefinição de senha para o usuário.",
     "api-routes": []
   },
   {
     "key": "comercial:clientes:menu",
-    "name": "Menu de Clientes",
+    "name": "Clientes: Menu",
     "description": "Permite visualizar o menu de clientes.",
     "api-routes": []
   },
   {
     "key": "comercial:clientes:listar",
-    "name": "Listar Clientes",
+    "name": "Clientes: Listar",
     "description": "Permite visualizar a listagem de clientes.",
     "api-routes": [
       "api-usuarios:get:/customers/"
@@ -129,7 +129,7 @@
   },
   {
     "key": "comercial:clientes:criar",
-    "name": "Criar Cliente",
+    "name": "Clientes: Criar",
     "description": "Permite cadastrar novos clientes.",
     "api-routes": [
       "api-usuarios:post:/customers/"
@@ -137,7 +137,7 @@
   },
   {
     "key": "comercial:clientes:editar",
-    "name": "Editar Cliente",
+    "name": "Clientes: Editar",
     "description": "Permite alterar dados de clientes existentes.",
     "api-routes": [
       "api-usuarios:put:/customers/:id"
@@ -145,7 +145,7 @@
   },
   {
     "key": "comercial:clientes:excluir",
-    "name": "Excluir Cliente",
+    "name": "Clientes: Excluir",
     "description": "Permite remover clientes do sistema.",
     "api-routes": [
       "api-usuarios:delete:/customers/:id"
