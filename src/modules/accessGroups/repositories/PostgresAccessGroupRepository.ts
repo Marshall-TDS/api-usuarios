@@ -6,6 +6,7 @@ import type { IAccessGroupRepository } from './IAccessGroupRepository'
 
 type AccessGroupRow = {
   id: string
+  seq_id: string
   name: string
   code: string
   features: string[] | null
@@ -18,6 +19,7 @@ type AccessGroupRow = {
 const mapRowToEntity = (row: AccessGroupRow): AccessGroupProps => {
   return {
     id: row.id,
+    seqId: row.seq_id ? parseInt(row.seq_id, 10) : undefined,
     name: row.name,
     code: row.code,
     features: row.features ?? [],
@@ -32,7 +34,7 @@ export class PostgresAccessGroupRepository implements IAccessGroupRepository {
   async findAll(): Promise<AccessGroupProps[]> {
     const result = await pool.query<AccessGroupRow>(
       `
-        SELECT id, name, code, features, created_by, updated_by, created_at, updated_at
+        SELECT id, seq_id, name, code, features, created_by, updated_by, created_at, updated_at
         FROM access_groups
         ORDER BY created_at ASC
       `,
@@ -44,7 +46,7 @@ export class PostgresAccessGroupRepository implements IAccessGroupRepository {
   async findById(id: string): Promise<AccessGroupProps | null> {
     const result = await pool.query<AccessGroupRow>(
       `
-        SELECT id, name, code, features, created_by, updated_by, created_at, updated_at
+        SELECT id, seq_id, name, code, features, created_by, updated_by, created_at, updated_at
         FROM access_groups
         WHERE id = $1
         LIMIT 1
@@ -59,7 +61,7 @@ export class PostgresAccessGroupRepository implements IAccessGroupRepository {
   async findByCode(code: string): Promise<AccessGroupProps | null> {
     const result = await pool.query<AccessGroupRow>(
       `
-        SELECT id, name, code, features, created_by, updated_by, created_at, updated_at
+        SELECT id, seq_id, name, code, features, created_by, updated_by, created_at, updated_at
         FROM access_groups
         WHERE code = $1
         LIMIT 1
@@ -78,7 +80,7 @@ export class PostgresAccessGroupRepository implements IAccessGroupRepository {
 
     const result = await pool.query<AccessGroupRow>(
       `
-        SELECT id, name, code, features, created_by, updated_by, created_at, updated_at
+        SELECT id, seq_id, name, code, features, created_by, updated_by, created_at, updated_at
         FROM access_groups
         WHERE id = ANY($1::uuid[])
       `,
@@ -95,7 +97,7 @@ export class PostgresAccessGroupRepository implements IAccessGroupRepository {
       `
         INSERT INTO access_groups (id, name, code, features, created_by, updated_by, created_at, updated_at)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-        RETURNING id, name, code, features, created_by, updated_by, created_at, updated_at
+        RETURNING id, seq_id, name, code, features, created_by, updated_by, created_at, updated_at
       `,
       [
         data.id,
@@ -129,7 +131,7 @@ export class PostgresAccessGroupRepository implements IAccessGroupRepository {
           updated_by = $5,
           updated_at = $6
         WHERE id = $1
-        RETURNING id, name, code, features, created_by, updated_by, created_at, updated_at
+        RETURNING id, seq_id, name, code, features, created_by, updated_by, created_at, updated_at
       `,
       [data.id, data.name, data.code, data.features, data.updatedBy, data.updatedAt],
     )

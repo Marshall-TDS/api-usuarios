@@ -2,6 +2,7 @@ import { randomUUID } from 'crypto'
 
 export interface AccessGroupProps {
   id: string
+  seqId?: number | undefined
   name: string
   code: string
   features: string[]

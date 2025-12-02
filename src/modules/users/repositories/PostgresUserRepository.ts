@@ -6,6 +6,7 @@ import type { IUserRepository } from './IUserRepository'
 
 type UserRow = {
   id: string
+  seq_id: string
   full_name: string
   login: string
   email: string
@@ -21,6 +22,7 @@ type UserRow = {
 
 const mapRowToProps = (row: UserRow): UserProps => ({
   id: row.id,
+  seqId: row.seq_id ? parseInt(row.seq_id, 10) : undefined,
   fullName: row.full_name,
   login: row.login,
   email: row.email,
@@ -36,6 +38,7 @@ const mapRowToProps = (row: UserRow): UserProps => ({
 const buildSelectQuery = (extraCondition = '', includePassword = false) => `
   SELECT
     u.id,
+    u.seq_id,
     u.full_name,
     u.login,
     u.email,

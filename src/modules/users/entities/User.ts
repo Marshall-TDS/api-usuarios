@@ -2,6 +2,7 @@ import { randomUUID } from 'crypto'
 
 export interface UserProps {
   id: string
+  seqId?: number | undefined
   fullName: string
   login: string
   email: string
@@ -27,7 +28,7 @@ export type UpdateUserProps = {
 }
 
 export class User {
-  private constructor(private props: UserProps) {}
+  private constructor(private props: UserProps) { }
 
   static create(data: CreateUserProps) {
     const timestamp = new Date()
