@@ -121,6 +121,31 @@ npm run dev
 
 API disponível em `http://localhost:3333/api`.
 
+### Configuração do Git-Flow
+
+Este projeto utiliza **git-flow** para gerenciamento de branches. As configurações já estão prontas para serem aplicadas automaticamente.
+
+**Primeira vez configurando:**
+```bash
+# 1. Instale o git-flow-avh (se ainda não tiver)
+brew install git-flow-avh  # macOS
+# ou apt-get install git-flow / yum install git-flow  # Linux
+
+# 2. Execute o script de configuração
+./setup-gitflow.sh
+```
+
+**Configurações aplicadas:**
+- Branch master: `main`
+- Branch develop: `homolog`
+- Prefixos: `feature/`, `bugfix/`, `release/`, `hotfix/`, `support/`
+
+Após executar o script, você pode usar o git-flow normalmente:
+```bash
+git flow feature start minha-feature
+git flow feature finish minha-feature
+```
+
 ### Documentação Swagger
 - Acesse `http://localhost:3333/docs` após subir o servidor (`npm run dev`).
 - Endpoint base configurado como `http://localhost:3333/api`.
