@@ -40,23 +40,24 @@ jobs:
           APP_WEB_URL: ${{ secrets.APP_WEB_URL_MAIN }}
           API_COMUNICACOES_URL: ${{ secrets.API_COMUNICACOES_URL_MAIN }}
         run: |
-          ssh -i ~/.ssh/deploy_key ${VPS_USER}@${VPS_HOST} \
-            DB_HOST="${DB_HOST}" \
-            DB_PORT="${DB_PORT}" \
-            DB_NAME_MAIN="${DB_NAME_MAIN}" \
-            DB_USER="${DB_USER}" \
-            DB_PASS="${DB_PASS}" \
-            JWT_SECRET="${JWT_SECRET}" \
-            JWT_EXPIRES_IN="${JWT_EXPIRES_IN}" \
-            CRYPTO_SECRET="${CRYPTO_SECRET}" \
-            APP_WEB_URL="${APP_WEB_URL}" \
-            API_COMUNICACOES_URL="${API_COMUNICACOES_URL}" \
-            VPS_DEPLOY_PATH="${VPS_DEPLOY_PATH}" \
-            bash << 'ENDSSH'
+          ssh -i ~/.ssh/deploy_key ${VPS_USER}@${VPS_HOST} bash << ENDSSH
             set -e
             
+            # Definir variáveis de ambiente
+            export DB_HOST="${{ secrets.DB_HOST }}"
+            export DB_PORT="${{ secrets.DB_PORT }}"
+            export DB_NAME_MAIN="${{ secrets.DB_NAME_MAIN }}"
+            export DB_USER="${{ secrets.DB_USER }}"
+            export DB_PASS="${{ secrets.DB_PASS }}"
+            export JWT_SECRET="${{ secrets.JWT_SECRET }}"
+            export JWT_EXPIRES_IN="${{ secrets.JWT_EXPIRES_IN }}"
+            export CRYPTO_SECRET="${{ secrets.CRYPTO_SECRET }}"
+            export APP_WEB_URL="${{ secrets.APP_WEB_URL_MAIN }}"
+            export API_COMUNICACOES_URL="${{ secrets.API_COMUNICACOES_URL_MAIN }}"
+            export VPS_DEPLOY_PATH="${{ secrets.VPS_DEPLOY_PATH }}"
+            
             # Navegar para o diretório do projeto
-            cd ${VPS_DEPLOY_PATH}/api-usuarios
+            cd \${VPS_DEPLOY_PATH}/api-usuarios
             
             # Fazer pull da branch main
             git fetch origin
@@ -68,28 +69,7 @@ jobs:
             docker-compose rm -f api-usuarios-main || true
             
             # Rebuild e iniciar container de main com variáveis de ambiente
-            DB_HOST="${DB_HOST}" \
-            DB_PORT="${DB_PORT}" \
-            DB_NAME_MAIN="${DB_NAME_MAIN}" \
-            DB_USER="${DB_USER}" \
-            DB_PASS="${DB_PASS}" \
-            JWT_SECRET="${JWT_SECRET}" \
-            JWT_EXPIRES_IN="${JWT_EXPIRES_IN}" \
-            CRYPTO_SECRET="${CRYPTO_SECRET}" \
-            APP_WEB_URL="${APP_WEB_URL}" \
-            API_COMUNICACOES_URL="${API_COMUNICACOES_URL}" \
             docker-compose build api-usuarios-main
-            
-            DB_HOST="${DB_HOST}" \
-            DB_PORT="${DB_PORT}" \
-            DB_NAME_MAIN="${DB_NAME_MAIN}" \
-            DB_USER="${DB_USER}" \
-            DB_PASS="${DB_PASS}" \
-            JWT_SECRET="${JWT_SECRET}" \
-            JWT_EXPIRES_IN="${JWT_EXPIRES_IN}" \
-            CRYPTO_SECRET="${CRYPTO_SECRET}" \
-            APP_WEB_URL="${APP_WEB_URL}" \
-            API_COMUNICACOES_URL="${API_COMUNICACOES_URL}" \
             docker-compose up -d api-usuarios-main
             
             # Limpar imagens antigas não utilizadas
@@ -111,5 +91,4 @@ jobs:
         if: failure()
         run: |
           echo "❌ Falha no deploy"
-          exit 1
 
