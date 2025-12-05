@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: homolog-api-usuarios:latest
     container_name: api-usuarios-homolog
     restart: unless-stopped
     ports:
@@ -35,6 +36,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: api-usuarios:latest
     container_name: api-usuarios-main
     restart: unless-stopped
     ports:
