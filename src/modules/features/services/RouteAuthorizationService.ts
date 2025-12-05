@@ -42,10 +42,10 @@ export class RouteAuthorizationService {
    */
   private normalizeRoute(path: string): string {
     // Remove query parameters
-    let normalized = path.split('?')[0]
+    let normalized = path.split('?')[0] || ''
     
     // Remove o prefixo /api se existir
-    if (normalized.startsWith('/api')) {
+    if (normalized && normalized.startsWith('/api')) {
       normalized = normalized.substring(4) // Remove '/api'
       // Garante que começa com /
       if (!normalized.startsWith('/')) {
@@ -53,7 +53,7 @@ export class RouteAuthorizationService {
       }
     }
     
-    return normalized
+    return normalized || '/'
   }
 
   /**
@@ -78,6 +78,11 @@ export class RouteAuthorizationService {
     for (let i = 0; i < requestSegments.length; i++) {
       const requestSegment = requestSegments[i]
       const featureSegment = featureSegments[i]
+
+      // Verifica se o segmento existe
+      if (!requestSegment || !featureSegment) {
+        return false
+      }
 
       // Se o segmento da feature começa com ':', é um parâmetro dinâmico
       // Nesse caso, qualquer valor faz match
