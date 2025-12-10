@@ -15,10 +15,19 @@ export class AuthController {
 
   login = async (req: Request, res: Response) => {
     try {
+      console.log('[AuthController] Login iniciado', { body: req.body })
       const validated = loginSchema.parse(req.body)
+      console.log('[AuthController] Dados validados:', { loginOrEmail: validated.loginOrEmail })
       const result = await this.loginUseCase.execute(validated)
+      console.log('[AuthController] Login concluído com sucesso', { userId: result.user.id })
       return res.status(200).json(result)
     } catch (error) {
+      console.error('[AuthController] Erro no login:', {
+        error: error instanceof Error ? error.message : String(error),
+        stack: error instanceof Error ? error.stack : undefined,
+        name: error instanceof Error ? error.name : typeof error,
+        errorType: error instanceof AppError ? 'AppError' : error instanceof z.ZodError ? 'ZodError' : 'Unknown',
+      })
       if (error instanceof AppError) {
         return res.status(error.statusCode).json({ status: 'error', message: error.message })
       }

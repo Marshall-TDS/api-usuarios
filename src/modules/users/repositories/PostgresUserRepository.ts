@@ -85,15 +85,42 @@ export class PostgresUserRepository implements IUserRepository {
   }
 
   async findByLoginOrEmailWithPassword(loginOrEmail: string): Promise<(UserProps & { passwordHash: string | null }) | null> {
-    const result = await pool.query<UserRow>(
-      buildSelectQuery('WHERE LOWER(u.login) = LOWER($1) OR LOWER(u.email) = LOWER($1)', true),
-      [loginOrEmail],
-    )
-    const row = result.rows[0]
-    if (!row) return null
-    return {
-      ...mapRowToProps(row),
-      passwordHash: row.password,
+    try {
+      console.log('[PostgresUserRepository] Buscando usuário por login/email:', { loginOrEmail })
+      const query = buildSelectQuery('WHERE LOWER(u.login) = LOWER($1) OR LOWER(u.email) = LOWER($1)', true)
+      console.log('[PostgresUserRepository] Query SQL preparada')
+      
+      const result = await pool.query<UserRow>(query, [loginOrEmail])
+      console.log('[PostgresUserRepository] Query executada:', { 
+        rowsFound: result.rows.length,
+        hasResult: result.rows.length > 0 
+      })
+      
+      const row = result.rows[0]
+      if (!row) {
+        console.log('[PostgresUserRepository] Nenhum usuário encontrado')
+        return null
+      }
+      
+      console.log('[PostgresUserRepository] Usuário encontrado:', { 
+        id: row.id,
+        login: row.login,
+        email: row.email,
+        hasPassword: !!row.password 
+      })
+      
+      return {
+        ...mapRowToProps(row),
+        passwordHash: row.password,
+      }
+    } catch (error) {
+      console.error('[PostgresUserRepository] Erro ao buscar usuário:', {
+        error: error instanceof Error ? error.message : String(error),
+        stack: error instanceof Error ? error.stack : undefined,
+        name: error instanceof Error ? error.name : typeof error,
+        loginOrEmail,
+      })
+      throw error
     }
   }
 
