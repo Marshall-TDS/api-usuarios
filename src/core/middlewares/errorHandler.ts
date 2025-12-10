@@ -3,18 +3,11 @@ import { AppError } from '../errors/AppError'
 
 export const errorHandler = (
   err: Error,
-  req: Request,
+  _req: Request,
   res: Response,
   _next: NextFunction,
 ) => {
   if (err instanceof AppError) {
-    console.log('[ErrorHandler] AppError capturado:', {
-      statusCode: err.statusCode,
-      message: err.message,
-      details: err.details,
-      path: req.path,
-      method: req.method,
-    })
     return res.status(err.statusCode).json({
       status: 'error',
       message: err.message,
@@ -22,15 +15,7 @@ export const errorHandler = (
     })
   }
 
-  console.error('[ErrorHandler] UnhandledError:', {
-    error: err.message,
-    stack: err.stack,
-    name: err.name,
-    path: req.path,
-    method: req.method,
-    body: req.body,
-    query: req.query,
-  })
+  console.error('[UnhandledError]', err)
 
   return res.status(500).json({
     status: 'error',

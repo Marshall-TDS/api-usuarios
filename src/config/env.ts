@@ -2,16 +2,6 @@ import { config } from 'dotenv'
 
 config()
 
-// Log das variáveis de ambiente do banco (sem mostrar a senha completa)
-console.log('[Env Config] Variáveis de ambiente do banco:', {
-  DB_HOST: process.env.DB_HOST || 'NÃO DEFINIDO',
-  DB_PORT: process.env.DB_PORT || 'NÃO DEFINIDO',
-  DB_NAME: process.env.DB_NAME || 'NÃO DEFINIDO',
-  DB_USER: process.env.DB_USER || 'NÃO DEFINIDO',
-  DB_PASS: process.env.DB_PASS ? `***${process.env.DB_PASS.slice(-3)}` : 'NÃO DEFINIDO',
-  NODE_ENV: process.env.NODE_ENV,
-})
-
 export const env = {
   nodeEnv: process.env.NODE_ENV ?? 'development',
   app: {
