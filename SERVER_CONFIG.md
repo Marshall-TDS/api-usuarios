@@ -26,12 +26,16 @@ Configure as seguintes secrets no GitHub (Settings → Secrets and variables →
 ### Secrets de Banco de Dados:
 | Secret | Descrição |
 |--------|-----------|
-| `DB_HOST` | Host do banco de dados PostgreSQL |
-| `DB_PORT` | Porta do banco (geralmente `5432`) |
+| `DB_HOST_HOMOLOG` | Host do banco de dados PostgreSQL para homologação |
+| `DB_HOST_MAIN` | Host do banco de dados PostgreSQL para produção |
+| `DB_PORT_HOMOLOG` | Porta do banco para homologação (geralmente `5432`) |
+| `DB_PORT_MAIN` | Porta do banco para produção (geralmente `5432`) |
 | `DB_NAME_HOMOLOG` | Nome do banco de homologação |
 | `DB_NAME_MAIN` | Nome do banco de produção |
-| `DB_USER` | Usuário do banco de dados |
-| `DB_PASS` | Senha do banco de dados |
+| `DB_USER_HOMOLOG` | Usuário do banco de dados para homologação |
+| `DB_USER_MAIN` | Usuário do banco de dados para produção |
+| `DB_PASS_HOMOLOG` | Senha do banco de dados para homologação |
+| `DB_PASS_MAIN` | Senha do banco de dados para produção |
 
 ### Secrets de Aplicação:
 | Secret | Descrição |

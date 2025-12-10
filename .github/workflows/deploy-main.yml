@@ -29,11 +29,11 @@ jobs:
           VPS_USER: ${{ secrets.VPS_USER }}
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_DEPLOY_PATH: ${{ secrets.VPS_DEPLOY_PATH }}
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_HOST_MAIN: ${{ secrets.DB_HOST_MAIN }}
+          DB_PORT_MAIN: ${{ secrets.DB_PORT_MAIN }}
           DB_NAME_MAIN: ${{ secrets.DB_NAME_MAIN }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASS: ${{ secrets.DB_PASS }}
+          DB_USER_MAIN: ${{ secrets.DB_USER_MAIN }}
+          DB_PASS_MAIN: ${{ secrets.DB_PASS_MAIN }}
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           JWT_EXPIRES_IN: ${{ secrets.JWT_EXPIRES_IN }}
           CRYPTO_SECRET: ${{ secrets.CRYPTO_SECRET }}
@@ -44,11 +44,11 @@ jobs:
             set -e
             
             # Definir variáveis de ambiente
-            export DB_HOST="${{ secrets.DB_HOST }}"
-            export DB_PORT="${{ secrets.DB_PORT }}"
+            export DB_HOST="${{ secrets.DB_HOST_MAIN }}"
+            export DB_PORT="${{ secrets.DB_PORT_MAIN }}"
             export DB_NAME_MAIN="${{ secrets.DB_NAME_MAIN }}"
-            export DB_USER="${{ secrets.DB_USER }}"
-            export DB_PASS="${{ secrets.DB_PASS }}"
+            export DB_USER="${{ secrets.DB_USER_MAIN }}"
+            export DB_PASS="${{ secrets.DB_PASS_MAIN }}"
             export JWT_SECRET="${{ secrets.JWT_SECRET }}"
             export JWT_EXPIRES_IN="${{ secrets.JWT_EXPIRES_IN }}"
             export CRYPTO_SECRET="${{ secrets.CRYPTO_SECRET }}"

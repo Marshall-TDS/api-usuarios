@@ -101,12 +101,16 @@ Configure as seguintes secrets no GitHub Actions:
 - `VPS_DEPLOY_PATH` - `/var/www/api-usuarios`
 
 #### Secrets de Banco de Dados:
-- `DB_HOST` - Host do banco de dados PostgreSQL
-- `DB_PORT` - Porta do banco (geralmente `5432`)
+- `DB_HOST_HOMOLOG` - Host do banco de dados PostgreSQL para homologação
+- `DB_HOST_MAIN` - Host do banco de dados PostgreSQL para produção
+- `DB_PORT_HOMOLOG` - Porta do banco para homologação (geralmente `5432`)
+- `DB_PORT_MAIN` - Porta do banco para produção (geralmente `5432`)
 - `DB_NAME_HOMOLOG` - Nome do banco de homologação (ex: `marshall_homolog`)
 - `DB_NAME_MAIN` - Nome do banco de produção (ex: `marshall_prod`)
-- `DB_USER` - Usuário do banco de dados
-- `DB_PASS` - Senha do banco de dados
+- `DB_USER_HOMOLOG` - Usuário do banco de dados para homologação
+- `DB_USER_MAIN` - Usuário do banco de dados para produção
+- `DB_PASS_HOMOLOG` - Senha do banco de dados para homologação
+- `DB_PASS_MAIN` - Senha do banco de dados para produção
 
 #### Secrets de Aplicação:
 - `APP_WEB_URL_HOMOLOG` - URL da aplicação web para homologação (ex: `https://homolog.seu-dominio.com`)
@@ -395,9 +399,11 @@ docker-compose config
 
 ### Erro de conexão com banco de dados
 
-- Verifique se as variáveis `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASS` estão corretas no `.env`
+- Verifique se as variáveis de banco de dados estão corretas no GitHub Secrets:
+  - Para homologação: `DB_HOST_HOMOLOG`, `DB_PORT_HOMOLOG`, `DB_NAME_HOMOLOG`, `DB_USER_HOMOLOG`, `DB_PASS_HOMOLOG`
+  - Para produção: `DB_HOST_MAIN`, `DB_PORT_MAIN`, `DB_NAME_MAIN`, `DB_USER_MAIN`, `DB_PASS_MAIN`
 - Verifique se o banco de dados está acessível do servidor
-- Teste a conexão manualmente: `psql -h DB_HOST -U DB_USER -d DB_NAME`
+- Teste a conexão manualmente: `psql -h DB_HOST_MAIN -U DB_USER_MAIN -d DB_NAME_MAIN` (ou use as variáveis de homologação conforme necessário)
 
 ### Porta já em uso
 
