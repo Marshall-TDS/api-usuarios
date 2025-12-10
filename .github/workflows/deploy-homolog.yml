@@ -43,12 +43,12 @@ jobs:
           ssh -i ~/.ssh/deploy_key ${VPS_USER}@${VPS_HOST} bash << ENDSSH
             set -e
             
-            # Definir variáveis de ambiente
-            export DB_HOST="${{ secrets.DB_HOST_HOMOLOG }}"
-            export DB_PORT="${{ secrets.DB_PORT_HOMOLOG }}"
+            # Definir variáveis de ambiente para o docker-compose
+            export DB_HOST_HOMOLOG="${{ secrets.DB_HOST_HOMOLOG }}"
+            export DB_PORT_HOMOLOG="${{ secrets.DB_PORT_HOMOLOG }}"
             export DB_NAME_HOMOLOG="${{ secrets.DB_NAME_HOMOLOG }}"
-            export DB_USER="${{ secrets.DB_USER_HOMOLOG }}"
-            export DB_PASS="${{ secrets.DB_PASS_HOMOLOG }}"
+            export DB_USER_HOMOLOG="${{ secrets.DB_USER_HOMOLOG }}"
+            export DB_PASS_HOMOLOG="${{ secrets.DB_PASS_HOMOLOG }}"
             export JWT_SECRET="${{ secrets.JWT_SECRET }}"
             export JWT_EXPIRES_IN="${{ secrets.JWT_EXPIRES_IN }}"
             export CRYPTO_SECRET="${{ secrets.CRYPTO_SECRET }}"
