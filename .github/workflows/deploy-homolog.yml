@@ -1,0 +1,94 @@
+name: Deploy API Usuários - Homologação
+
+# Deploy automático para servidor 72.61.223.230 na porta 5333
+# Configurar secrets no GitHub: VPS_HOST=72.61.223.230, VPS_USER, VPS_SSH_PRIVATE_KEY, VPS_DEPLOY_PATH
+
+on:
+  push:
+    branches:
+      - homolog
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy no servidor VPS
+        env:
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_DEPLOY_PATH: ${{ secrets.VPS_DEPLOY_PATH }}
+          DB_HOST_HOMOLOG: ${{ secrets.DB_HOST_HOMOLOG }}
+          DB_PORT_HOMOLOG: ${{ secrets.DB_PORT_HOMOLOG }}
+          DB_NAME_HOMOLOG: ${{ secrets.DB_NAME_HOMOLOG }}
+          DB_USER_HOMOLOG: ${{ secrets.DB_USER_HOMOLOG }}
+          DB_PASS_HOMOLOG: ${{ secrets.DB_PASS_HOMOLOG }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          JWT_EXPIRES_IN: ${{ secrets.JWT_EXPIRES_IN }}
+          CRYPTO_SECRET: ${{ secrets.CRYPTO_SECRET }}
+          APP_WEB_URL: ${{ secrets.APP_WEB_URL_HOMOLOG }}
+          API_COMUNICACOES_URL: ${{ secrets.API_COMUNICACOES_URL_HOMOLOG }}
+        run: |
+          ssh -i ~/.ssh/deploy_key ${VPS_USER}@${VPS_HOST} bash << ENDSSH
+            set -e
+            
+            # Definir variáveis de ambiente para o docker-compose
+            export DB_HOST_HOMOLOG="${{ secrets.DB_HOST_HOMOLOG }}"
+            export DB_PORT_HOMOLOG="${{ secrets.DB_PORT_HOMOLOG }}"
+            export DB_NAME_HOMOLOG="${{ secrets.DB_NAME_HOMOLOG }}"
+            export DB_USER_HOMOLOG="${{ secrets.DB_USER_HOMOLOG }}"
+            export DB_PASS_HOMOLOG="${{ secrets.DB_PASS_HOMOLOG }}"
+            export JWT_SECRET="${{ secrets.JWT_SECRET }}"
+            export JWT_EXPIRES_IN="${{ secrets.JWT_EXPIRES_IN }}"
+            export CRYPTO_SECRET="${{ secrets.CRYPTO_SECRET }}"
+            export APP_WEB_URL="${{ secrets.APP_WEB_URL_HOMOLOG }}"
+            export API_COMUNICACOES_URL="${{ secrets.API_COMUNICACOES_URL_HOMOLOG }}"
+            export VPS_DEPLOY_PATH="${{ secrets.VPS_DEPLOY_PATH }}"
+            
+            # Navegar para o diretório do projeto
+            cd \${VPS_DEPLOY_PATH}/api-usuarios
+            
+            # Fazer pull da branch homolog
+            git fetch origin
+            git checkout homolog
+            git pull origin homolog
+            
+            # Parar container de homolog se estiver rodando
+            docker-compose stop api-usuarios-homolog || true
+            docker-compose rm -f api-usuarios-homolog || true
+            
+            # Rebuild e iniciar container de homolog com variáveis de ambiente
+            docker-compose build api-usuarios-homolog
+            docker-compose up -d api-usuarios-homolog
+            
+            # Limpar imagens antigas não utilizadas
+            docker image prune -f
+            
+            # Verificar se o container está rodando
+            sleep 5
+            docker-compose ps api-usuarios-homolog
+            
+            echo "✅ Deploy da API de usuários (homolog) concluído com sucesso!"
+          ENDSSH
+
+      - name: Notificar sucesso
+        if: success()
+        run: |
+          echo "✅ Deploy concluído com sucesso na branch homolog"
+
+      - name: Notificar falha
+        if: failure()
+        run: |
+          echo "❌ Falha no deploy"
+
