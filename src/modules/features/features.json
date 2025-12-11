@@ -426,5 +426,41 @@
     "api-routes": [
       "api-usuarios:get:/customers/:id/documents/:documentId/download"
     ]
+  },
+  {
+    "key": "erp:parametros:menu",
+    "name": "Parâmetros: Menu",
+    "description": "Permite visualizar o menu de parâmetros.",
+    "api-routes": []
+  },
+  {
+    "key": "erp:parametros:listar",
+    "name": "Parâmetros: Listar",
+    "description": "Permite visualizar a listagem de parâmetros.",
+    "api-routes": []
+  },
+  {
+    "key": "erp:parametros:visualizar",
+    "name": "Parâmetros: Visualizar",
+    "description": "Permite visualizar os detalhes completos de um parâmetro.",
+    "api-routes": []
+  },
+  {
+    "key": "erp:parametros:criar",
+    "name": "Parâmetros: Criar",
+    "description": "Permite cadastrar novos parâmetros.",
+    "api-routes": []
+  },
+  {
+    "key": "erp:parametros:editar",
+    "name": "Parâmetros: Editar",
+    "description": "Permite alterar dados de parâmetros existentes.",
+    "api-routes": []
+  },
+  {
+    "key": "erp:parametros:excluir",
+    "name": "Parâmetros: Excluir",
+    "description": "Permite remover parâmetros do sistema.",
+    "api-routes": []
   }
 ]
