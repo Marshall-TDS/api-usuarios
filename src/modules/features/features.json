@@ -428,6 +428,12 @@
     ]
   },
   {
+    "key": "comercial:clientes:auditoria",
+    "name": "Clientes: Auditoria",
+    "description": "Permite visualizar a auditoria de um cliente.",
+    "api-routes": []
+  },
+  {
     "key": "erp:parametros:menu",
     "name": "Parâmetros: Menu",
     "description": "Permite visualizar o menu de parâmetros.",
