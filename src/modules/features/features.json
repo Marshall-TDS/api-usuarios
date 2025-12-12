@@ -253,7 +253,7 @@
   },
   {
     "key": "comercial:clientes:contatos:listar",
-    "name": "Clientes: Listar Contatos",
+    "name": "Clientes: Contatos - Listar",
     "description": "Permite visualizar a listagem de contatos de um cliente.",
     "api-routes": [
       "api-usuarios:get:/customers/:id/contacts"
@@ -261,7 +261,7 @@
   },
   {
     "key": "comercial:clientes:contatos:visualizar",
-    "name": "Clientes: Visualizar Contato",
+    "name": "Clientes: Contatos - Visualizar",
     "description": "Permite visualizar os detalhes de um contato de um cliente.",
     "api-routes": [
       "api-usuarios:get:/customers/:id/contacts/:contactId"
@@ -269,7 +269,7 @@
   },
   {
     "key": "comercial:clientes:contatos:criar",
-    "name": "Clientes: Criar Contato",
+    "name": "Clientes: Contatos - Criar",
     "description": "Permite adicionar contatos a um cliente.",
     "api-routes": [
       "api-usuarios:post:/customers/:id/contacts"
@@ -277,7 +277,7 @@
   },
   {
     "key": "comercial:clientes:contatos:editar",
-    "name": "Clientes: Editar Contato",
+    "name": "Clientes: Contatos - Editar",
     "description": "Permite alterar dados de um contato de um cliente.",
     "api-routes": [
       "api-usuarios:put:/customers/:id/contacts/:contactId"
@@ -285,7 +285,7 @@
   },
   {
     "key": "comercial:clientes:contatos:excluir",
-    "name": "Clientes: Excluir Contato",
+    "name": "Clientes: Contatos - Excluir",
     "description": "Permite remover um contato de um cliente.",
     "api-routes": [
       "api-usuarios:delete:/customers/:id/contacts/:contactId"
@@ -293,7 +293,7 @@
   },
   {
     "key": "comercial:clientes:enderecos:listar",
-    "name": "Clientes: Listar Endereços",
+    "name": "Clientes: Endereços - Listar",
     "description": "Permite visualizar a listagem de endereços de um cliente.",
     "api-routes": [
       "api-usuarios:get:/customers/:id/addresses"
@@ -301,7 +301,7 @@
   },
   {
     "key": "comercial:clientes:enderecos:visualizar",
-    "name": "Clientes: Visualizar Endereço",
+    "name": "Clientes: Endereços - Visualizar",
     "description": "Permite visualizar os detalhes de um endereço de um cliente.",
     "api-routes": [
       "api-usuarios:get:/customers/:id/addresses/:addressId"
@@ -309,7 +309,7 @@
   },
   {
     "key": "comercial:clientes:enderecos:criar",
-    "name": "Clientes: Criar Endereço",
+    "name": "Clientes: Endereços - Criar",
     "description": "Permite adicionar endereços a um cliente.",
     "api-routes": [
       "api-usuarios:post:/customers/:id/addresses"
@@ -317,7 +317,7 @@
   },
   {
     "key": "comercial:clientes:enderecos:editar",
-    "name": "Clientes: Editar Endereço",
+    "name": "Clientes: Endereços - Editar",
     "description": "Permite alterar dados de um endereço de um cliente.",
     "api-routes": [
       "api-usuarios:put:/customers/:id/addresses/:addressId"
@@ -325,7 +325,7 @@
   },
   {
     "key": "comercial:clientes:enderecos:excluir",
-    "name": "Clientes: Excluir Endereço",
+    "name": "Clientes: Endereços - Excluir",
     "description": "Permite remover um endereço de um cliente.",
     "api-routes": [
       "api-usuarios:delete:/customers/:id/addresses/:addressId"
@@ -333,7 +333,7 @@
   },
   {
     "key": "comercial:clientes:dados-bancarios:listar",
-    "name": "Clientes: Listar Dados Bancários",
+    "name": "Clientes: Dados Bancários - Listar",
     "description": "Permite visualizar a listagem de dados bancários de um cliente.",
     "api-routes": [
       "api-usuarios:get:/customers/:id/bank-accounts"
@@ -341,7 +341,7 @@
   },
   {
     "key": "comercial:clientes:dados-bancarios:visualizar",
-    "name": "Clientes: Visualizar Dado Bancário",
+    "name": "Clientes: Dados Bancários - Visualizar",
     "description": "Permite visualizar os detalhes de um dado bancário de um cliente.",
     "api-routes": [
       "api-usuarios:get:/customers/:id/bank-accounts/:bankAccountId"
@@ -349,7 +349,7 @@
   },
   {
     "key": "comercial:clientes:dados-bancarios:criar",
-    "name": "Clientes: Criar Dado Bancário",
+    "name": "Clientes: Dados Bancários - Criar",
     "description": "Permite adicionar dados bancários a um cliente.",
     "api-routes": [
       "api-usuarios:post:/customers/:id/bank-accounts"
@@ -357,7 +357,7 @@
   },
   {
     "key": "comercial:clientes:dados-bancarios:editar",
-    "name": "Clientes: Editar Dado Bancário",
+    "name": "Clientes: Dados Bancários - Editar",
     "description": "Permite alterar dados bancários de um cliente.",
     "api-routes": [
       "api-usuarios:put:/customers/:id/bank-accounts/:bankAccountId"
@@ -365,7 +365,7 @@
   },
   {
     "key": "comercial:clientes:dados-bancarios:excluir",
-    "name": "Clientes: Excluir Dado Bancário",
+    "name": "Clientes: Dados Bancários - Excluir",
     "description": "Permite remover dados bancários de um cliente.",
     "api-routes": [
       "api-usuarios:delete:/customers/:id/bank-accounts/:bankAccountId"
@@ -373,7 +373,7 @@
   },
   {
     "key": "comercial:clientes:documentos:listar",
-    "name": "Clientes: Listar Documentos",
+    "name": "Clientes: Documentos - Listar",
     "description": "Permite visualizar a listagem de documentos de um cliente.",
     "api-routes": [
       "api-usuarios:get:/customers/:id/documents"
@@ -381,7 +381,7 @@
   },
   {
     "key": "comercial:clientes:documentos:visualizar",
-    "name": "Clientes: Visualizar Documento",
+    "name": "Clientes: Documentos - Visualizar",
     "description": "Permite visualizar os detalhes de um documento de um cliente.",
     "api-routes": [
       "api-usuarios:get:/customers/:id/documents/:documentId"
@@ -389,7 +389,7 @@
   },
   {
     "key": "comercial:clientes:documentos:criar",
-    "name": "Clientes: Criar Documento",
+    "name": "Clientes: Documentos - Criar",
     "description": "Permite adicionar documentos a um cliente.",
     "api-routes": [
       "api-usuarios:post:/customers/:id/documents"
@@ -397,7 +397,7 @@
   },
   {
     "key": "comercial:clientes:documentos:editar",
-    "name": "Clientes: Editar Documento",
+    "name": "Clientes: Documentos - Editar",
     "description": "Permite alterar dados de um documento de um cliente.",
     "api-routes": [
       "api-usuarios:put:/customers/:id/documents/:documentId"
@@ -405,7 +405,7 @@
   },
   {
     "key": "comercial:clientes:documentos:excluir",
-    "name": "Clientes: Excluir Documento",
+    "name": "Clientes: Documentos - Excluir",
     "description": "Permite remover documentos de um cliente.",
     "api-routes": [
       "api-usuarios:delete:/customers/:id/documents/:documentId"
@@ -413,7 +413,7 @@
   },
   {
     "key": "comercial:clientes:documentos:preview",
-    "name": "Clientes: Visualizar Preview de Documento",
+    "name": "Clientes: Documentos - Preview",
     "description": "Permite visualizar a prévia de um documento de um cliente.",
     "api-routes": [
       "api-usuarios:get:/customers/:id/documents/:documentId/preview"
@@ -421,7 +421,7 @@
   },
   {
     "key": "comercial:clientes:documentos:download",
-    "name": "Clientes: Download de Documento",
+    "name": "Clientes: Documentos - Download",
     "description": "Permite realizar o download de um documento de um cliente.",
     "api-routes": [
       "api-usuarios:get:/customers/:id/documents/:documentId/download"
