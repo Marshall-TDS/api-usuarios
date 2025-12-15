@@ -468,5 +468,97 @@
     "name": "Parâmetros: Excluir",
     "description": "Permite remover parâmetros do sistema.",
     "api-routes": []
+  },
+  {
+    "key": "contratos:ciclos-pagamento:menu",
+    "name": "Ciclos de Pagamento: Menu",
+    "description": "Permite visualizar o menu de ciclos de pagamento.",
+    "api-routes": []
+  },
+  {
+    "key": "contratos:ciclos-pagamento:listar",
+    "name": "Ciclos de Pagamento: Listar",
+    "description": "Permite visualizar a listagem de ciclos de pagamento cadastrados.",
+    "api-routes": [
+      "api-contratos:get:/ciclos-pagamento/"
+    ]
+  },
+  {
+    "key": "contratos:ciclos-pagamento:visualizar",
+    "name": "Ciclos de Pagamento: Visualizar",
+    "description": "Permite visualizar os detalhes completos de um ciclo de pagamento.",
+    "api-routes": [
+      "api-contratos:get:/ciclos-pagamento/:id"
+    ]
+  },
+  {
+    "key": "contratos:ciclos-pagamento:criar",
+    "name": "Ciclos de Pagamento: Criar",
+    "description": "Permite cadastrar novos ciclos de pagamento no sistema.",
+    "api-routes": [
+      "api-contratos:post:/ciclos-pagamento/"
+    ]
+  },
+  {
+    "key": "contratos:ciclos-pagamento:editar",
+    "name": "Ciclos de Pagamento: Editar",
+    "description": "Permite alterar dados de ciclos de pagamento existentes.",
+    "api-routes": [
+      "api-contratos:put:/ciclos-pagamento/:id"
+    ]
+  },
+  {
+    "key": "contratos:ciclos-pagamento:excluir",
+    "name": "Ciclos de Pagamento: Excluir",
+    "description": "Permite remover ciclos de pagamento do sistema.",
+    "api-routes": [
+      "api-contratos:delete:/ciclos-pagamento/:id"
+    ]
+  },
+  {
+    "key": "contratos:modalidades-rentabilidade:menu",
+    "name": "Modalidades de Rentabilidade: Menu",
+    "description": "Permite visualizar o menu de modalidades de rentabilidade.",
+    "api-routes": []
+  },
+  {
+    "key": "contratos:modalidades-rentabilidade:listar",
+    "name": "Modalidades de Rentabilidade: Listar",
+    "description": "Permite visualizar a listagem de modalidades de rentabilidade cadastradas.",
+    "api-routes": [
+      "api-contratos:get:/modalidades-rentabilidade/"
+    ]
+  },
+  {
+    "key": "contratos:modalidades-rentabilidade:visualizar",
+    "name": "Modalidades de Rentabilidade: Visualizar",
+    "description": "Permite visualizar os detalhes completos de uma modalidade de rentabilidade.",
+    "api-routes": [
+      "api-contratos:get:/modalidades-rentabilidade/:id"
+    ]
+  },
+  {
+    "key": "contratos:modalidades-rentabilidade:criar",
+    "name": "Modalidades de Rentabilidade: Criar",
+    "description": "Permite cadastrar novas modalidades de rentabilidade no sistema.",
+    "api-routes": [
+      "api-contratos:post:/modalidades-rentabilidade/"
+    ]
+  },
+  {
+    "key": "contratos:modalidades-rentabilidade:editar",
+    "name": "Modalidades de Rentabilidade: Editar",
+    "description": "Permite alterar dados de modalidades de rentabilidade existentes.",
+    "api-routes": [
+      "api-contratos:put:/modalidades-rentabilidade/:id"
+    ]
+  },
+  {
+    "key": "contratos:modalidades-rentabilidade:excluir",
+    "name": "Modalidades de Rentabilidade: Excluir",
+    "description": "Permite remover modalidades de rentabilidade do sistema.",
+    "api-routes": [
+      "api-contratos:delete:/modalidades-rentabilidade/:id"
+    ]
   }
 ]

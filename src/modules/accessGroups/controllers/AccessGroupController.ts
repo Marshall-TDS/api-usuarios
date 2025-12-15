@@ -69,8 +69,26 @@ export class AccessGroupController {
         throw new AppError('Parâmetro id é obrigatório', 400)
       }
 
+      // Log detalhado do payload recebido para depuração de features inválidas
+      // ATENÇÃO: manter este log apenas em ambiente de desenvolvimento
+      console.log('[ACCESS_GROUP_UPDATE] Payload recebido:', {
+        id,
+        name: req.body?.name,
+        code: req.body?.code,
+        features: Array.isArray(req.body?.features) ? req.body.features : req.body?.features,
+        updatedBy: req.body?.updatedBy,
+      })
+
       const parseResult = updateAccessGroupSchema.safeParse(req.body)
       if (!parseResult.success) {
+        // Quando houver erro de validação em features, logar o detalhe bruto
+        const flat = parseResult.error.flatten()
+        if (flat.fieldErrors?.features) {
+          console.error('[ACCESS_GROUP_UPDATE] Erro de validação em features:', {
+            rawFeatures: req.body?.features,
+            fieldErrors: flat.fieldErrors.features,
+          })
+        }
         throw new AppError('Falha de validação', 422, parseResult.error.flatten())
       }
 

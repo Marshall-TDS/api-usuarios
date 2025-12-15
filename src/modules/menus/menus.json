@@ -38,5 +38,21 @@
         "description": "Administração de comunicações",
         "url": "/comunicacoes/comunicacoes",
         "icon": "Send"
+    },
+    {
+        "key": "contratos:ciclos-pagamento:menu",
+        "category": "CONTRATOS",
+        "name": "Ciclos de Pagamento",
+        "description": "Administração de ciclos de pagamento",
+        "url": "/contratos/ciclos-pagamento",
+        "icon": "AccountBalance"
+    },
+    {
+        "key": "contratos:modalidades-rentabilidade:menu",
+        "category": "CONTRATOS",
+        "name": "Mod. Rentabilidade",
+        "description": "Administração de modalidades de rentabilidade",
+        "url": "/contratos/modalidades-rentabilidade",
+        "icon": "TrendingUp"
     }
 ]

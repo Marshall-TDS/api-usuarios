@@ -12,8 +12,14 @@ const featuresSchema = z
       .string()
       .min(3)
       .transform((value) => formatFeatureKey(value))
-      .refine((value) => isValidFeatureKey(value), {
-        message: `Funcionalidade precisa existir no catálogo (${FEATURE_KEYS.join(', ')})`,
+      .refine((value) => {
+        const isValid = isValidFeatureKey(value)
+        if (!isValid) {
+          console.error(`[VALIDATION] Funcionalidade inválida: "${value}"`)
+        }
+        return isValid
+      }, {
+        message: `Funcionalidade precisa existir no catálogo. Total de funcionalidades válidas: ${FEATURE_KEYS.length}`,
       }),
   )
   .optional()
