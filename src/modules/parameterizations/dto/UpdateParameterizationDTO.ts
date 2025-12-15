@@ -1,10 +1,9 @@
 export interface UpdateParameterizationDTO {
-  friendlyName?: string
-  technicalKey?: string
-  dataType?: string
-  value?: string
-  scopeType?: string
-  scopeTargetId?: string[]
-  updatedBy: string
+  friendlyName?: string | undefined;
+  technicalKey?: string | undefined;
+  dataType?: string | undefined;
+  value?: string | undefined;
+  scopeType?: string | undefined;
+  scopeTargetId?: string[] | undefined;
+  updatedBy: string;
 }
-
