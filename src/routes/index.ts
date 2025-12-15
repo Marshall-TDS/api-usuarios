@@ -4,6 +4,7 @@ import { featureRoutes } from '../modules/features/routes/feature.routes'
 import { accessGroupRoutes } from '../modules/accessGroups/routes/accessGroup.routes'
 import { userRoutes } from '../modules/users/routes/user.routes'
 import { menuRoutes } from '../modules/menus/routes/menu.routes'
+import { parameterizationRoutes } from '../modules/parameterizations/routes/parameterization.routes'
 
 export const routes = Router()
 
@@ -16,4 +17,5 @@ routes.use('/users', userRoutes)
 routes.use('/groups', accessGroupRoutes)
 routes.use('/features', featureRoutes)
 routes.use('/menus', menuRoutes)
+routes.use('/parameterizations', parameterizationRoutes)
 

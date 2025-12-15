@@ -1,58 +1,58 @@
 [
-    {
-        "key": "comercial:clientes:menu",
-        "category": "Comercial",
-        "name": "Clientes",
-        "description": "Administração de clientes",
-        "url": "/customers",
-        "icon": "People"
-    },
-    {
-        "key": "erp:grupos-acesso:menu",
-        "category": "Acesso",
-        "name": "Grupos de Acesso",
-        "description": "Administração de grupos de acesso",
-        "url": "access/access-groups",
-        "icon": "Groups"
-    },
-    {
-        "key": "erp:usuarios:menu",
-        "category": "Acesso",
-        "name": "Usuários",
-        "description": "Administração de usuários e acessos",
-        "url": "/users",
-        "icon": "AdminPanelSettings"
-    },
-    {
-        "key": "comunicacoes:remetentes:menu",
-        "category": "Comunicações",
-        "name": "Remetentes",
-        "description": "Administração de remetentes de e-mail",
-        "url": "/comunicacoes/remetentes",
-        "icon": "ContactMail"
-    },
-    {
-        "key": "comunicacoes:comunicacoes:menu",
-        "category": "Comunicações",
-        "name": "Comunicações",
-        "description": "Administração de comunicações",
-        "url": "/comunicacoes/comunicacoes",
-        "icon": "Send"
-    },
-    {
-        "key": "contratos:ciclos-pagamento:menu",
-        "category": "CONTRATOS",
-        "name": "Ciclos de Pagamento",
-        "description": "Administração de ciclos de pagamento",
-        "url": "/contratos/ciclos-pagamento",
-        "icon": "AccountBalance"
-    },
-    {
-        "key": "contratos:modalidades-rentabilidade:menu",
-        "category": "CONTRATOS",
-        "name": "Mod. Rentabilidade",
-        "description": "Administração de modalidades de rentabilidade",
-        "url": "/contratos/modalidades-rentabilidade",
-        "icon": "TrendingUp"
-    }
+  {
+    "key": "comercial:clientes:menu",
+    "category": "Comercial",
+    "name": "Clientes",
+    "description": "Administração de clientes",
+    "url": "/customers",
+    "icon": "People"
+  },
+  {
+    "key": "erp:grupos-acesso:menu",
+    "category": "Acesso",
+    "name": "Grupos de Acesso",
+    "description": "Administração de grupos de acesso",
+    "url": "access/access-groups",
+    "icon": "Groups"
+  },
+  {
+    "key": "erp:usuarios:menu",
+    "category": "Acesso",
+    "name": "Usuários",
+    "description": "Administração de usuários e acessos",
+    "url": "/users",
+    "icon": "AdminPanelSettings"
+  },
+  {
+    "key": "comunicacoes:remetentes:menu",
+    "category": "Comunicações",
+    "name": "Remetentes",
+    "description": "Administração de remetentes de e-mail",
+    "url": "/comunicacoes/remetentes",
+    "icon": "ContactMail"
+  },
+  {
+    "key": "comunicacoes:comunicacoes:menu",
+    "category": "Comunicações",
+    "name": "Comunicações",
+    "description": "Administração de comunicações",
+    "url": "/comunicacoes/comunicacoes",
+    "icon": "Send"
+  },
+  {
+    "key": "contratos:ciclos-pagamento:menu",
+    "category": "CONTRATOS",
+    "name": "Ciclos de Pagamento",
+    "description": "Administração de ciclos de pagamento",
+    "url": "/contratos/ciclos-pagamento",
+    "icon": "AccountBalance"
+  },
+  {
+    "key": "contratos:modalidades-rentabilidade:menu",
+    "category": "CONTRATOS",
+    "name": "Mod. Rentabilidade",
+    "description": "Administração de modalidades de rentabilidade",
+    "url": "/contratos/modalidades-rentabilidade",
+    "icon": "TrendingUp"
+  }
 ]

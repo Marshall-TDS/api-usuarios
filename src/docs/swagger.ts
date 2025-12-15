@@ -83,6 +83,47 @@ const accessGroupProperties = {
   updatedAt: userProperties.updatedAt,
 }
 
+const parameterizationProperties = {
+  id: {
+    type: 'string',
+    format: 'uuid',
+    example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+  },
+  seqId: {
+    type: 'number',
+    example: 1,
+  },
+  friendlyName: {
+    type: 'string',
+    example: 'Taxa de Juros Padrão',
+  },
+  technicalKey: {
+    type: 'string',
+    example: 'TAXA_JUROS_PADRAO',
+  },
+  dataType: {
+    type: 'string',
+    example: 'decimal',
+  },
+  value: {
+    type: 'string',
+    example: '12.5',
+  },
+  scopeType: {
+    type: 'string',
+    example: 'Global',
+  },
+  scopeTargetId: {
+    type: 'array',
+    items: { type: 'string', format: 'uuid' },
+    example: [],
+  },
+  createdBy: userProperties.createdBy,
+  updatedBy: userProperties.updatedBy,
+  createdAt: userProperties.createdAt,
+  updatedAt: userProperties.updatedAt,
+}
+
 const swaggerDefinition = {
   openapi: '3.0.3',
   info: {
@@ -104,6 +145,7 @@ const swaggerDefinition = {
     { name: 'Users', description: 'Gestão de usuários corporativos' },
     { name: 'AccessGroups', description: 'Catálogo de grupos e funcionalidades' },
     { name: 'Features', description: 'Lista estática de funcionalidades suportadas' },
+    { name: 'Parameterizations', description: 'Gestão de parametrizações do sistema' },
   ],
   components: {
     securitySchemes: {
@@ -216,6 +258,36 @@ const swaggerDefinition = {
               FEATURE_CATALOG[0]?.description ??
               'Visualização consolidada de KPIs e status em tempo real.',
           },
+        },
+      },
+      Parameterization: {
+        type: 'object',
+        properties: parameterizationProperties,
+      },
+      CreateParameterizationInput: {
+        type: 'object',
+        required: ['friendlyName', 'technicalKey', 'dataType', 'value', 'scopeType', 'createdBy'],
+        properties: {
+          friendlyName: parameterizationProperties.friendlyName,
+          technicalKey: parameterizationProperties.technicalKey,
+          dataType: parameterizationProperties.dataType,
+          value: parameterizationProperties.value,
+          scopeType: parameterizationProperties.scopeType,
+          scopeTargetId: parameterizationProperties.scopeTargetId,
+          createdBy: parameterizationProperties.createdBy,
+        },
+      },
+      UpdateParameterizationInput: {
+        type: 'object',
+        required: ['updatedBy'],
+        properties: {
+          friendlyName: { ...parameterizationProperties.friendlyName, nullable: true },
+          technicalKey: { ...parameterizationProperties.technicalKey, nullable: true },
+          dataType: { ...parameterizationProperties.dataType, nullable: true },
+          value: { ...parameterizationProperties.value, nullable: true },
+          scopeType: { ...parameterizationProperties.scopeType, nullable: true },
+          scopeTargetId: { ...parameterizationProperties.scopeTargetId, nullable: true },
+          updatedBy: parameterizationProperties.updatedBy,
         },
       },
       ErrorResponse: {
@@ -828,6 +900,191 @@ const swaggerDefinition = {
           204: { description: 'Senha atualizada' },
           401: {
             description: 'Token inválido ou expirado',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+        },
+      },
+    },
+    '/parameterizations': {
+      get: {
+        tags: ['Parameterizations'],
+        summary: 'Lista todas as parametrizações',
+        security: [{ bearerAuth: [] }],
+        parameters: [
+          {
+            name: 'search',
+            in: 'query',
+            description: 'Busca por nome amigável, chave técnica ou valor',
+            schema: { type: 'string' },
+          },
+          {
+            name: 'scopeType',
+            in: 'query',
+            description: 'Filtrar por tipo de escopo',
+            schema: { type: 'string' },
+          },
+        ],
+        responses: {
+          200: {
+            description: 'Lista de parametrizações',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'array',
+                  items: { $ref: '#/components/schemas/Parameterization' },
+                },
+              },
+            },
+          },
+        },
+      },
+      post: {
+        tags: ['Parameterizations'],
+        summary: 'Cria uma nova parametrização',
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: { $ref: '#/components/schemas/CreateParameterizationInput' },
+            },
+          },
+        },
+        responses: {
+          201: {
+            description: 'Parametrização criada',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/Parameterization' },
+              },
+            },
+          },
+          409: {
+            description: 'Technical key já está em uso',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+          422: {
+            description: 'Erro de validação',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+        },
+      },
+    },
+    '/parameterizations/{id}': {
+      get: {
+        tags: ['Parameterizations'],
+        summary: 'Busca uma parametrização por ID',
+        security: [{ bearerAuth: [] }],
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            required: true,
+            schema: { type: 'string', format: 'uuid' },
+          },
+        ],
+        responses: {
+          200: {
+            description: 'Parametrização encontrada',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/Parameterization' },
+              },
+            },
+          },
+          404: {
+            description: 'Parametrização não encontrada',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+        },
+      },
+      put: {
+        tags: ['Parameterizations'],
+        summary: 'Atualiza uma parametrização',
+        security: [{ bearerAuth: [] }],
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            required: true,
+            schema: { type: 'string', format: 'uuid' },
+          },
+        ],
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: { $ref: '#/components/schemas/UpdateParameterizationInput' },
+            },
+          },
+        },
+        responses: {
+          200: {
+            description: 'Parametrização atualizada',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/Parameterization' },
+              },
+            },
+          },
+          404: {
+            description: 'Parametrização não encontrada',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+          409: {
+            description: 'Technical key já está em uso',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+          422: {
+            description: 'Erro de validação',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+        },
+      },
+      delete: {
+        tags: ['Parameterizations'],
+        summary: 'Remove uma parametrização',
+        security: [{ bearerAuth: [] }],
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            required: true,
+            schema: { type: 'string', format: 'uuid' },
+          },
+        ],
+        responses: {
+          204: { description: 'Parametrização removida' },
+          404: {
+            description: 'Parametrização não encontrada',
             content: {
               'application/json': {
                 schema: { $ref: '#/components/schemas/ErrorResponse' },
