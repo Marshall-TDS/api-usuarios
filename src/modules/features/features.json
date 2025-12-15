@@ -252,6 +252,24 @@
     ]
   },
   {
+    "key": "comercial:clientes:detalhes:visualizar",
+    "name": "Clientes: Detalhes - Visualizar",
+    "description": "Permite visualizar os detalhes pessoais de um cliente.",
+    "api-routes": [
+      "api-usuarios:get:/customers/:id/details",
+      "api-usuarios:get:/customers/:id"
+    ]
+  },
+  {
+    "key": "comercial:clientes:detalhes:editar",
+    "name": "Clientes: Detalhes - Editar",
+    "description": "Permite alterar dados de detalhes pessoais de um cliente.",
+    "api-routes": [
+      "api-usuarios:post:/customers/:id/details",
+      "api-usuarios:put:/customers/:id/details/:detailId"
+    ]
+  },
+  {
     "key": "comercial:clientes:contatos:listar",
     "name": "Clientes: Contatos - Listar",
     "description": "Permite visualizar a listagem de contatos de um cliente.",
