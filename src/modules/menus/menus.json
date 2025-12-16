@@ -54,5 +54,13 @@
     "description": "Administração de modalidades de rentabilidade",
     "url": "/contratos/modalidades-rentabilidade",
     "icon": "TrendingUp"
+  },
+  {
+    "key": "erp:parametros:menu",
+    "category": "ERP",
+    "name": "Parametrizações",
+    "description": "Administração de parametrizações",
+    "url": "/parametros/parametrizacoes",
+    "icon": "AdminPanelSettings"
   }
 ]

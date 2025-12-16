@@ -373,31 +373,31 @@
     "key": "erp:parametros:listar",
     "name": "Parâmetros: Listar",
     "description": "Permite visualizar a listagem de parâmetros.",
-    "api-routes": []
+    "api-routes": ["api-usuarios:get:/parameterizations/"]
   },
   {
     "key": "erp:parametros:visualizar",
     "name": "Parâmetros: Visualizar",
     "description": "Permite visualizar os detalhes completos de um parâmetro.",
-    "api-routes": []
+    "api-routes": ["api-usuarios:get:/parameterizations/:id"]
   },
   {
     "key": "erp:parametros:criar",
     "name": "Parâmetros: Criar",
     "description": "Permite cadastrar novos parâmetros.",
-    "api-routes": []
+    "api-routes": ["api-usuarios:post:/parameterizations/"]
   },
   {
     "key": "erp:parametros:editar",
     "name": "Parâmetros: Editar",
     "description": "Permite alterar dados de parâmetros existentes.",
-    "api-routes": []
+    "api-routes": ["api-usuarios:put:/parameterizations/:id"]
   },
   {
     "key": "erp:parametros:excluir",
     "name": "Parâmetros: Excluir",
     "description": "Permite remover parâmetros do sistema.",
-    "api-routes": []
+    "api-routes": ["api-usuarios:delete:/parameterizations/:id"]
   },
   {
     "key": "contratos:ciclos-pagamento:menu",
