@@ -400,6 +400,18 @@
     "api-routes": ["api-usuarios:delete:/parameterizations/:id"]
   },
   {
+    "key": "erp:parametros:editar-nao-editaveis",
+    "name": "Parâmetros: Editar Não Editáveis",
+    "description": "Permite editar valores de parâmetros marcados como não editáveis.",
+    "api-routes": ["api-usuarios:put:/parameterizations/:id"]
+  },
+  {
+    "key": "erp:parametros:editar-todos-campos",
+    "name": "Parâmetros: Editar Todos os Campos",
+    "description": "Permite editar todos os campos de um parâmetro, não apenas o valor.",
+    "api-routes": ["api-usuarios:put:/parameterizations/:id"]
+  },
+  {
     "key": "contratos:ciclos-pagamento:menu",
     "name": "Ciclos de Pagamento: Menu",
     "description": "Permite visualizar o menu de ciclos de pagamento.",
