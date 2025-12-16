@@ -5,5 +5,6 @@ export interface CreateParameterizationDTO {
   value: string;
   scopeType: string;
   scopeTargetId?: string[] | undefined;
+  editable?: boolean | undefined;
   createdBy: string;
 }

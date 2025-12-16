@@ -5,5 +5,6 @@ export interface UpdateParameterizationDTO {
   value?: string | undefined;
   scopeType?: string | undefined;
   scopeTargetId?: string[] | undefined;
+  editable?: boolean | undefined;
   updatedBy: string;
 }
