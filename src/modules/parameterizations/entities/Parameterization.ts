@@ -18,8 +18,10 @@ export interface ParameterizationProps {
 
 export type CreateParameterizationProps = Omit<
   ParameterizationProps,
-  "id" | "createdAt" | "updatedAt"
->;
+  "id" | "createdAt" | "updatedAt" | "editable"
+> & {
+  editable?: boolean;
+};
 
 export type UpdateParameterizationProps = {
   friendlyName?: string | undefined;
