@@ -18,4 +18,3 @@ routes.use('/groups', accessGroupRoutes)
 routes.use('/features', featureRoutes)
 routes.use('/menus', menuRoutes)
 routes.use('/parameterizations', parameterizationRoutes)
-
