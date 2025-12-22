@@ -1,11 +1,19 @@
 [
   {
-    "key": "comercial:pessoas:menu",
-    "category": "Comercial",
+    "key": "cadastro:pessoas:menu",
+    "category": "Cadastro",
     "name": "Pessoas",
     "description": "Administração de pessoas",
     "url": "/peoples",
     "icon": "People"
+  },
+  {
+    "key": "cadastro:tipos-relacionamento:menu",
+    "category": "Cadastro",
+    "name": "Tipos de Relacionamento",
+    "description": "Administração de tipos de relacionamento",
+    "url": "/cadastro/tipos-relacionamento",
+    "icon": "AccountTree"
   },
   {
     "key": "contratos:ciclos-pagamento:menu",

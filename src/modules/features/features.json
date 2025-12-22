@@ -9,31 +9,41 @@
     "key": "erp:grupos-acesso:listar",
     "name": "Grupos de Acesso: Listar",
     "description": "Permite visualizar a listagem de grupos de acesso.",
-    "api-routes": ["api-usuarios:get:/groups/"]
+    "api-routes": [
+      "api-usuarios:get:/groups/"
+    ]
   },
   {
     "key": "erp:grupos-acesso:visualizar",
     "name": "Grupos de Acesso: Visualizar",
     "description": "Permite visualizar os detalhes completos de um grupo de acesso.",
-    "api-routes": ["api-usuarios:get:/groups/:id"]
+    "api-routes": [
+      "api-usuarios:get:/groups/:id"
+    ]
   },
   {
     "key": "erp:grupos-acesso:criar",
     "name": "Grupos de Acesso: Criar",
     "description": "Permite cadastrar novos grupos de acesso.",
-    "api-routes": ["api-usuarios:post:/groups/"]
+    "api-routes": [
+      "api-usuarios:post:/groups/"
+    ]
   },
   {
     "key": "erp:grupos-acesso:editar",
     "name": "Grupos de Acesso: Editar",
     "description": "Permite alterar informações de grupos de acesso existentes.",
-    "api-routes": ["api-usuarios:put:/groups/:id"]
+    "api-routes": [
+      "api-usuarios:put:/groups/:id"
+    ]
   },
   {
     "key": "erp:grupos-acesso:excluir",
     "name": "Grupos de Acesso: Excluir",
     "description": "Permite remover grupos de acesso do sistema.",
-    "api-routes": ["api-usuarios:delete:/groups/:id"]
+    "api-routes": [
+      "api-usuarios:delete:/groups/:id"
+    ]
   },
   {
     "key": "erp:usuarios:menu",
@@ -45,43 +55,57 @@
     "key": "erp:usuarios:listar",
     "name": "Usuários: Listar",
     "description": "Permite visualizar a listagem de usuários cadastrados.",
-    "api-routes": ["api-usuarios:get:/users/"]
+    "api-routes": [
+      "api-usuarios:get:/users/"
+    ]
   },
   {
     "key": "erp:usuarios:visualizar",
     "name": "Usuários: Visualizar",
     "description": "Permite visualizar os detalhes completos de um usuário.",
-    "api-routes": ["api-usuarios:get:/users/:id"]
+    "api-routes": [
+      "api-usuarios:get:/users/:id"
+    ]
   },
   {
     "key": "erp:usuarios:criar",
     "name": "Usuários: Criar",
     "description": "Permite cadastrar novos usuários no sistema.",
-    "api-routes": ["api-usuarios:post:/users/"]
+    "api-routes": [
+      "api-usuarios:post:/users/"
+    ]
   },
   {
     "key": "erp:usuarios:editar",
     "name": "Usuários: Editar",
     "description": "Permite alterar dados cadastrais de usuários.",
-    "api-routes": ["api-usuarios:put:/users/:id/basic"]
+    "api-routes": [
+      "api-usuarios:put:/users/:id/basic"
+    ]
   },
   {
     "key": "erp:usuarios:excluir",
     "name": "Usuários: Excluir",
     "description": "Permite remover usuários do sistema.",
-    "api-routes": ["api-usuarios:delete:/users/:id"]
+    "api-routes": [
+      "api-usuarios:delete:/users/:id"
+    ]
   },
   {
     "key": "erp:usuarios:atribuir-grupos",
     "name": "Usuários: Atribuir Grupos de Acesso",
     "description": "Permite atribuir ou remover grupos de acesso de um usuário.",
-    "api-routes": ["api-usuarios:put:/users/:id/groups"]
+    "api-routes": [
+      "api-usuarios:put:/users/:id/groups"
+    ]
   },
   {
     "key": "erp:usuarios:atribuir-permissoes-particulares",
     "name": "Usuários: Atribuir Permissões Particulares",
     "description": "Permite conceder ou negar funcionalidades específicas diretamente ao usuário (exceções).",
-    "api-routes": ["api-usuarios:put:/users/:id/permissions"]
+    "api-routes": [
+      "api-usuarios:put:/users/:id/permissions"
+    ]
   },
   {
     "key": "erp:usuarios:resetar-senha",
@@ -90,40 +114,50 @@
     "api-routes": []
   },
   {
-    "key": "comercial:pessoas:menu",
+    "key": "cadastro:pessoas:menu",
     "name": "Pessoas: Menu",
     "description": "Permite visualizar o menu de pessoas.",
     "api-routes": []
   },
   {
-    "key": "comercial:pessoas:listar",
+    "key": "cadastro:pessoas:listar",
     "name": "Pessoas: Listar",
     "description": "Permite visualizar a listagem de pessoas.",
-    "api-routes": ["api-pessoas:get:/peoples/"]
+    "api-routes": [
+      "api-pessoas:get:/peoples/"
+    ]
   },
   {
-    "key": "comercial:pessoas:visualizar",
+    "key": "cadastro:pessoas:visualizar",
     "name": "Pessoas: Visualizar",
-    "description": "Permite visualizar os detalhes completos de uma pessoa.",
-    "api-routes": ["api-pessoas:get:/peoples/:id"]
+    "description": "Permite visualizar os detalhes completos de uma person.",
+    "api-routes": [
+      "api-pessoas:get:/peoples/:id"
+    ]
   },
   {
-    "key": "comercial:pessoas:criar",
+    "key": "cadastro:pessoas:criar",
     "name": "Pessoas: Criar",
     "description": "Permite cadastrar novas pessoas.",
-    "api-routes": ["api-pessoas:post:/peoples/"]
+    "api-routes": [
+      "api-pessoas:post:/peoples/"
+    ]
   },
   {
-    "key": "comercial:pessoas:editar",
+    "key": "cadastro:pessoas:editar",
     "name": "Pessoas: Editar",
     "description": "Permite alterar dados de pessoas existentes.",
-    "api-routes": ["api-pessoas:put:/peoples/:id"]
+    "api-routes": [
+      "api-pessoas:put:/peoples/:id"
+    ]
   },
   {
-    "key": "comercial:pessoas:excluir",
+    "key": "cadastro:pessoas:excluir",
     "name": "Pessoas: Excluir",
     "description": "Permite remover pessoas do sistema.",
-    "api-routes": ["api-pessoas:delete:/peoples/:id"]
+    "api-routes": [
+      "api-pessoas:delete:/peoples/:id"
+    ]
   },
   {
     "key": "comunicacoes:remetentes:menu",
@@ -135,31 +169,41 @@
     "key": "comunicacoes:remetentes:listar",
     "name": "Remetentes: Listar",
     "description": "Permite visualizar a listagem de remetentes cadastrados.",
-    "api-routes": ["api-comunicacoes:get:/remetentes/"]
+    "api-routes": [
+      "api-comunicacoes:get:/remetentes/"
+    ]
   },
   {
     "key": "comunicacoes:remetentes:visualizar",
     "name": "Remetentes: Visualizar",
     "description": "Permite visualizar os detalhes completos de um remetente.",
-    "api-routes": ["api-comunicacoes:get:/remetentes/:id"]
+    "api-routes": [
+      "api-comunicacoes:get:/remetentes/:id"
+    ]
   },
   {
     "key": "comunicacoes:remetentes:criar",
     "name": "Remetentes: Criar",
     "description": "Permite cadastrar novos remetentes no sistema.",
-    "api-routes": ["api-comunicacoes:post:/remetentes/"]
+    "api-routes": [
+      "api-comunicacoes:post:/remetentes/"
+    ]
   },
   {
     "key": "comunicacoes:remetentes:editar",
     "name": "Remetentes: Editar",
     "description": "Permite alterar dados de remetentes existentes.",
-    "api-routes": ["api-comunicacoes:put:/remetentes/:id"]
+    "api-routes": [
+      "api-comunicacoes:put:/remetentes/:id"
+    ]
   },
   {
     "key": "comunicacoes:remetentes:excluir",
     "name": "Remetentes: Excluir",
     "description": "Permite remover remetentes do sistema.",
-    "api-routes": ["api-comunicacoes:delete:/remetentes/:id"]
+    "api-routes": [
+      "api-comunicacoes:delete:/remetentes/:id"
+    ]
   },
   {
     "key": "comunicacoes:comunicacoes:menu",
@@ -171,34 +215,44 @@
     "key": "comunicacoes:comunicacoes:listar",
     "name": "Comunicações: Listar",
     "description": "Permite visualizar a listagem de comunicações cadastradas.",
-    "api-routes": ["api-comunicacoes:get:/comunicacoes/"]
+    "api-routes": [
+      "api-comunicacoes:get:/comunicacoes/"
+    ]
   },
   {
     "key": "comunicacoes:comunicacoes:visualizar",
     "name": "Comunicações: Visualizar",
     "description": "Permite visualizar os detalhes completos de uma comunicação.",
-    "api-routes": ["api-comunicacoes:get:/comunicacoes/:id"]
+    "api-routes": [
+      "api-comunicacoes:get:/comunicacoes/:id"
+    ]
   },
   {
     "key": "comunicacoes:comunicacoes:criar",
     "name": "Comunicações: Criar",
     "description": "Permite cadastrar novas comunicações no sistema.",
-    "api-routes": ["api-comunicacoes:post:/comunicacoes/"]
+    "api-routes": [
+      "api-comunicacoes:post:/comunicacoes/"
+    ]
   },
   {
     "key": "comunicacoes:comunicacoes:editar",
     "name": "Comunicações: Editar",
     "description": "Permite alterar dados de comunicações existentes.",
-    "api-routes": ["api-comunicacoes:put:/comunicacoes/:id"]
+    "api-routes": [
+      "api-comunicacoes:put:/comunicacoes/:id"
+    ]
   },
   {
     "key": "comunicacoes:comunicacoes:excluir",
     "name": "Comunicações: Excluir",
     "description": "Permite remover comunicações do sistema.",
-    "api-routes": ["api-comunicacoes:delete:/comunicacoes/:id"]
+    "api-routes": [
+      "api-comunicacoes:delete:/comunicacoes/:id"
+    ]
   },
   {
-    "key": "comercial:pessoas:detalhes:visualizar",
+    "key": "cadastro:pessoas:detalhes:visualizar",
     "name": "Pessoas: Detalhes - Visualizar",
     "description": "Permite visualizar os detalhes pessoais de uma pessoa.",
     "api-routes": [
@@ -207,7 +261,7 @@
     ]
   },
   {
-    "key": "comercial:pessoas:detalhes:editar",
+    "key": "cadastro:pessoas:detalhes:editar",
     "name": "Pessoas: Detalhes - Editar",
     "description": "Permite alterar dados de detalhes pessoais de uma pessoa.",
     "api-routes": [
@@ -216,73 +270,95 @@
     ]
   },
   {
-    "key": "comercial:pessoas:contatos:listar",
+    "key": "cadastro:pessoas:contatos:listar",
     "name": "Pessoas: Contatos - Listar",
     "description": "Permite visualizar a listagem de contatos de uma pessoa.",
-    "api-routes": ["api-pessoas:get:/peoples/:id/contacts"]
+    "api-routes": [
+      "api-pessoas:get:/peoples/:id/contacts"
+    ]
   },
   {
-    "key": "comercial:pessoas:contatos:visualizar",
+    "key": "cadastro:pessoas:contatos:visualizar",
     "name": "Pessoas: Contatos - Visualizar",
     "description": "Permite visualizar os detalhes de um contato de uma pessoa.",
-    "api-routes": ["api-pessoas:get:/peoples/:id/contacts/:contactId"]
+    "api-routes": [
+      "api-pessoas:get:/peoples/:id/contacts/:contactId"
+    ]
   },
   {
-    "key": "comercial:pessoas:contatos:criar",
+    "key": "cadastro:pessoas:contatos:criar",
     "name": "Pessoas: Contatos - Criar",
     "description": "Permite adicionar contatos a uma pessoa.",
-    "api-routes": ["api-pessoas:post:/peoples/:id/contacts"]
+    "api-routes": [
+      "api-pessoas:post:/peoples/:id/contacts"
+    ]
   },
   {
-    "key": "comercial:pessoas:contatos:editar",
+    "key": "cadastro:pessoas:contatos:editar",
     "name": "Pessoas: Contatos - Editar",
     "description": "Permite alterar dados de um contato de uma pessoa.",
-    "api-routes": ["api-pessoas:put:/peoples/:id/contacts/:contactId"]
+    "api-routes": [
+      "api-pessoas:put:/peoples/:id/contacts/:contactId"
+    ]
   },
   {
-    "key": "comercial:pessoas:contatos:excluir",
+    "key": "cadastro:pessoas:contatos:excluir",
     "name": "Pessoas: Contatos - Excluir",
     "description": "Permite remover um contato de uma pessoa.",
-    "api-routes": ["api-pessoas:delete:/peoples/:id/contacts/:contactId"]
+    "api-routes": [
+      "api-pessoas:delete:/peoples/:id/contacts/:contactId"
+    ]
   },
   {
-    "key": "comercial:pessoas:enderecos:listar",
+    "key": "cadastro:pessoas:enderecos:listar",
     "name": "Pessoas: Endereços - Listar",
     "description": "Permite visualizar a listagem de endereços de uma pessoa.",
-    "api-routes": ["api-pessoas:get:/peoples/:id/addresses"]
+    "api-routes": [
+      "api-pessoas:get:/peoples/:id/addresses"
+    ]
   },
   {
-    "key": "comercial:pessoas:enderecos:visualizar",
+    "key": "cadastro:pessoas:enderecos:visualizar",
     "name": "Pessoas: Endereços - Visualizar",
     "description": "Permite visualizar os detalhes de um endereço de uma pessoa.",
-    "api-routes": ["api-pessoas:get:/peoples/:id/addresses/:addressId"]
+    "api-routes": [
+      "api-pessoas:get:/peoples/:id/addresses/:addressId"
+    ]
   },
   {
-    "key": "comercial:pessoas:enderecos:criar",
+    "key": "cadastro:pessoas:enderecos:criar",
     "name": "Pessoas: Endereços - Criar",
     "description": "Permite adicionar endereços a uma pessoa.",
-    "api-routes": ["api-pessoas:post:/peoples/:id/addresses"]
+    "api-routes": [
+      "api-pessoas:post:/peoples/:id/addresses"
+    ]
   },
   {
-    "key": "comercial:pessoas:enderecos:editar",
+    "key": "cadastro:pessoas:enderecos:editar",
     "name": "Pessoas: Endereços - Editar",
     "description": "Permite alterar dados de um endereço de uma pessoa.",
-    "api-routes": ["api-pessoas:put:/peoples/:id/addresses/:addressId"]
+    "api-routes": [
+      "api-pessoas:put:/peoples/:id/addresses/:addressId"
+    ]
   },
   {
-    "key": "comercial:pessoas:enderecos:excluir",
+    "key": "cadastro:pessoas:enderecos:excluir",
     "name": "Pessoas: Endereços - Excluir",
     "description": "Permite remover um endereço de uma pessoa.",
-    "api-routes": ["api-pessoas:delete:/peoples/:id/addresses/:addressId"]
+    "api-routes": [
+      "api-pessoas:delete:/peoples/:id/addresses/:addressId"
+    ]
   },
   {
-    "key": "comercial:pessoas:dados-bancarios:listar",
+    "key": "cadastro:pessoas:dados-bancarios:listar",
     "name": "Pessoas: Dados Bancários - Listar",
     "description": "Permite visualizar a listagem de dados bancários de uma pessoa.",
-    "api-routes": ["api-pessoas:get:/peoples/:id/bank-accounts"]
+    "api-routes": [
+      "api-pessoas:get:/peoples/:id/bank-accounts"
+    ]
   },
   {
-    "key": "comercial:pessoas:dados-bancarios:visualizar",
+    "key": "cadastro:pessoas:dados-bancarios:visualizar",
     "name": "Pessoas: Dados Bancários - Visualizar",
     "description": "Permite visualizar os detalhes de um dado bancário de uma pessoa.",
     "api-routes": [
@@ -290,13 +366,15 @@
     ]
   },
   {
-    "key": "comercial:pessoas:dados-bancarios:criar",
+    "key": "cadastro:pessoas:dados-bancarios:criar",
     "name": "Pessoas: Dados Bancários - Criar",
     "description": "Permite adicionar dados bancários a uma pessoa.",
-    "api-routes": ["api-pessoas:post:/peoples/:id/bank-accounts"]
+    "api-routes": [
+      "api-pessoas:post:/peoples/:id/bank-accounts"
+    ]
   },
   {
-    "key": "comercial:pessoas:dados-bancarios:editar",
+    "key": "cadastro:pessoas:dados-bancarios:editar",
     "name": "Pessoas: Dados Bancários - Editar",
     "description": "Permite alterar dados bancários de uma pessoa.",
     "api-routes": [
@@ -304,7 +382,7 @@
     ]
   },
   {
-    "key": "comercial:pessoas:dados-bancarios:excluir",
+    "key": "cadastro:pessoas:dados-bancarios:excluir",
     "name": "Pessoas: Dados Bancários - Excluir",
     "description": "Permite remover dados bancários de uma pessoa.",
     "api-routes": [
@@ -312,37 +390,47 @@
     ]
   },
   {
-    "key": "comercial:pessoas:documentos:listar",
+    "key": "cadastro:pessoas:documentos:listar",
     "name": "Pessoas: Documentos - Listar",
     "description": "Permite visualizar a listagem de documentos de uma pessoa.",
-    "api-routes": ["api-pessoas:get:/peoples/:id/documents"]
+    "api-routes": [
+      "api-pessoas:get:/peoples/:id/documents"
+    ]
   },
   {
-    "key": "comercial:pessoas:documentos:visualizar",
+    "key": "cadastro:pessoas:documentos:visualizar",
     "name": "Pessoas: Documentos - Visualizar",
     "description": "Permite visualizar os detalhes de um documento de uma pessoa.",
-    "api-routes": ["api-pessoas:get:/peoples/:id/documents/:documentId"]
+    "api-routes": [
+      "api-pessoas:get:/peoples/:id/documents/:documentId"
+    ]
   },
   {
-    "key": "comercial:pessoas:documentos:criar",
+    "key": "cadastro:pessoas:documentos:criar",
     "name": "Pessoas: Documentos - Criar",
     "description": "Permite adicionar documentos a uma pessoa.",
-    "api-routes": ["api-pessoas:post:/peoples/:id/documents"]
+    "api-routes": [
+      "api-pessoas:post:/peoples/:id/documents"
+    ]
   },
   {
-    "key": "comercial:pessoas:documentos:editar",
+    "key": "cadastro:pessoas:documentos:editar",
     "name": "Pessoas: Documentos - Editar",
     "description": "Permite alterar dados de um documento de uma pessoa.",
-    "api-routes": ["api-pessoas:put:/peoples/:id/documents/:documentId"]
+    "api-routes": [
+      "api-pessoas:put:/peoples/:id/documents/:documentId"
+    ]
   },
   {
-    "key": "comercial:pessoas:documentos:excluir",
+    "key": "cadastro:pessoas:documentos:excluir",
     "name": "Pessoas: Documentos - Excluir",
     "description": "Permite remover documentos de uma pessoa.",
-    "api-routes": ["api-pessoas:delete:/peoples/:id/documents/:documentId"]
+    "api-routes": [
+      "api-pessoas:delete:/peoples/:id/documents/:documentId"
+    ]
   },
   {
-    "key": "comercial:pessoas:documentos:preview",
+    "key": "cadastro:pessoas:documentos:preview",
     "name": "Pessoas: Documentos - Preview",
     "description": "Permite visualizar a prévia de um documento de uma pessoa.",
     "api-routes": [
@@ -350,7 +438,7 @@
     ]
   },
   {
-    "key": "comercial:pessoas:documentos:download",
+    "key": "cadastro:pessoas:documentos:download",
     "name": "Pessoas: Documentos - Download",
     "description": "Permite realizar o download de um documento de uma pessoa.",
     "api-routes": [
@@ -358,7 +446,7 @@
     ]
   },
   {
-    "key": "comercial:pessoas:auditoria",
+    "key": "cadastro:pessoas:auditoria",
     "name": "Pessoas: Auditoria",
     "description": "Permite visualizar a auditoria de uma pessoa.",
     "api-routes": []
@@ -373,43 +461,57 @@
     "key": "erp:parametros:listar",
     "name": "Parâmetros: Listar",
     "description": "Permite visualizar a listagem de parâmetros.",
-    "api-routes": ["api-usuarios:get:/parameterizations/"]
+    "api-routes": [
+      "api-usuarios:get:/parameterizations/"
+    ]
   },
   {
     "key": "erp:parametros:visualizar",
     "name": "Parâmetros: Visualizar",
     "description": "Permite visualizar os detalhes completos de um parâmetro.",
-    "api-routes": ["api-usuarios:get:/parameterizations/:id"]
+    "api-routes": [
+      "api-usuarios:get:/parameterizations/:id"
+    ]
   },
   {
     "key": "erp:parametros:criar",
     "name": "Parâmetros: Criar",
     "description": "Permite cadastrar novos parâmetros.",
-    "api-routes": ["api-usuarios:post:/parameterizations/"]
+    "api-routes": [
+      "api-usuarios:post:/parameterizations/"
+    ]
   },
   {
     "key": "erp:parametros:editar",
     "name": "Parâmetros: Editar",
     "description": "Permite alterar dados de parâmetros existentes.",
-    "api-routes": ["api-usuarios:put:/parameterizations/:id"]
+    "api-routes": [
+      "api-usuarios:put:/parameterizations/:id"
+    ]
   },
   {
     "key": "erp:parametros:excluir",
     "name": "Parâmetros: Excluir",
     "description": "Permite remover parâmetros do sistema.",
-    "api-routes": ["api-usuarios:delete:/parameterizations/:id"]
+    "api-routes": [
+      "api-usuarios:delete:/parameterizations/:id"
+    ]
   },
   {
     "key": "erp:parametros:editar-nao-editaveis",
     "name": "Parâmetros: Editar Não Editáveis",
     "description": "Permite editar valores de parâmetros marcados como não editáveis.",
-    "api-routes": ["api-usuarios:put:/parameterizations/:id"]
+    "api-routes": [
+      "api-usuarios:put:/parameterizations/:id"
+    ]
   },
   {
     "key": "erp:parametros:editar-todos-campos",
     "name": "Parâmetros: Editar Todos os Campos",
     "description": "Permite editar todos os campos de um parâmetro, não apenas o valor.",
-    "api-routes": ["api-usuarios:put:/parameterizations/:id"]
+    "api-routes": [
+      "api-usuarios:put:/parameterizations/:id"
+    ]
   },
   {
     "key": "contratos:ciclos-pagamento:menu",
@@ -421,31 +523,41 @@
     "key": "contratos:ciclos-pagamento:listar",
     "name": "Ciclos de Pagamento: Listar",
     "description": "Permite visualizar a listagem de ciclos de pagamento cadastrados.",
-    "api-routes": ["api-contratos:get:/ciclos-pagamento/"]
+    "api-routes": [
+      "api-contratos:get:/ciclos-pagamento/"
+    ]
   },
   {
     "key": "contratos:ciclos-pagamento:visualizar",
     "name": "Ciclos de Pagamento: Visualizar",
     "description": "Permite visualizar os detalhes completos de um ciclo de pagamento.",
-    "api-routes": ["api-contratos:get:/ciclos-pagamento/:id"]
+    "api-routes": [
+      "api-contratos:get:/ciclos-pagamento/:id"
+    ]
   },
   {
     "key": "contratos:ciclos-pagamento:criar",
     "name": "Ciclos de Pagamento: Criar",
     "description": "Permite cadastrar novos ciclos de pagamento no sistema.",
-    "api-routes": ["api-contratos:post:/ciclos-pagamento/"]
+    "api-routes": [
+      "api-contratos:post:/ciclos-pagamento/"
+    ]
   },
   {
     "key": "contratos:ciclos-pagamento:editar",
     "name": "Ciclos de Pagamento: Editar",
     "description": "Permite alterar dados de ciclos de pagamento existentes.",
-    "api-routes": ["api-contratos:put:/ciclos-pagamento/:id"]
+    "api-routes": [
+      "api-contratos:put:/ciclos-pagamento/:id"
+    ]
   },
   {
     "key": "contratos:ciclos-pagamento:excluir",
     "name": "Ciclos de Pagamento: Excluir",
     "description": "Permite remover ciclos de pagamento do sistema.",
-    "api-routes": ["api-contratos:delete:/ciclos-pagamento/:id"]
+    "api-routes": [
+      "api-contratos:delete:/ciclos-pagamento/:id"
+    ]
   },
   {
     "key": "contratos:modalidades-rentabilidade:menu",
@@ -457,30 +569,126 @@
     "key": "contratos:modalidades-rentabilidade:listar",
     "name": "Modalidades de Rentabilidade: Listar",
     "description": "Permite visualizar a listagem de modalidades de rentabilidade cadastradas.",
-    "api-routes": ["api-contratos:get:/modalidades-rentabilidade/"]
+    "api-routes": [
+      "api-contratos:get:/modalidades-rentabilidade/"
+    ]
   },
   {
     "key": "contratos:modalidades-rentabilidade:visualizar",
     "name": "Modalidades de Rentabilidade: Visualizar",
     "description": "Permite visualizar os detalhes completos de uma modalidade de rentabilidade.",
-    "api-routes": ["api-contratos:get:/modalidades-rentabilidade/:id"]
+    "api-routes": [
+      "api-contratos:get:/modalidades-rentabilidade/:id"
+    ]
   },
   {
     "key": "contratos:modalidades-rentabilidade:criar",
     "name": "Modalidades de Rentabilidade: Criar",
     "description": "Permite cadastrar novas modalidades de rentabilidade no sistema.",
-    "api-routes": ["api-contratos:post:/modalidades-rentabilidade/"]
+    "api-routes": [
+      "api-contratos:post:/modalidades-rentabilidade/"
+    ]
   },
   {
     "key": "contratos:modalidades-rentabilidade:editar",
     "name": "Modalidades de Rentabilidade: Editar",
     "description": "Permite alterar dados de modalidades de rentabilidade existentes.",
-    "api-routes": ["api-contratos:put:/modalidades-rentabilidade/:id"]
+    "api-routes": [
+      "api-contratos:put:/modalidades-rentabilidade/:id"
+    ]
   },
   {
     "key": "contratos:modalidades-rentabilidade:excluir",
     "name": "Modalidades de Rentabilidade: Excluir",
     "description": "Permite remover modalidades de rentabilidade do sistema.",
-    "api-routes": ["api-contratos:delete:/modalidades-rentabilidade/:id"]
+    "api-routes": [
+      "api-contratos:delete:/modalidades-rentabilidade/:id"
+    ]
+  },
+  {
+    "key": "cadastro:tipos-relacionamento:menu",
+    "name": "Tipos de Relacionamento: Menu",
+    "description": "Permite visualizar o menu de tipos de relacionamento.",
+    "api-routes": []
+  },
+  {
+    "key": "cadastro:tipos-relacionamento:listar",
+    "name": "Tipos de Relacionamento: Listar",
+    "description": "Permite visualizar a listagem de tipos de relacionamento.",
+    "api-routes": [
+      "api-pessoas:get:/peoples/relationship-types"
+    ]
+  },
+  {
+    "key": "cadastro:tipos-relacionamento:visualizar",
+    "name": "Tipos de Relacionamento: Visualizar",
+    "description": "Permite visualizar os detalhes completos de um tipo de relacionamento.",
+    "api-routes": [
+      "api-pessoas:get:/peoples/relationship-types/:id"
+    ]
+  },
+  {
+    "key": "cadastro:tipos-relacionamento:criar",
+    "name": "Tipos de Relacionamento: Criar",
+    "description": "Permite cadastrar novos tipos de relacionamento.",
+    "api-routes": [
+      "api-pessoas:post:/peoples/relationship-types"
+    ]
+  },
+  {
+    "key": "cadastro:tipos-relacionamento:editar",
+    "name": "Tipos de Relacionamento: Editar",
+    "description": "Permite alterar dados de tipos de relacionamento existentes.",
+    "api-routes": [
+      "api-pessoas:put:/peoples/relationship-types/:id"
+    ]
+  },
+  {
+    "key": "cadastro:tipos-relacionamento:excluir",
+    "name": "Tipos de Relacionamento: Excluir",
+    "description": "Permite remover tipos de relacionamento do sistema.",
+    "api-routes": [
+      "api-pessoas:delete:/peoples/relationship-types/:id"
+    ]
+  },
+  {
+    "key": "cadastro:pessoas:relacionamentos:listar",
+    "name": "Pessoas: Relacionamentos - Listar",
+    "description": "Permite visualizar a listagem de relacionamentos de uma pessoa.",
+    "api-routes": [
+      "api-pessoas:get:/peoples/:id/relationships"
+    ]
+  },
+  {
+    "key": "cadastro:pessoas:relacionamentos:visualizar",
+    "name": "Pessoas: Relacionamentos - Visualizar",
+    "description": "Permite visualizar os detalhes de um relacionamento de uma pessoa.",
+    "api-routes": [
+      "api-pessoas:get:/peoples/:id/relationships/:relationshipId"
+    ]
+  },
+  {
+    "key": "cadastro:pessoas:relacionamentos:criar",
+    "name": "Pessoas: Relacionamentos - Criar",
+    "description": "Permite adicionar relacionamentos a uma pessoa.",
+    "api-routes": [
+      "api-pessoas:post:/peoples/:id/relationships"
+    ]
+  },
+  {
+    "key": "cadastro:pessoas:relacionamentos:editar",
+    "name": "Pessoas: Relacionamentos - Editar",
+    "description": "Permite alterar dados de um relacionamento de uma pessoa.",
+    "api-routes": [
+      "api-pessoas:put:/peoples/:id/relationships/:relationshipId"
+    ]
+  },
+  {
+    "key": "cadastro:pessoas:relacionamentos:excluir",
+    "name": "Pessoas: Relacionamentos - Excluir",
+    "description": "Permite remover um relacionamento de uma pessoa.",
+    "api-routes": [
+      "api-pessoas:delete:/peoples/:id/relationships/:relationshipId"
+    ]
   }
 ]
