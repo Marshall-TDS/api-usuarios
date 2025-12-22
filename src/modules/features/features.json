@@ -90,40 +90,40 @@
     "api-routes": []
   },
   {
-    "key": "comercial:clientes:menu",
-    "name": "Clientes: Menu",
-    "description": "Permite visualizar o menu de clientes.",
+    "key": "comercial:pessoas:menu",
+    "name": "Pessoas: Menu",
+    "description": "Permite visualizar o menu de pessoas.",
     "api-routes": []
   },
   {
-    "key": "comercial:clientes:listar",
-    "name": "Clientes: Listar",
-    "description": "Permite visualizar a listagem de clientes.",
-    "api-routes": ["api-usuarios:get:/customers/"]
+    "key": "comercial:pessoas:listar",
+    "name": "Pessoas: Listar",
+    "description": "Permite visualizar a listagem de pessoas.",
+    "api-routes": ["api-pessoas:get:/peoples/"]
   },
   {
-    "key": "comercial:clientes:visualizar",
-    "name": "Clientes: Visualizar",
-    "description": "Permite visualizar os detalhes completos de um cliente.",
-    "api-routes": ["api-usuarios:get:/customers/:id"]
+    "key": "comercial:pessoas:visualizar",
+    "name": "Pessoas: Visualizar",
+    "description": "Permite visualizar os detalhes completos de uma pessoa.",
+    "api-routes": ["api-pessoas:get:/peoples/:id"]
   },
   {
-    "key": "comercial:clientes:criar",
-    "name": "Clientes: Criar",
-    "description": "Permite cadastrar novos clientes.",
-    "api-routes": ["api-usuarios:post:/customers/"]
+    "key": "comercial:pessoas:criar",
+    "name": "Pessoas: Criar",
+    "description": "Permite cadastrar novas pessoas.",
+    "api-routes": ["api-pessoas:post:/peoples/"]
   },
   {
-    "key": "comercial:clientes:editar",
-    "name": "Clientes: Editar",
-    "description": "Permite alterar dados de clientes existentes.",
-    "api-routes": ["api-usuarios:put:/customers/:id"]
+    "key": "comercial:pessoas:editar",
+    "name": "Pessoas: Editar",
+    "description": "Permite alterar dados de pessoas existentes.",
+    "api-routes": ["api-pessoas:put:/peoples/:id"]
   },
   {
-    "key": "comercial:clientes:excluir",
-    "name": "Clientes: Excluir",
-    "description": "Permite remover clientes do sistema.",
-    "api-routes": ["api-usuarios:delete:/customers/:id"]
+    "key": "comercial:pessoas:excluir",
+    "name": "Pessoas: Excluir",
+    "description": "Permite remover pessoas do sistema.",
+    "api-routes": ["api-pessoas:delete:/peoples/:id"]
   },
   {
     "key": "comunicacoes:remetentes:menu",
@@ -198,169 +198,169 @@
     "api-routes": ["api-comunicacoes:delete:/comunicacoes/:id"]
   },
   {
-    "key": "comercial:clientes:detalhes:visualizar",
-    "name": "Clientes: Detalhes - Visualizar",
-    "description": "Permite visualizar os detalhes pessoais de um cliente.",
+    "key": "comercial:pessoas:detalhes:visualizar",
+    "name": "Pessoas: Detalhes - Visualizar",
+    "description": "Permite visualizar os detalhes pessoais de uma pessoa.",
     "api-routes": [
-      "api-usuarios:get:/customers/:id/details",
-      "api-usuarios:get:/customers/:id"
+      "api-pessoas:get:/peoples/:id/details",
+      "api-pessoas:get:/peoples/:id"
     ]
   },
   {
-    "key": "comercial:clientes:detalhes:editar",
-    "name": "Clientes: Detalhes - Editar",
-    "description": "Permite alterar dados de detalhes pessoais de um cliente.",
+    "key": "comercial:pessoas:detalhes:editar",
+    "name": "Pessoas: Detalhes - Editar",
+    "description": "Permite alterar dados de detalhes pessoais de uma pessoa.",
     "api-routes": [
-      "api-usuarios:post:/customers/:id/details",
-      "api-usuarios:put:/customers/:id/details/:detailId"
+      "api-pessoas:post:/peoples/:id/details",
+      "api-pessoas:put:/peoples/:id/details/:detailId"
     ]
   },
   {
-    "key": "comercial:clientes:contatos:listar",
-    "name": "Clientes: Contatos - Listar",
-    "description": "Permite visualizar a listagem de contatos de um cliente.",
-    "api-routes": ["api-usuarios:get:/customers/:id/contacts"]
+    "key": "comercial:pessoas:contatos:listar",
+    "name": "Pessoas: Contatos - Listar",
+    "description": "Permite visualizar a listagem de contatos de uma pessoa.",
+    "api-routes": ["api-pessoas:get:/peoples/:id/contacts"]
   },
   {
-    "key": "comercial:clientes:contatos:visualizar",
-    "name": "Clientes: Contatos - Visualizar",
-    "description": "Permite visualizar os detalhes de um contato de um cliente.",
-    "api-routes": ["api-usuarios:get:/customers/:id/contacts/:contactId"]
+    "key": "comercial:pessoas:contatos:visualizar",
+    "name": "Pessoas: Contatos - Visualizar",
+    "description": "Permite visualizar os detalhes de um contato de uma pessoa.",
+    "api-routes": ["api-pessoas:get:/peoples/:id/contacts/:contactId"]
   },
   {
-    "key": "comercial:clientes:contatos:criar",
-    "name": "Clientes: Contatos - Criar",
-    "description": "Permite adicionar contatos a um cliente.",
-    "api-routes": ["api-usuarios:post:/customers/:id/contacts"]
+    "key": "comercial:pessoas:contatos:criar",
+    "name": "Pessoas: Contatos - Criar",
+    "description": "Permite adicionar contatos a uma pessoa.",
+    "api-routes": ["api-pessoas:post:/peoples/:id/contacts"]
   },
   {
-    "key": "comercial:clientes:contatos:editar",
-    "name": "Clientes: Contatos - Editar",
-    "description": "Permite alterar dados de um contato de um cliente.",
-    "api-routes": ["api-usuarios:put:/customers/:id/contacts/:contactId"]
+    "key": "comercial:pessoas:contatos:editar",
+    "name": "Pessoas: Contatos - Editar",
+    "description": "Permite alterar dados de um contato de uma pessoa.",
+    "api-routes": ["api-pessoas:put:/peoples/:id/contacts/:contactId"]
   },
   {
-    "key": "comercial:clientes:contatos:excluir",
-    "name": "Clientes: Contatos - Excluir",
-    "description": "Permite remover um contato de um cliente.",
-    "api-routes": ["api-usuarios:delete:/customers/:id/contacts/:contactId"]
+    "key": "comercial:pessoas:contatos:excluir",
+    "name": "Pessoas: Contatos - Excluir",
+    "description": "Permite remover um contato de uma pessoa.",
+    "api-routes": ["api-pessoas:delete:/peoples/:id/contacts/:contactId"]
   },
   {
-    "key": "comercial:clientes:enderecos:listar",
-    "name": "Clientes: Endereços - Listar",
-    "description": "Permite visualizar a listagem de endereços de um cliente.",
-    "api-routes": ["api-usuarios:get:/customers/:id/addresses"]
+    "key": "comercial:pessoas:enderecos:listar",
+    "name": "Pessoas: Endereços - Listar",
+    "description": "Permite visualizar a listagem de endereços de uma pessoa.",
+    "api-routes": ["api-pessoas:get:/peoples/:id/addresses"]
   },
   {
-    "key": "comercial:clientes:enderecos:visualizar",
-    "name": "Clientes: Endereços - Visualizar",
-    "description": "Permite visualizar os detalhes de um endereço de um cliente.",
-    "api-routes": ["api-usuarios:get:/customers/:id/addresses/:addressId"]
+    "key": "comercial:pessoas:enderecos:visualizar",
+    "name": "Pessoas: Endereços - Visualizar",
+    "description": "Permite visualizar os detalhes de um endereço de uma pessoa.",
+    "api-routes": ["api-pessoas:get:/peoples/:id/addresses/:addressId"]
   },
   {
-    "key": "comercial:clientes:enderecos:criar",
-    "name": "Clientes: Endereços - Criar",
-    "description": "Permite adicionar endereços a um cliente.",
-    "api-routes": ["api-usuarios:post:/customers/:id/addresses"]
+    "key": "comercial:pessoas:enderecos:criar",
+    "name": "Pessoas: Endereços - Criar",
+    "description": "Permite adicionar endereços a uma pessoa.",
+    "api-routes": ["api-pessoas:post:/peoples/:id/addresses"]
   },
   {
-    "key": "comercial:clientes:enderecos:editar",
-    "name": "Clientes: Endereços - Editar",
-    "description": "Permite alterar dados de um endereço de um cliente.",
-    "api-routes": ["api-usuarios:put:/customers/:id/addresses/:addressId"]
+    "key": "comercial:pessoas:enderecos:editar",
+    "name": "Pessoas: Endereços - Editar",
+    "description": "Permite alterar dados de um endereço de uma pessoa.",
+    "api-routes": ["api-pessoas:put:/peoples/:id/addresses/:addressId"]
   },
   {
-    "key": "comercial:clientes:enderecos:excluir",
-    "name": "Clientes: Endereços - Excluir",
-    "description": "Permite remover um endereço de um cliente.",
-    "api-routes": ["api-usuarios:delete:/customers/:id/addresses/:addressId"]
+    "key": "comercial:pessoas:enderecos:excluir",
+    "name": "Pessoas: Endereços - Excluir",
+    "description": "Permite remover um endereço de uma pessoa.",
+    "api-routes": ["api-pessoas:delete:/peoples/:id/addresses/:addressId"]
   },
   {
-    "key": "comercial:clientes:dados-bancarios:listar",
-    "name": "Clientes: Dados Bancários - Listar",
-    "description": "Permite visualizar a listagem de dados bancários de um cliente.",
-    "api-routes": ["api-usuarios:get:/customers/:id/bank-accounts"]
+    "key": "comercial:pessoas:dados-bancarios:listar",
+    "name": "Pessoas: Dados Bancários - Listar",
+    "description": "Permite visualizar a listagem de dados bancários de uma pessoa.",
+    "api-routes": ["api-pessoas:get:/peoples/:id/bank-accounts"]
   },
   {
-    "key": "comercial:clientes:dados-bancarios:visualizar",
-    "name": "Clientes: Dados Bancários - Visualizar",
-    "description": "Permite visualizar os detalhes de um dado bancário de um cliente.",
+    "key": "comercial:pessoas:dados-bancarios:visualizar",
+    "name": "Pessoas: Dados Bancários - Visualizar",
+    "description": "Permite visualizar os detalhes de um dado bancário de uma pessoa.",
     "api-routes": [
-      "api-usuarios:get:/customers/:id/bank-accounts/:bankAccountId"
+      "api-pessoas:get:/peoples/:id/bank-accounts/:bankAccountId"
     ]
   },
   {
-    "key": "comercial:clientes:dados-bancarios:criar",
-    "name": "Clientes: Dados Bancários - Criar",
-    "description": "Permite adicionar dados bancários a um cliente.",
-    "api-routes": ["api-usuarios:post:/customers/:id/bank-accounts"]
+    "key": "comercial:pessoas:dados-bancarios:criar",
+    "name": "Pessoas: Dados Bancários - Criar",
+    "description": "Permite adicionar dados bancários a uma pessoa.",
+    "api-routes": ["api-pessoas:post:/peoples/:id/bank-accounts"]
   },
   {
-    "key": "comercial:clientes:dados-bancarios:editar",
-    "name": "Clientes: Dados Bancários - Editar",
-    "description": "Permite alterar dados bancários de um cliente.",
+    "key": "comercial:pessoas:dados-bancarios:editar",
+    "name": "Pessoas: Dados Bancários - Editar",
+    "description": "Permite alterar dados bancários de uma pessoa.",
     "api-routes": [
-      "api-usuarios:put:/customers/:id/bank-accounts/:bankAccountId"
+      "api-pessoas:put:/peoples/:id/bank-accounts/:bankAccountId"
     ]
   },
   {
-    "key": "comercial:clientes:dados-bancarios:excluir",
-    "name": "Clientes: Dados Bancários - Excluir",
-    "description": "Permite remover dados bancários de um cliente.",
+    "key": "comercial:pessoas:dados-bancarios:excluir",
+    "name": "Pessoas: Dados Bancários - Excluir",
+    "description": "Permite remover dados bancários de uma pessoa.",
     "api-routes": [
-      "api-usuarios:delete:/customers/:id/bank-accounts/:bankAccountId"
+      "api-pessoas:delete:/peoples/:id/bank-accounts/:bankAccountId"
     ]
   },
   {
-    "key": "comercial:clientes:documentos:listar",
-    "name": "Clientes: Documentos - Listar",
-    "description": "Permite visualizar a listagem de documentos de um cliente.",
-    "api-routes": ["api-usuarios:get:/customers/:id/documents"]
+    "key": "comercial:pessoas:documentos:listar",
+    "name": "Pessoas: Documentos - Listar",
+    "description": "Permite visualizar a listagem de documentos de uma pessoa.",
+    "api-routes": ["api-pessoas:get:/peoples/:id/documents"]
   },
   {
-    "key": "comercial:clientes:documentos:visualizar",
-    "name": "Clientes: Documentos - Visualizar",
-    "description": "Permite visualizar os detalhes de um documento de um cliente.",
-    "api-routes": ["api-usuarios:get:/customers/:id/documents/:documentId"]
+    "key": "comercial:pessoas:documentos:visualizar",
+    "name": "Pessoas: Documentos - Visualizar",
+    "description": "Permite visualizar os detalhes de um documento de uma pessoa.",
+    "api-routes": ["api-pessoas:get:/peoples/:id/documents/:documentId"]
   },
   {
-    "key": "comercial:clientes:documentos:criar",
-    "name": "Clientes: Documentos - Criar",
-    "description": "Permite adicionar documentos a um cliente.",
-    "api-routes": ["api-usuarios:post:/customers/:id/documents"]
+    "key": "comercial:pessoas:documentos:criar",
+    "name": "Pessoas: Documentos - Criar",
+    "description": "Permite adicionar documentos a uma pessoa.",
+    "api-routes": ["api-pessoas:post:/peoples/:id/documents"]
   },
   {
-    "key": "comercial:clientes:documentos:editar",
-    "name": "Clientes: Documentos - Editar",
-    "description": "Permite alterar dados de um documento de um cliente.",
-    "api-routes": ["api-usuarios:put:/customers/:id/documents/:documentId"]
+    "key": "comercial:pessoas:documentos:editar",
+    "name": "Pessoas: Documentos - Editar",
+    "description": "Permite alterar dados de um documento de uma pessoa.",
+    "api-routes": ["api-pessoas:put:/peoples/:id/documents/:documentId"]
   },
   {
-    "key": "comercial:clientes:documentos:excluir",
-    "name": "Clientes: Documentos - Excluir",
-    "description": "Permite remover documentos de um cliente.",
-    "api-routes": ["api-usuarios:delete:/customers/:id/documents/:documentId"]
+    "key": "comercial:pessoas:documentos:excluir",
+    "name": "Pessoas: Documentos - Excluir",
+    "description": "Permite remover documentos de uma pessoa.",
+    "api-routes": ["api-pessoas:delete:/peoples/:id/documents/:documentId"]
   },
   {
-    "key": "comercial:clientes:documentos:preview",
-    "name": "Clientes: Documentos - Preview",
-    "description": "Permite visualizar a prévia de um documento de um cliente.",
+    "key": "comercial:pessoas:documentos:preview",
+    "name": "Pessoas: Documentos - Preview",
+    "description": "Permite visualizar a prévia de um documento de uma pessoa.",
     "api-routes": [
-      "api-usuarios:get:/customers/:id/documents/:documentId/preview"
+      "api-pessoas:get:/peoples/:id/documents/:documentId/preview"
     ]
   },
   {
-    "key": "comercial:clientes:documentos:download",
-    "name": "Clientes: Documentos - Download",
-    "description": "Permite realizar o download de um documento de um cliente.",
+    "key": "comercial:pessoas:documentos:download",
+    "name": "Pessoas: Documentos - Download",
+    "description": "Permite realizar o download de um documento de uma pessoa.",
     "api-routes": [
-      "api-usuarios:get:/customers/:id/documents/:documentId/download"
+      "api-pessoas:get:/peoples/:id/documents/:documentId/download"
     ]
   },
   {
-    "key": "comercial:clientes:auditoria",
-    "name": "Clientes: Auditoria",
-    "description": "Permite visualizar a auditoria de um cliente.",
+    "key": "comercial:pessoas:auditoria",
+    "name": "Pessoas: Auditoria",
+    "description": "Permite visualizar a auditoria de uma pessoa.",
     "api-routes": []
   },
   {

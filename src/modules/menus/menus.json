@@ -1,27 +1,27 @@
 [
   {
-    "key": "comercial:clientes:menu",
+    "key": "comercial:pessoas:menu",
     "category": "Comercial",
-    "name": "Clientes",
-    "description": "Administração de clientes",
-    "url": "/customers",
+    "name": "Pessoas",
+    "description": "Administração de pessoas",
+    "url": "/peoples",
     "icon": "People"
   },
   {
-    "key": "erp:grupos-acesso:menu",
-    "category": "Acesso",
-    "name": "Grupos de Acesso",
-    "description": "Administração de grupos de acesso",
-    "url": "access/access-groups",
-    "icon": "Groups"
+    "key": "contratos:ciclos-pagamento:menu",
+    "category": "Contratos",
+    "name": "Ciclos de Pagamento",
+    "description": "Administração de ciclos de pagamento",
+    "url": "/contratos/ciclos-pagamento",
+    "icon": "AccountBalance"
   },
   {
-    "key": "erp:usuarios:menu",
-    "category": "Acesso",
-    "name": "Usuários",
-    "description": "Administração de usuários e acessos",
-    "url": "/users",
-    "icon": "AdminPanelSettings"
+    "key": "contratos:modalidades-rentabilidade:menu",
+    "category": "Contratos",
+    "name": "Mod. Rentabilidade",
+    "description": "Administração de modalidades de rentabilidade",
+    "url": "/contratos/modalidades-rentabilidade",
+    "icon": "TrendingUp"
   },
   {
     "key": "comunicacoes:remetentes:menu",
@@ -40,25 +40,25 @@
     "icon": "Send"
   },
   {
-    "key": "contratos:ciclos-pagamento:menu",
-    "category": "CONTRATOS",
-    "name": "Ciclos de Pagamento",
-    "description": "Administração de ciclos de pagamento",
-    "url": "/contratos/ciclos-pagamento",
-    "icon": "AccountBalance"
+    "key": "erp:usuarios:menu",
+    "category": "Configurações",
+    "name": "Usuários",
+    "description": "Administração de usuários e acessos",
+    "url": "/users",
+    "icon": "AdminPanelSettings"
   },
   {
-    "key": "contratos:modalidades-rentabilidade:menu",
-    "category": "CONTRATOS",
-    "name": "Mod. Rentabilidade",
-    "description": "Administração de modalidades de rentabilidade",
-    "url": "/contratos/modalidades-rentabilidade",
-    "icon": "TrendingUp"
+    "key": "erp:grupos-acesso:menu",
+    "category": "Configurações",
+    "name": "Grupos de Acesso",
+    "description": "Administração de grupos de acesso",
+    "url": "access/access-groups",
+    "icon": "Groups"
   },
   {
     "key": "erp:parametros:menu",
-    "category": "ERP",
-    "name": "Parametrizações",
+    "category": "Configurações",
+    "name": "Parâmetros",
     "description": "Administração de parametrizações",
     "url": "/parametros/parametrizacoes",
     "icon": "AdminPanelSettings"
