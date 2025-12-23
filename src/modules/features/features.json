@@ -252,6 +252,15 @@
     ]
   },
   {
+    "key": "cadastro:pessoas:detalhes:listar",
+    "name": "Pessoas: Detalhes - Listar",
+    "description": "Permite visualizar os detalhes de uma pessoa na dashboard.",
+    "api-routes": [
+      "api-pessoas:get:/peoples/:id/details",
+      "api-pessoas:get:/peoples/:id"
+    ]
+  },
+  {
     "key": "cadastro:pessoas:detalhes:visualizar",
     "name": "Pessoas: Detalhes - Visualizar",
     "description": "Permite visualizar os detalhes pessoais de uma pessoa.",
