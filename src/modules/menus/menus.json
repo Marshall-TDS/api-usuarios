@@ -32,6 +32,14 @@
     "icon": "TrendingUp"
   },
   {
+    "key": "contratos:templates:menu",
+    "category": "Contratos",
+    "name": "Templates de Contrato",
+    "description": "Administração de templates de contrato",
+    "url": "/contratos/templates-contrato",
+    "icon": "Description"
+  },
+  {
     "key": "comunicacoes:remetentes:menu",
     "category": "Comunicações",
     "name": "Remetentes",

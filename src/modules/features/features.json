@@ -699,5 +699,51 @@
     "api-routes": [
       "api-pessoas:delete:/peoples/:id/relationships/:relationshipId"
     ]
+  },
+  {
+    "key": "contratos:templates:menu",
+    "name": "Templates de Contrato: Menu",
+    "description": "Permite visualizar o menu de templates de contrato.",
+    "api-routes": []
+  },
+  {
+    "key": "contratos:templates:listar",
+    "name": "Templates de Contrato: Listar",
+    "description": "Permite visualizar a listagem de templates de contrato.",
+    "api-routes": [
+      "api-contratos:get:/templates-contrato/"
+    ]
+  },
+  {
+    "key": "contratos:templates:visualizar",
+    "name": "Templates de Contrato: Visualizar",
+    "description": "Permite visualizar os detalhes completos de um template de contrato.",
+    "api-routes": [
+      "api-contratos:get:/templates-contrato/:id"
+    ]
+  },
+  {
+    "key": "contratos:templates:criar",
+    "name": "Templates de Contrato: Criar",
+    "description": "Permite cadastrar novos templates de contrato.",
+    "api-routes": [
+      "api-contratos:post:/templates-contrato/"
+    ]
+  },
+  {
+    "key": "contratos:templates:editar",
+    "name": "Templates de Contrato: Editar",
+    "description": "Permite alterar informações de templates de contrato existentes.",
+    "api-routes": [
+      "api-contratos:patch:/templates-contrato/:id"
+    ]
+  },
+  {
+    "key": "contratos:templates:excluir",
+    "name": "Templates de Contrato: Excluir",
+    "description": "Permite remover templates de contrato do sistema.",
+    "api-routes": [
+      "api-contratos:delete:/templates-contrato/:id"
+    ]
   }
 ]
